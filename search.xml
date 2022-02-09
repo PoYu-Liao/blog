@@ -4,11 +4,53 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/blog/2022/02/09/hello-world/"/>
-      <url>/blog/2022/02/09/hello-world/</url>
+      <title>實驗室409日誌610x01a</title>
+      <link href="/blog/2022/01/31/%E5%AF%A6%E9%A9%97%E5%AE%A4409%E6%97%A5%E8%AA%8C610x01a/"/>
+      <url>/blog/2022/01/31/%E5%AF%A6%E9%A9%97%E5%AE%A4409%E6%97%A5%E8%AA%8C610x01a/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<p><img src="https://i.imgur.com/pMT0HXb.png" alt="CPLEX頂樓壓力大"></p><span id="more"></span><p>一開始因為疫情所以沒有強制我們像前面學長姊一樣暑假就進來<br>想說老師沒急著要求進實驗室就慢慢來吧(?)<br>但結果最慢進來的我拿到最差的設備螢幕小的跟甚麼一樣…(不過幸好只是暫時的)<br>不過參與了實驗室第一次的大掃除， 打掃並發現須多塵封多年的前人遺留的東西<br>(前人留下來的東西還有像疑似甲蟲屍體的東西，都沒長蟲也是蠻厲害的)<br>之後老師分配了論文報告，但不知為何我報告的時間不是該剛好在期末考這樣的大考時間<br>再不然就是第二篇論文發下來的速度超快…(我就雖…(◐‿◑)﻿)<br>一學期結束下來我就變成當學期讀較多論文的人，<br>說實在的每次都卡在大考期間報告真的壓力好大啊~~~<br><img src="https://cdn.discordapp.com/attachments/886821591420379169/928936889875046410/IMG_1810.png" width="9%" />   </p><p>那時真的壓力好大而且很容易焦慮，不過後來還是挺過去了。<br>現在換看負責寫CPLEX的學長焦慮失眠自稱自己是絕望了文盲╮(╯▽╰)╭<br>最後幸好第一學期每個有修的科目都順利<strong>通過 All pass</strong> <em>(還以為自己會被某人搞到被當掉)</em></p><p>最最最後希望接下來更加<strong>順順利利</strong> <strong>越來越好</strong>(過完年後就被學校悄悄的強制封鎖RDP封包了…(｡･ω･｡))</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 實驗室日誌 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 610410092 </tag>
+            
+            <tag> 409 </tag>
+            
+            <tag> lab </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>起源</title>
+      <link href="/blog/2022/01/31/%E8%B5%B7%E6%BA%90/"/>
+      <url>/blog/2022/01/31/%E8%B5%B7%E6%BA%90/</url>
+      
+        <content type="html"><![CDATA[<p>關於這個網站，一開始是因<strong>課堂分組</strong>某位學長提到，<br>那時候就<strong>很有興趣</strong>，只不過…  </p><span id="more"></span> <p>那時候我有點懶╮(╯▽╰)╭<br>在之後到了研究所，突然在lab瀏覽github時，<br>又一次瀏覽到學長的blog突然又有很高的興致了<br>但由於那時諸事繁忙，所以這件事又又被delay了╮(￣▽￣””)╭<br>所以最後等過完年也就是現在才建置好這個網頁 </p><h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>感謝那位<strong>學長</strong>啟發我想做這個網頁，<br>雖然常常問你問題問到你很無言，讓你有時候因此突然神隱，<br>但你還是願意教我這麼多，真的很謝謝你~</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/blog/2022/01/31/hello-world/"/>
+      <url>/blog/2022/01/31/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><span id="more"></span><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
       
       
       <categories>
