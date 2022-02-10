@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://poyu-liao.github.io/google8c4dcfb946e03d88.html</loc>
+    
+    <lastmod>2022-02-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://poyu-liao.github.io/2022/02/10/%E5%80%8B%E4%BA%BA%E5%8C%96Hexo%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8Hexo-theme-NexT/</loc>
     
     <lastmod>2022-02-10</lastmod>
@@ -95,6 +104,13 @@
   </url>
   
   <url>
+    <loc>https://poyu-liao.github.io/tags/NexT/</loc>
+    <lastmod>2022-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://poyu-liao.github.io/tags/409/</loc>
     <lastmod>2022-02-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -103,13 +119,6 @@
   
   <url>
     <loc>https://poyu-liao.github.io/tags/lab/</loc>
-    <lastmod>2022-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://poyu-liao.github.io/tags/NexT/</loc>
     <lastmod>2022-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
