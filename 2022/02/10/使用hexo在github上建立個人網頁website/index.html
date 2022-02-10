@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="Robert&#39;s 部落格">
 <meta property="og:description" content="事前作業軟體安裝 註冊申請好github帳號  安裝Node.js(可以選擇安裝LTS版本即可) 安裝Git(以下提供兩種安裝方法)    第一種安裝方法到git官網下載安裝包   第二種裝好hexo-cli後用指令安裝npm install hexo-deployer-git –save">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://poyu-liao.github.io/blog/images/stepimages/github-new-Repository.png">
+<meta property="og:image" content="https://poyu-liao.github.io/blog/images/github-new-Repository.png">
 <meta property="article:published_time" content="2022-02-10T06:43:24.000Z">
-<meta property="article:modified_time" content="2022-02-10T08:07:47.087Z">
+<meta property="article:modified_time" content="2022-02-10T08:10:40.697Z">
 <meta property="article:author" content="Po Yu Liao">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://poyu-liao.github.io/blog/images/stepimages/github-new-Repository.png">
+<meta name="twitter:image" content="https://poyu-liao.github.io/blog/images/github-new-Repository.png">
 
 <link rel="canonical" href="https://poyu-liao.github.io/2022/02/10/%E4%BD%BF%E7%94%A8hexo%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8B%E5%80%8B%E4%BA%BA%E7%B6%B2%E9%A0%81website/">
 
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2022-02-10 14:43:24 / 修改時間：16:07:47" itemprop="dateCreated datePublished" datetime="2022-02-10T14:43:24+08:00">2022-02-10</time>
+              <time title="創建時間：2022-02-10 14:43:24 / 修改時間：16:10:40" itemprop="dateCreated datePublished" datetime="2022-02-10T14:43:24+08:00">2022-02-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,7 +255,7 @@
 <h2 id="安裝-Hexo"><a href="#安裝-Hexo" class="headerlink" title="安裝 Hexo"></a>安裝 Hexo</h2><p>使用 npm 來安裝 hexo-cli <strong>(須先安裝 Node.js)</strong>  </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">```  </span><br><span class="line">安裝完後，可輸入 `hexo version` 或 `hexo -v` 查看 Hexo 版本，確認是否有安裝成功。  </span><br><span class="line">之後執行下列指令，Hexo 會在指定資料夾中建立所有您需要的檔案。  </span><br><span class="line">```bash</span><br><span class="line">hexo init &lt;資料夾名稱&gt;  <span class="comment">#  初始化</span></span><br><span class="line"><span class="built_in">cd</span> &lt;資料夾名稱 or 資料夾路徑&gt; <span class="comment"># 切換到資料夾下</span></span><br><span class="line">npm install  <span class="comment"># 安裝相關套件</span></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"><span class="comment">## 啟動server測試</span></span><br><span class="line">```bash</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 <p>在本地端啟動 Hexo 伺服器，預設路徑為：<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a><br>可在自己電腦上預覽設定結果，按 Ctrl + C 即可關閉  </p>
-<h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><h4 id="建立-GitHub-專案"><a href="#建立-GitHub-專案" class="headerlink" title="建立 GitHub 專案"></a>建立 GitHub 專案</h4><p>(1)    點選 New 新增一個 Repository<br>(2)    將專案名稱命名為 blog<br><img src="/blog/images/stepimages/github-new-Repository.png" alt="github-new-Repository"></p>
+<h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><h4 id="建立-GitHub-專案"><a href="#建立-GitHub-專案" class="headerlink" title="建立 GitHub 專案"></a>建立 GitHub 專案</h4><p>(1)    點選 New 新增一個 Repository<br>(2)    將專案名稱命名為 blog<br><img src="/blog/images/github-new-Repository.png" alt="github-new-Repository"></p>
 <h4 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改_config.yml"></a>修改_config.yml</h4><p>找到Deployment這段，並將修改成如下</p>
 <pre><code class="bash">deploy:
   type: git   #發佈使用版控類別 使用git
