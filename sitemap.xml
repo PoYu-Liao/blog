@@ -104,6 +104,13 @@
   </url>
   
   <url>
+    <loc>https://poyu-liao.github.io/tags/NexT/</loc>
+    <lastmod>2022-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://poyu-liao.github.io/tags/409/</loc>
     <lastmod>2022-02-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -112,13 +119,6 @@
   
   <url>
     <loc>https://poyu-liao.github.io/tags/lab/</loc>
-    <lastmod>2022-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://poyu-liao.github.io/tags/NexT/</loc>
     <lastmod>2022-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
