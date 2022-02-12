@@ -10,6 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="google76b4f15a94f05f2c.html">
 
 <link rel="stylesheet" href="/blog/css/main.css">
 
@@ -42,11 +43,11 @@
 <meta property="og:image" content="https://i.imgur.com/qtkL9r4.png">
 <meta property="og:image" content="https://cdn.discordapp.com/attachments/941618163404144661/941618253304823838/page_setting.png">
 <meta property="article:published_time" content="2022-02-10T06:43:24.000Z">
-<meta property="article:modified_time" content="2022-02-11T08:56:41.186Z">
+<meta property="article:modified_time" content="2022-02-12T07:13:10.058Z">
 <meta property="article:author" content="Po Yu Liao">
 <meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="website">
 <meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="website">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.imgur.com/t8rp9Yu.png">
 
@@ -246,7 +247,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-02-11 16:56:41" itemprop="dateModified" datetime="2022-02-11T16:56:41+08:00">2022-02-11</time>
+                <time title="修改時間：2022-02-12 15:13:10" itemprop="dateModified" datetime="2022-02-12T15:13:10+08:00">2022-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -283,8 +284,8 @@
 <h2 id="安裝-Hexo"><a href="#安裝-Hexo" class="headerlink" title="安裝 Hexo"></a>安裝 Hexo</h2><p>使用 npm 來安裝 hexo-cli <strong>(須先安裝 Node.js)</strong>  </p>
 <p><code>npm install hexo-cli -g</code></p>
 <p>安裝完後，可輸入 <code>hexo version</code> 或 <code>hexo -v</code> 查看 Hexo 版本，確認是否有安裝成功。<br>之後執行下列指令，Hexo 會在指定資料夾中建立所有您需要的檔案。  </p>
-<p><code>hexo init &lt;資料夾名稱&gt;  #  初始化</code><br><code>cd &lt;資料夾名稱 or 資料夾路徑&gt; # 切換到資料夾下</code><br><code>npm install  # 安裝相關套件</code>  </p>
-<h2 id="啟動server測試"><a href="#啟動server測試" class="headerlink" title="啟動server測試"></a>啟動server測試</h2><p><code>hexo server</code>  </p>
+<p><code>hexo init &lt;資料夾名稱&gt;  #  初始化</code><br><code>cd &lt;資料夾名稱 or 資料夾路徑&gt; # 切換到資料夾下</code><br><code>npm install  # 安裝相關套件</code></p>
+<h2 id="啟動server測試"><a href="#啟動server測試" class="headerlink" title="啟動server測試"></a>啟動server測試</h2><p><code>hexo server</code></p>
 <p>在本地端啟動 Hexo 伺服器，預設路徑為：<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a><br>可在自己電腦上預覽設定結果，按 Ctrl + C 即可關閉  </p>
 <h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><h3 id="建立-GitHub-專案"><a href="#建立-GitHub-專案" class="headerlink" title="建立 GitHub 專案"></a>建立 GitHub 專案</h3><p>(1)    點選 New 新增一個 Repository<br>(2)    將專案名稱命名為 blog<br><img src="https://i.imgur.com/t8rp9Yu.png" alt="github-new-Repository"></p>
 <h3 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改_config.yml"></a>修改_config.yml</h3><p><img src="https://i.imgur.com/qtkL9r4.png" alt="config.yml"></p>
@@ -294,47 +295,40 @@
 <p>用編輯器打開，找到URL這段，並將修改成如下  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="line">url: https://&lt;username&gt;.github.io</span><br><span class="line">root: /blog/</span><br></pre></td></tr></table></figure>
 <p>找到Deployment這段，並將修改成如下  </p>
-<pre><code class="bash">deploy:
-  type: git   #發佈使用版控類別 使用git
-  repo: https://github.com/&lt;username&gt;/&lt;專案名稱&gt;.git  #發佈到哪個Repository
-  branch: master  #發佈使用的分支
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git   <span class="comment">#發佈使用版控類別 使用git</span></span><br><span class="line">  repo: https://github.com/&lt;username&gt;/&lt;專案名稱&gt;.git  <span class="comment">#發佈到哪個Repository</span></span><br><span class="line">  branch: master  <span class="comment">#發佈使用的分支</span></span><br></pre></td></tr></table></figure>
 <p>更多說明請參考<a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment">官方文件</a>  </p>
 <h2 id="部屬指令"><a href="#部屬指令" class="headerlink" title="部屬指令"></a>部屬指令</h2><blockquote>
-<p>(要先修改設定好_config.yml才能使用這個指令)</p>
+<p>(要先修改設定好_config.yml才能使用這個指令)  </p>
 </blockquote>
-<pre><code class="bash">hexo clean 
-#清除快取檔案 (db.json) 和已產生的靜態檔案 (public)。
-hexo generate
-#產生靜態檔案
-hexo deploy
-#部署網站。
-</code></pre>
-<p>上述指令一次輸入的打法</p>
-<pre><code class="bash">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line"><span class="comment">#清除快取檔案 (db.json) 和已產生的靜態檔案 (public)。</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment">#產生靜態檔案</span></span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment">#部署網站。</span></span><br></pre></td></tr></table></figure>
+
+<p>上述指令一次輸入的打法  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>注意此處指令順序一定必須是 clean→generate→deploy<br>如果你出現這個錯誤訊息<br><strong>Fatal: unable to auto-detect email address (got …….</strong><br>代表這台電腦是第一次使用部屬請輸入用戶名稱和電子信箱<br>設定指令如下:</p>
+<p>注意此處指令順序一定必須是 clean→generate→deploy<br>如果你出現這個錯誤訊息<br><strong>Fatal: unable to auto-detect email address (got …….</strong><br>代表這台電腦是第一次使用部屬請輸入用戶名稱和電子信箱<br>設定指令如下:  </p>
 </blockquote>
-<pre><code class="bash">git config –global user.email “you@example.com”
-git config –global user.name “Your Name”
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config –global user.email “you@example.com”</span><br><span class="line">git config –global user.name “Your Name”</span><br></pre></td></tr></table></figure>
+
 <p>更多指令請參考<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/commands">hexo 官方文件</a>  </p>
 <p>deploy完後請回到github網頁所在的Repository，上方欄setting→page。<br>在這頁面裡將source選擇master，然後save<br><img src="https://cdn.discordapp.com/attachments/941618163404144661/941618253304823838/page_setting.png" alt="page-setting"><br>綠色框框處為你的web網址  </p>
 <h2 id="新增文章"><a href="#新增文章" class="headerlink" title="新增文章"></a>新增文章</h2><p>建立一篇新的文章。  </p>
-<pre><code class="bash">hexo new [layout] &lt;title&gt;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p> hexo new post “test”  或 hexo new “test”</p>
 </blockquote>
 <p>如果沒有設定 layout 的話，則會使用 _config.yml 中的 default_layout設定代替。<br>如果標題包含空格的話，請使用引號括起來。<br>所有的新生成的文章都是存在 <code>_post</code> 之下，從<code>scaffolds / post.md</code>可以制定所要撰寫的文章有哪些參數是可以自訂的。<br>更多指令請參考<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/commands">hexo 官方文件</a>  </p>
-<h2 id="增加標籤-tags"><a href="#增加標籤-tags" class="headerlink" title="增加標籤 (tags)"></a>增加標籤 (tags)</h2><p><code>hexo new page tags</code>  </p>
-<h2 id="增加文章分類-Categories"><a href="#增加文章分類-Categories" class="headerlink" title="增加文章分類 (Categories)"></a>增加文章分類 (Categories)</h2><p><code>hexo new page categories</code>  </p>
+<h2 id="增加標籤-tags"><a href="#增加標籤-tags" class="headerlink" title="增加標籤 (tags)"></a>增加標籤 (tags)</h2><p><code>hexo new page tags</code></p>
+<h2 id="增加文章分類-Categories"><a href="#增加文章分類-Categories" class="headerlink" title="增加文章分類 (Categories)"></a>增加文章分類 (Categories)</h2><p><code>hexo new page categories</code></p>
 <p>之後只要在每篇post打上tags、categories，就能讓文章有標籤和分類。<br>例如以此篇為例:  </p>
-<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 使用hexo在github上建立個人網頁website</span><br><span class="line">date: 2022-02-10 14:43:24</span><br><span class="line">categories: Web網頁設計</span><br><span class="line">tags:</span><br><span class="line">	- Hexo</span><br><span class="line">	- GitHub</span><br><span class="line">	- website</span><br><span class="line">	</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
 <hr>
-<p>title: 使用hexo在github上建立個人網頁website<br>date: 2022-02-10 14:43:24<br>categories: Web網頁設計<br>tags:<br>    - Hexo<br>    - GitHub<br>    - website</p>
+<p>如果要換一台電腦使用hexo，請備份以下檔案  </p>
+<blockquote>
+<p>_config.yml<br>package.json<br>scaffolds&#x2F;<br>source&#x2F;<br>themes&#x2F;  </p>
 </blockquote>
+<p>在按照上述安裝流程安裝，安裝完後執行到<code>hexo init &lt;資料夾名稱&gt;</code>這段。<br>再用上述的備份好的檔案覆蓋到剛剛初始化的資料夾即可。<br>(如果沒有備份上述檔案就沒辦法了)<br>接下來在繼續<code>npm install</code> 及其他的第三方套件</p>
 <hr>
 
     </div>
@@ -346,8 +340,8 @@ git config –global user.name “Your Name”
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/blog/tags/Hexo/" rel="tag"># Hexo</a>
-              <a href="/blog/tags/website/" rel="tag"># website</a>
               <a href="/blog/tags/GitHub/" rel="tag"># GitHub</a>
+              <a href="/blog/tags/website/" rel="tag"># website</a>
           </div>
 
         
