@@ -41,7 +41,7 @@
 <meta property="og:description" content="系統版本基本上為linux至於使用哪個版本的都可以    其他版本可能指令略為不同或需多修改防火牆設定">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-02-10T10:55:51.000Z">
-<meta property="article:modified_time" content="2022-02-12T07:22:29.433Z">
+<meta property="article:modified_time" content="2022-02-12T08:00:03.906Z">
 <meta property="article:author" content="Po Yu Liao">
 <meta property="article:tag" content="ubuntu">
 <meta property="article:tag" content="hostapd">
@@ -244,7 +244,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-02-12 15:22:29" itemprop="dateModified" datetime="2022-02-12T15:22:29+08:00">2022-02-12</time>
+                <time title="修改時間：2022-02-12 16:00:03" itemprop="dateModified" datetime="2022-02-12T16:00:03+08:00">2022-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,44 +286,46 @@
 <ol start="2">
 <li>設置 hostapd.conf</li>
 </ol>
-<p> <code>vim /etc/hostapd/hostapd.conf</code> </p>
-<p> <code>   interface=wlp8s0                  //網卡接口名稱，用ifconfig獲得</code><br> <code>   driver=nl80211</code><br> <code>   ssid=My_WiFi                        //wifi名稱</code><br> <code>   channel=10</code><br> <code>   hw_mode=g</code><br> <code>   macaddr_acl=0                       //mac設備過濾</code><br> <code>   auth_algs=1</code><br> <code>  ignore_broadcast_ssid=0  </code></p>
+<p> <code>vim /etc/hostapd/hostapd.conf</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface=wlp8s0                  //網卡接口名稱，用ifconfig獲得</span><br><span class="line">driver=nl80211`</span><br><span class="line">ssid=My_WiFi                        //wifi名稱</span><br><span class="line">channel=10`</span><br><span class="line">hw_mode=g`</span><br><span class="line">macaddr_acl=0                       //mac設備過濾</span><br><span class="line">auth_algs=1`</span><br><span class="line">ignore_broadcast_ssid=0   </span><br></pre></td></tr></table></figure>
+
+
 <ol start="3">
 <li>安裝isc-dhcp-server</li>
 </ol>
-<p> <code>apt-get install isc-dhcp-server</code>  </p>
+<p> <code>apt-get install isc-dhcp-server</code></p>
 <ol start="4">
 <li>設置isc-dhcp-server指定網卡為wlp8s0</li>
 </ol>
-<p> <code>vim /etc/default/isc-dhcp-server</code>  </p>
+<p> <code>vim /etc/default/isc-dhcp-server</code></p>
 <p>找到下列這段並修改成  </p>
-<p> <code>INTERFACES=&quot;wlp8s0&quot;</code>  </p>
+<p> <code>INTERFACES=&quot;wlp8s0&quot;</code></p>
 <ol start="5">
 <li>設置dhcpd.conf修改DNS跟分配的網段</li>
 </ol>
-<p> <code>vim /etc/dhcp/dhcpd.conf</code>  </p>
+<p> <code>vim /etc/dhcp/dhcpd.conf</code></p>
 <p>打開後找到</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">option domain-name &quot;example.org&quot;; # 網域名稱</span><br><span class="line">option domain-name-servers 8.8.8.8, 1.1.1.1; # DNS Server</span><br><span class="line"></span><br><span class="line">default-lease-time 600; # 預設租賃時間</span><br><span class="line">max-lease-time 7200; # 最大租賃時間</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">subnet 192.168.100.0 netmask 255.255.255.0 &#123;</span><br><span class="line">    range 192.168.100.2 10.121.210.254;</span><br><span class="line">    option subnet-mask 255.255.255.0;</span><br><span class="line">    option routers 192.168.100.1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="6">
 <li>安裝iptables(如用其他版本的linux可不裝，如:centOS)</li>
 </ol>
-<p> <code>apt-get install iptables</code>   </p>
+<p> <code>apt-get install iptables</code></p>
 <ol start="7">
 <li>配置網卡IP</li>
 </ol>
-<p> <code>ifconfig wlp8s0 192.168.100.1 netmask 255.255.255.0 up</code>   </p>
+<p><code>ifconfig wlp8s0 192.168.100.1 netmask 255.255.255.0 up</code>   </p>
 <ol start="8">
 <li>啟動DHCP server</li>
 </ol>
-<p> <code>/etc/init.d/isc-dhcp-server start</code>  </p>
+<p> <code>/etc/init.d/isc-dhcp-server start</code></p>
 <blockquote>
 <p><code>/etc/init.d/isc-dhcp-server restart</code>重啟DHCP server   </p>
 </blockquote>
 <ol start="9">
 <li>開啟轉發功能</li>
 </ol>
-<p> <code>sysctl -w net.ipv4.ip_forward=1</code>  </p>
+<p> <code>sysctl -w net.ipv4.ip_forward=1</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  </span><br><span class="line">iptables -A FORWARD -i wlp8s0 -j ACCEPT</span><br><span class="line">iptables -A FORWARD -o wlp8s0 -j ACCEPT</span><br></pre></td></tr></table></figure>
 
 <ol start="10">
