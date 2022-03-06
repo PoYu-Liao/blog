@@ -33,17 +33,17 @@
 
   gtag('config', 'G-5WYW6952KH');
 </script>
-  <meta name="description" content="介紹解說Hexo config.yml 設定檔Hexo config.yml的位置">
+  <meta name="description" content="介紹解說Hexo config.yml 設定檔 Hexo config.yml的位置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="個人化Hexo以及使用Hexo theme NexT">
 <meta property="og:url" content="https://poyu-liao.github.io/2022/02/10/%E5%80%8B%E4%BA%BA%E5%8C%96Hexo%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8Hexo-theme-NexT/index.html">
 <meta property="og:site_name" content="Robert&#39;s Blog">
-<meta property="og:description" content="介紹解說Hexo config.yml 設定檔Hexo config.yml的位置">
+<meta property="og:description" content="介紹解說Hexo config.yml 設定檔 Hexo config.yml的位置">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/qtkL9r4.png">
 <meta property="og:image" content="https://i.imgur.com/CjZVqWE.png">
 <meta property="article:published_time" content="2022-02-10T08:25:57.000Z">
-<meta property="article:modified_time" content="2022-02-12T07:02:07.021Z">
+<meta property="article:modified_time" content="2022-03-06T06:31:22.923Z">
 <meta property="article:author" content="Po Yu Liao">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="website">
@@ -247,7 +247,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-02-12 15:02:07" itemprop="dateModified" datetime="2022-02-12T15:02:07+08:00">2022-02-12</time>
+                <time title="修改時間：2022-03-06 14:31:22" itemprop="dateModified" datetime="2022-03-06T14:31:22+08:00">2022-03-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,88 +270,97 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="介紹解說Hexo-config-yml-設定檔"><a href="#介紹解說Hexo-config-yml-設定檔" class="headerlink" title="介紹解說Hexo config.yml 設定檔"></a>介紹解說Hexo config.yml 設定檔</h2><h3 id="Hexo-config-yml的位置"><a href="#Hexo-config-yml的位置" class="headerlink" title="Hexo config.yml的位置"></a>Hexo config.yml的位置</h3><p><img src="https://i.imgur.com/qtkL9r4.png" alt="config.yml">  </p>
-<span id="more"></span>
-<h3 id="網站"><a href="#網站" class="headerlink" title="網站"></a>網站</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: #網頁標題</span><br><span class="line">subtitle: #副網頁標題</span><br><span class="line">description: #網站描述</span><br><span class="line">keywords:</span><br><span class="line">author: #作者</span><br><span class="line">language: #語系(台灣設定為:zh-tw)</span><br><span class="line">timezone: # 時區</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="網址"><a href="#網址" class="headerlink" title="網址"></a>網址</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#URL</span><br><span class="line">#Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="line">url: 網頁網址</span><br><span class="line">root: #根目錄</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="Hexo-時間格式"><a href="#Hexo-時間格式" class="headerlink" title="Hexo 時間格式"></a>Hexo 時間格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">date_format: YYYY-MM-DD  #日期格式</span><br><span class="line">time_format: HH:mm:ss</span><br><span class="line">updated_option supports &#x27;mtime&#x27;, &#x27;date&#x27;, &#x27;empty&#x27;</span><br><span class="line">updated_option: &#x27;mtime&#x27;  #時間格式</span><br></pre></td></tr></table></figure>
-
-<h3 id="Hexo-主題設定"><a href="#Hexo-主題設定" class="headerlink" title="Hexo 主題設定"></a>Hexo 主題設定</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#Extensions  </span><br><span class="line">Plugins: https://hexo.io/plugins/  </span><br><span class="line">Themes: https://hexo.io/themes/  </span><br><span class="line">theme: next #此處是使用next主題  </span><br></pre></td></tr></table></figure>
-
-<p>更多介紹<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/configuration">官方文件</a>  </p>
-<h2 id="安裝設定Hexo-Theme"><a href="#安裝設定Hexo-Theme" class="headerlink" title="安裝設定Hexo Theme"></a>安裝設定Hexo Theme</h2><h3 id="主題下載來源"><a href="#主題下載來源" class="headerlink" title="主題下載來源"></a>主題下載來源</h3><p>Hexo無論是官方或第三都有許多Theme可以選擇，可以挑一款自己喜歡的(以下將以next示範)<br>官方主題:<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a><br>NexT主題:<a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a>  </p>
-<h4 id="主題檔案放置位置"><a href="#主題檔案放置位置" class="headerlink" title="主題檔案放置位置"></a>主題檔案放置位置</h4><p>請把資料檔放在&#x2F;themes&#x2F;資料夾目錄下<br><img src="https://i.imgur.com/CjZVqWE.png" alt="themes位置"><br>放置完後請參考上面敘述的<strong>Hexo 主題設定</strong>進行設定  </p>
-<h2 id="NexT-Theme-設定"><a href="#NexT-Theme-設定" class="headerlink" title="NexT Theme 設定"></a>NexT Theme 設定</h2><h3 id="NexT主題"><a href="#NexT主題" class="headerlink" title="NexT主題"></a>NexT主題</h3><p>NexT 設定是在 <code>thems/next/_config.yml </code></p>
-<blockquote>
-<p>跟上述的_config.yml是不同檔案編輯時請注意檔案路徑  </p>
-</blockquote>
-<p>next提供了四種不同主題修改方法如下  </p>
-<blockquote>
-<p>下面敘述大多是取消註解或更換網址的操作就不一一重複說明  </p>
-</blockquote>
-<p>找到<strong>Scheme Settings</strong>  </p>
+        <h2 id="介紹解說hexo-config.yml-設定檔">介紹解說Hexo config.yml
+設定檔</h2>
+<h3 id="hexo-config.yml的位置">Hexo config.yml的位置</h3>
+<p><img src="https://i.imgur.com/qtkL9r4.png" alt="config.yml" /><br />
+<span id="more"></span> ### 網站</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: #網頁標題</span><br><span class="line">subtitle: #副網頁標題</span><br><span class="line">description: #網站描述</span><br><span class="line">keywords:</span><br><span class="line">author: #作者</span><br><span class="line">language: #語系(台灣設定為:zh-tw)</span><br><span class="line">timezone: # 時區</span><br></pre></td></tr></table></figure>
+<h3 id="網址">網址</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#URL</span><br><span class="line">#Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="line">url: 網頁網址</span><br><span class="line">root: #根目錄</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+<h3 id="hexo-時間格式">Hexo 時間格式</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">date_format: YYYY-MM-DD  #日期格式</span><br><span class="line">time_format: HH:mm:ss</span><br><span class="line">updated_option supports &#x27;mtime&#x27;, &#x27;date&#x27;, &#x27;empty&#x27;</span><br><span class="line">updated_option: &#x27;mtime&#x27;  #時間格式</span><br></pre></td></tr></table></figure>
+<h3 id="hexo-主題設定">Hexo 主題設定</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#Extensions  </span><br><span class="line">Plugins: https://hexo.io/plugins/  </span><br><span class="line">Themes: https://hexo.io/themes/  </span><br><span class="line">theme: next #此處是使用next主題  </span><br></pre></td></tr></table></figure>
+<p>更多介紹<a
+target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/configuration">官方文件</a></p>
+<h2 id="安裝設定hexo-theme">安裝設定Hexo Theme</h2>
+<h3 id="主題下載來源">主題下載來源</h3>
+<p>Hexo無論是官方或第三都有許多Theme可以選擇，可以挑一款自己喜歡的(以下將以next示範)<br />
+官方主題:https://hexo.io/themes/<br />
+NexT主題:https://github.com/theme-next/hexo-theme-next<br />
+#### 主題檔案放置位置 請把資料檔放在/themes/資料夾目錄下<br />
+<img src="https://i.imgur.com/CjZVqWE.png" alt="themes位置" /><br />
+放置完後請參考上面敘述的<strong>Hexo 主題設定</strong>進行設定</p>
+<h2 id="next-theme-設定">NexT Theme 設定</h2>
+<h3 id="next主題">NexT主題</h3>
+<p>NexT 設定是在 <code>thems/next/_config.yml</code> &gt;
+跟上述的_config.yml是不同檔案編輯時請注意檔案路徑</p>
+<p>next提供了四種不同主題修改方法如下<br />
+&gt; 下面敘述大多是取消註解或更換網址的操作就不一一重複說明</p>
+<p>找到<strong>Scheme Settings</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br><span class="line"></span><br><span class="line">Dark Mode</span><br><span class="line"> darkmode: false</span><br></pre></td></tr></table></figure>
-
-<p>選擇一個自己喜歡的取消註解即可</p>
-<blockquote>
-<p><code>darkmode: false</code>設為<code>ture</code>開啟暗黑模式  </p>
-</blockquote>
-<h3 id="主選單設置"><a href="#主選單設置" class="headerlink" title="主選單設置"></a>主選單設置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home #首頁</span><br><span class="line">  #about: /about/ || fa fa-user #關於我</span><br><span class="line">  tags: /tags/ || fa fa-tags #標籤</span><br><span class="line">  categories: /categories/ || fa fa-th #分類</span><br><span class="line">  archives: /archives/ || fa fa-archive #歸檔</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="個人大頭照"><a href="#個人大頭照" class="headerlink" title="個人大頭照"></a>個人大頭照</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  #Replace the default image and set the url here.</span><br><span class="line">  url: /images/A.jpg</span><br></pre></td></tr></table></figure>
-<p>url 換成自己想用的圖片路徑即可  </p>
-<h3 id="社群鏈結"><a href="#社群鏈結" class="headerlink" title="社群鏈結"></a>社群鏈結</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/yourname || fab fa-github</span><br><span class="line">  #E-Mail: mailto:yourname@gmail.com || fa fa-envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
-
-<p>把要用的取消註解換成自己的網址即可  </p>
-<h3 id="回到頂部按鈕"><a href="#回到頂部按鈕" class="headerlink" title="回到頂部按鈕"></a>回到頂部按鈕</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">back2top:</span><br><span class="line">  enable: true</span><br><span class="line">  # Back to top in sidebar.</span><br><span class="line">  sidebar: false</span><br><span class="line">  # Scroll percent label in b2t button.</span><br><span class="line">  scrollpercent: false</span><br></pre></td></tr></table></figure>
-
+<p>選擇一個自己喜歡的取消註解即可 &gt;
+<code>darkmode: false</code>設為<code>ture</code>開啟暗黑模式<br />
+### 主選單設置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home #首頁</span><br><span class="line">  #about: /about/ || fa fa-user #關於我</span><br><span class="line">  tags: /tags/ || fa fa-tags #標籤</span><br><span class="line">  categories: /categories/ || fa fa-th #分類</span><br><span class="line">  archives: /archives/ || fa fa-archive #歸檔</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+<h3 id="個人大頭照">個人大頭照</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  #Replace the default image and set the url here.</span><br><span class="line">  url: /images/A.jpg</span><br></pre></td></tr></table></figure>
+<p>url 換成自己想用的圖片路徑即可</p>
+<h3 id="社群鏈結">社群鏈結</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/yourname || fab fa-github</span><br><span class="line">  #E-Mail: mailto:yourname@gmail.com || fa fa-envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
+<p>把要用的取消註解換成自己的網址即可</p>
+<h3 id="回到頂部按鈕">回到頂部按鈕</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">back2top:</span><br><span class="line">  enable: true</span><br><span class="line">  # Back to top in sidebar.</span><br><span class="line">  sidebar: false</span><br><span class="line">  # Scroll percent label in b2t button.</span><br><span class="line">  scrollpercent: false</span><br></pre></td></tr></table></figure>
 <ul>
-<li>將 sidebar 設定為 true：設定在側邊欄的個人資訊區塊中，Social Links 下，顯示回到頂部按鈕。</li>
-<li>將 scrollpercent 設定為 true：回到頂部按鈕旁加上閱讀進度百分比。</li>
+<li>將 sidebar 設定為 true：設定在側邊欄的個人資訊區塊中，Social Links
+下，顯示回到頂部按鈕。</li>
+<li>將 scrollpercent 設定為
+true：回到頂部按鈕旁加上閱讀進度百分比。</li>
 </ul>
-<h3 id="閱讀進度條"><a href="#閱讀進度條" class="headerlink" title="閱讀進度條"></a>閱讀進度條</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Reading progress bar</span><br><span class="line">reading_progress:</span><br><span class="line">  enable: false</span><br><span class="line">  # Available values: top | bottom</span><br><span class="line">  position: top</span><br><span class="line">  color: &quot;#37c6c0&quot;</span><br><span class="line">  height: 3px</span><br></pre></td></tr></table></figure>
-
+<h3 id="閱讀進度條">閱讀進度條</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Reading progress bar</span><br><span class="line">reading_progress:</span><br><span class="line">  enable: false</span><br><span class="line">  # Available values: top | bottom</span><br><span class="line">  position: top</span><br><span class="line">  color: &quot;#37c6c0&quot;</span><br><span class="line">  height: 3px</span><br></pre></td></tr></table></figure>
 <ul>
 <li>enable：設定是否開啟進度條，開啟則設定 true</li>
 <li>position：設定進度條在頂部還是底部顯示</li>
 <li>color：進度條背景顏色</li>
 <li>height：進度條高度</li>
 </ul>
-<h3 id="友站連結"><a href="#友站連結" class="headerlink" title="友站連結"></a>友站連結</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Blog rolls</span><br><span class="line">links_settings:</span><br><span class="line">  icon: fa fa-link</span><br><span class="line">  title: 友站連結</span><br><span class="line">  # Available values: block | inline</span><br><span class="line">  layout: block</span><br><span class="line">links:</span><br><span class="line">  羊羽手札: https://www.tinytsunami.info/</span><br></pre></td></tr></table></figure>
-
-<h2 id="hexo套件"><a href="#hexo套件" class="headerlink" title="hexo套件"></a>hexo套件</h2><h3 id="安裝Sitemap讓網頁產生-Sitemap-xml"><a href="#安裝Sitemap讓網頁產生-Sitemap-xml" class="headerlink" title="安裝Sitemap讓網頁產生 Sitemap.xml"></a>安裝Sitemap讓網頁產生 Sitemap.xml</h3><ol>
-<li>安裝指令<br><code>npm install hexo-generator-sitemap --save</code>  </li>
-<li>設定Config</li>
+<h3 id="友站連結">友站連結</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Blog rolls</span><br><span class="line">links_settings:</span><br><span class="line">  icon: fa fa-link</span><br><span class="line">  title: 友站連結</span><br><span class="line">  # Available values: block | inline</span><br><span class="line">  layout: block</span><br><span class="line">links:</span><br><span class="line">  羊羽手札: https://www.tinytsunami.info/</span><br></pre></td></tr></table></figure>
+<h2 id="hexo套件">hexo套件</h2>
+<h3 id="安裝sitemap讓網頁產生-sitemap.xml">安裝Sitemap讓網頁產生
+Sitemap.xml</h3>
+<ol type="1">
+<li>安裝指令<br />
+<code>npm install hexo-generator-sitemap --save</code><br />
+</li>
+<li>設定Config<br />
+</li>
 </ol>
 <ul>
-<li><p>hexo 原生版(根目錄的<code>_config.yml</code>)  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">    path: sitemap.xml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>hexo next 版(<code>themes/next/_config.yml</code>)</p>
-</li>
+<li><p>hexo 原生版(根目錄的<code>_config.yml</code>)<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">    path: sitemap.xml</span><br></pre></td></tr></table></figure></p></li>
+<li><p>hexo next 版(<code>themes/next/_config.yml</code>)</p></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">menu:  </span><br><span class="line">sitemap: /sitemap.xml || sitemap  </span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li><p>重新編譯部屬  </p>
-</li>
-<li><p>檢查看看有沒有順利產生 Sitemap.xml<br><code>https://&lt;網頁網址&gt;/sitemap.xml</code></p>
-</li>
+<ol start="3" type="1">
+<li><p>重新編譯部屬</p></li>
+<li><p>檢查看看有沒有順利產生 Sitemap.xml<br />
+<code>https://&lt;網頁網址&gt;/sitemap.xml</code></p></li>
 </ol>
-<h3 id="安裝hexo-搜尋功能-localsearch"><a href="#安裝hexo-搜尋功能-localsearch" class="headerlink" title="安裝hexo 搜尋功能(localsearch)"></a>安裝hexo 搜尋功能(localsearch)</h3><ol>
-<li>安裝指令<br><code>npm install hexo-generator-searchdb --save</code></li>
-<li>Next主題config.yml設置  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Local search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></li>
+<h3 id="安裝hexo-搜尋功能localsearch">安裝hexo
+搜尋功能(localsearch)</h3>
+<ol type="1">
+<li>安裝指令<br />
+<code>npm install hexo-generator-searchdb --save</code></li>
+<li>Next主題config.yml設置<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Local search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>參考資料網站:  </p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://guiblogs.com/hexo30-6/">https://guiblogs.com/hexo30-6/</a></li>
-<li><a target="_blank" rel="noopener" href="https://israynotarray.com/hexo/20190411/932826160/">https://israynotarray.com/hexo/20190411/932826160/</a></li>
-<li><a target="_blank" rel="noopener" href="https://malagege.github.io/blog/2018/08/05/hexo_search/">https://malagege.github.io/blog/2018/08/05/hexo_search/</a></li>
-</ol>
+<p>參考資料網站:<br />
+1. https://guiblogs.com/hexo30-6/ 2.
+https://israynotarray.com/hexo/20190411/932826160/ 3.
+https://malagege.github.io/blog/2018/08/05/hexo_search/</p>
 
     </div>
 
@@ -438,7 +447,10 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%B4%B9%E8%A7%A3%E8%AA%AAHexo-config-yml-%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="nav-number">1.</span> <span class="nav-text">介紹解說Hexo config.yml 設定檔</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-config-yml%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">Hexo config.yml的位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B6%B2%E7%AB%99"><span class="nav-number">1.2.</span> <span class="nav-text">網站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B6%B2%E5%9D%80"><span class="nav-number">1.3.</span> <span class="nav-text">網址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-%E6%99%82%E9%96%93%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">Hexo 時間格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-%E4%B8%BB%E9%A1%8C%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.5.</span> <span class="nav-text">Hexo 主題設定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E8%A8%AD%E5%AE%9AHexo-Theme"><span class="nav-number">2.</span> <span class="nav-text">安裝設定Hexo Theme</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A1%8C%E4%B8%8B%E8%BC%89%E4%BE%86%E6%BA%90"><span class="nav-number">2.1.</span> <span class="nav-text">主題下載來源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%A1%8C%E6%AA%94%E6%A1%88%E6%94%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.1.1.</span> <span class="nav-text">主題檔案放置位置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-Theme-%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">NexT Theme 設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NexT%E4%B8%BB%E9%A1%8C"><span class="nav-number">3.1.</span> <span class="nav-text">NexT主題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%81%B8%E5%96%AE%E8%A8%AD%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">主選單設置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%8B%E4%BA%BA%E5%A4%A7%E9%A0%AD%E7%85%A7"><span class="nav-number">3.3.</span> <span class="nav-text">個人大頭照</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BE%E7%BE%A4%E9%8F%88%E7%B5%90"><span class="nav-number">3.4.</span> <span class="nav-text">社群鏈結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%88%B0%E9%A0%82%E9%83%A8%E6%8C%89%E9%88%95"><span class="nav-number">3.5.</span> <span class="nav-text">回到頂部按鈕</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%96%B1%E8%AE%80%E9%80%B2%E5%BA%A6%E6%A2%9D"><span class="nav-number">3.6.</span> <span class="nav-text">閱讀進度條</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8B%E7%AB%99%E9%80%A3%E7%B5%90"><span class="nav-number">3.7.</span> <span class="nav-text">友站連結</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%E5%A5%97%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">hexo套件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DSitemap%E8%AE%93%E7%B6%B2%E9%A0%81%E7%94%A2%E7%94%9F-Sitemap-xml"><span class="nav-number">4.1.</span> <span class="nav-text">安裝Sitemap讓網頁產生 Sitemap.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9Dhexo-%E6%90%9C%E5%B0%8B%E5%8A%9F%E8%83%BD-localsearch"><span class="nav-number">4.2.</span> <span class="nav-text">安裝hexo 搜尋功能(localsearch)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%B4%B9%E8%A7%A3%E8%AA%AAhexo-config.yml-%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="nav-number">1.</span> <span class="nav-text">介紹解說Hexo config.yml
+設定檔</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-config.yml%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">Hexo config.yml的位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B6%B2%E5%9D%80"><span class="nav-number">1.2.</span> <span class="nav-text">網址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-%E6%99%82%E9%96%93%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">Hexo 時間格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-%E4%B8%BB%E9%A1%8C%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.4.</span> <span class="nav-text">Hexo 主題設定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E8%A8%AD%E5%AE%9Ahexo-theme"><span class="nav-number">2.</span> <span class="nav-text">安裝設定Hexo Theme</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A1%8C%E4%B8%8B%E8%BC%89%E4%BE%86%E6%BA%90"><span class="nav-number">2.1.</span> <span class="nav-text">主題下載來源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next-theme-%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">NexT Theme 設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#next%E4%B8%BB%E9%A1%8C"><span class="nav-number">3.1.</span> <span class="nav-text">NexT主題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%8B%E4%BA%BA%E5%A4%A7%E9%A0%AD%E7%85%A7"><span class="nav-number">3.2.</span> <span class="nav-text">個人大頭照</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BE%E7%BE%A4%E9%8F%88%E7%B5%90"><span class="nav-number">3.3.</span> <span class="nav-text">社群鏈結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%88%B0%E9%A0%82%E9%83%A8%E6%8C%89%E9%88%95"><span class="nav-number">3.4.</span> <span class="nav-text">回到頂部按鈕</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%96%B1%E8%AE%80%E9%80%B2%E5%BA%A6%E6%A2%9D"><span class="nav-number">3.5.</span> <span class="nav-text">閱讀進度條</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8B%E7%AB%99%E9%80%A3%E7%B5%90"><span class="nav-number">3.6.</span> <span class="nav-text">友站連結</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%E5%A5%97%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">hexo套件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9Dsitemap%E8%AE%93%E7%B6%B2%E9%A0%81%E7%94%A2%E7%94%9F-sitemap.xml"><span class="nav-number">4.1.</span> <span class="nav-text">安裝Sitemap讓網頁產生
+Sitemap.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9Dhexo-%E6%90%9C%E5%B0%8B%E5%8A%9F%E8%83%BDlocalsearch"><span class="nav-number">4.2.</span> <span class="nav-text">安裝hexo
+搜尋功能(localsearch)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -454,20 +466,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/blog/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -577,6 +589,8 @@
 
 
 
+
+  
 
   
 
