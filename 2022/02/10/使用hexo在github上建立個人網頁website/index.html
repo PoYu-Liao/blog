@@ -33,17 +33,17 @@
 
   gtag('config', 'G-5WYW6952KH');
 </script>
-  <meta name="description" content="事前作業軟體安裝  註冊申請好github帳號 安裝Node.js(可以選擇安裝LTS版本即可) 安裝Git(以下提供兩種安裝方法) &gt; 1. 第一種安裝方法到git官網下載安裝包 &gt; 2. 第二種裝好hexo-cli後用指令安裝npm install hexo-deployer-git –save">
+  <meta name="description" content="事前作業軟體安裝  註冊申請好github帳號 安裝Node.js(可以選擇安裝LTS版本即可) 安裝Git(以下提供兩種安裝方法)   1.第一種安裝方法到git官網下載安裝包 2.第二種裝好hexo-cli後用指令安裝npm install hexo-deployer-git –save">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用hexo在github上建立個人網頁website">
 <meta property="og:url" content="https://poyu-liao.github.io/2022/02/10/%E4%BD%BF%E7%94%A8hexo%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8B%E5%80%8B%E4%BA%BA%E7%B6%B2%E9%A0%81website/index.html">
 <meta property="og:site_name" content="Robert&#39;s Blog">
-<meta property="og:description" content="事前作業軟體安裝  註冊申請好github帳號 安裝Node.js(可以選擇安裝LTS版本即可) 安裝Git(以下提供兩種安裝方法) &gt; 1. 第一種安裝方法到git官網下載安裝包 &gt; 2. 第二種裝好hexo-cli後用指令安裝npm install hexo-deployer-git –save">
+<meta property="og:description" content="事前作業軟體安裝  註冊申請好github帳號 安裝Node.js(可以選擇安裝LTS版本即可) 安裝Git(以下提供兩種安裝方法)   1.第一種安裝方法到git官網下載安裝包 2.第二種裝好hexo-cli後用指令安裝npm install hexo-deployer-git –save">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/t8rp9Yu.png">
 <meta property="og:image" content="https://i.imgur.com/qtkL9r4.png">
 <meta property="article:published_time" content="2022-02-10T06:43:24.000Z">
-<meta property="article:modified_time" content="2022-03-06T06:41:49.066Z">
+<meta property="article:modified_time" content="2022-03-06T06:53:47.391Z">
 <meta property="article:author" content="Po Yu Liao">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="GitHub">
@@ -247,7 +247,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-03-06 14:41:49" itemprop="dateModified" datetime="2022-03-06T14:41:49+08:00">2022-03-06</time>
+                <time title="修改時間：2022-03-06 14:53:47" itemprop="dateModified" datetime="2022-03-06T14:53:47+08:00">2022-03-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -275,13 +275,14 @@
 <li>註冊申請好<a target="_blank" rel="noopener" href="https://github.com/">github</a>帳號</li>
 <li>安裝<a
 target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a>(可以選擇安裝LTS版本即可)</li>
-<li>安裝Git(以下提供兩種安裝方法)<br />
-&gt; 1. 第一種安裝方法到<a
-target="_blank" rel="noopener" href="https://git-scm.com/">git官網</a>下載安裝包<br />
-&gt; 2.
-第二種裝好<strong>hexo-cli後</strong>用指令安裝<code>npm install hexo-deployer-git –save</code><br />
-<span id="more"></span></li>
+<li>安裝Git(以下提供兩種安裝方法)</li>
 </ul>
+<blockquote>
+<p>1.第一種安裝方法到<a
+target="_blank" rel="noopener" href="https://git-scm.com/">git官網</a>下載安裝包<br />
+2.第二種裝好<strong>hexo-cli後</strong>用指令安裝<code>npm install hexo-deployer-git –save</code>
+<span id="more"></span></p>
+</blockquote>
 <h2 id="安裝-hexo">安裝 Hexo</h2>
 <p>使用 npm 來安裝 hexo-cli <strong>(須先安裝 Node.js)</strong></p>
 <p><code>npm install hexo-cli -g</code></p>
@@ -305,8 +306,13 @@ target="_blank" rel="noopener" href="https://git-scm.com/">git官網</a>下載�
 alt="github-new-Repository" /></li>
 </ol>
 <h3 id="修改_config.yml">修改_config.yml</h3>
-<p><img src="https://i.imgur.com/qtkL9r4.png" alt="config.yml" /> &gt;
-_config.yml這個檔案路徑在剛剛在電腦上新增的資料夾裡</p>
+<figure>
+<img src="https://i.imgur.com/qtkL9r4.png" alt="config.yml" />
+<figcaption aria-hidden="true">config.yml</figcaption>
+</figure>
+<blockquote>
+<p>_config.yml這個檔案路徑在剛剛在電腦上新增的資料夾裡</p>
+</blockquote>
 <p>用編輯器打開，找到URL這段，並將修改成如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="line">url: https://&lt;username&gt;.github.io</span><br><span class="line">root: /blog/</span><br></pre></td></tr></table></figure>
 <p>找到Deployment這段，並將修改成如下</p>
@@ -337,7 +343,10 @@ alt="page-setting" /><br />
 綠色框框處為你的web網址</p>
 <h2 id="新增文章">新增文章</h2>
 <p>建立一篇新的文章。<br />
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure> &gt; hexo new post "test" 或 hexo new "test"</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>hexo new post "test" 或 hexo new "test"</p>
+</blockquote>
 <p>如果沒有設定 layout 的話，則會使用 _config.yml 中的
 default_layout設定代替。<br />
 如果標題包含空格的話，請使用引號括起來。<br />
@@ -361,23 +370,14 @@ tags:
     - website
     
 ---</code></pre>
-<table style="width:6%;">
-<colgroup>
-<col style="width: 5%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>如果要換一台電腦使用hexo，請備份以下檔案 &gt; _config.yml
-package.json scaffolds/ source/ themes/</td>
-</tr>
-<tr class="even">
-<td>在按照上述安裝流程安裝，安裝完後執行到<code>hexo init &lt;資料夾名稱&gt;</code>這段。
-再用上述的備份好的檔案覆蓋到剛剛初始化的資料夾即可。
-(如果沒有備份上述檔案就沒辦法了) 接下來在繼續<code>npm install</code>
-及其他的第三方套件</td>
-</tr>
-</tbody>
-</table>
+<hr />
+<p>如果要換一台電腦使用hexo，請備份以下檔案</p>
+<blockquote>
+<p>_config.yml、 package.json、 scaffolds/、 source/、 themes/、</p>
+</blockquote>
+<p>在按照上述安裝流程安裝，安裝完後執行到<code>hexo init &lt;資料夾名稱&gt;</code>這段。<br />
+再用上述的備份好的檔案覆蓋到剛剛初始化的資料夾即可。<br />
+(如果沒有備份上述檔案就沒辦法了)</p>
 
     </div>
 
