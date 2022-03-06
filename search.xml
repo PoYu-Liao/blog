@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>在Hexo中插入數學公式並顯示</title>
+      <link href="/blog/2022/03/06/%E5%9C%A8Hexo%E4%B8%AD%E6%8F%92%E5%85%A5%E4%B8%A6%E9%A1%AF%E7%A4%BA%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/"/>
+      <url>/blog/2022/03/06/%E5%9C%A8Hexo%E4%B8%AD%E6%8F%92%E5%85%A5%E4%B8%A6%E9%A1%AF%E7%A4%BA%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p>此篇介紹如何透過Mathjax套件<br />使得能在hexo NexT能在hexo 下使用數學公式<br />只不過數學公式其他寫法等我有空時再來寫<br />(我有點懶應該會拖很久才補齊或者沒補齊(?))<br /><span id="more"></span></p><p>不過這篇主要是給我自己做個紀錄筆記用的</p><h2 id="安裝mathjax相關套件">安裝MathJax相關套件</h2><p>首先，解除安裝原有的渲染器 <code>hexo-renderer-marked</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked</span><br><span class="line">npm install hexo-renderer-pandoc</span><br></pre></td></tr></table></figure><p>然後，在電腦上安裝 <ahref="https://pandoc.org/installing.html">pandoc</a></p><p>接者，修改 next 主题配置<br />找到<code>mathjax</code>下的<code>enable</code>設定為true</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">math:</span><br><span class="line">  # Default (true) will load mathjax / katex script on demand.</span><br><span class="line">  # That is it only render those page which has `mathjax: true` in Front-matter.</span><br><span class="line">  # If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span><br><span class="line">  per_page: true</span><br><span class="line"></span><br><span class="line">  # hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.</span><br><span class="line">  mathjax:</span><br><span class="line">    enable: true</span><br><span class="line">    # See: https://mhchem.github.io/MathJax-mhchem/</span><br><span class="line">    mhchem: false</span><br></pre></td></tr></table></figure><h3 id="參數說明">參數說明</h3><h4 id="per_page">per_page</h4><p><code>true</code> 或者 <code>false</code>，預設為 <code>true</code>這個選項是控制是否在每篇文章都使用到pandoc顯示數學公式<br />當設為 false 時，它就會在每個頁面都載入 MathJax<br />因為Mathjax載入會影響文章載入的速度，所以當沒有使用數學公式的頁面時，建議關閉。<br />預設(true) 是只對 Front-matter 中含有 mathjax: true的文章進行顯示數學公式。<br />如果 Front-matter 中不含有 <code>mathjax: true</code>，或者<code>mathjax: false</code>，那麼 NexT將不會對這些文章使用到該套件。<br />例如：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 這篇文章會顯示數學公式式 --&gt;</span><br><span class="line">---</span><br><span class="line">title: &#x27;Will Render Math&#x27;</span><br><span class="line">mathjax: true</span><br><span class="line">---</span><br><span class="line">...</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 這篇文章不會顯示數學公式式 --&gt;</span><br><span class="line">---</span><br><span class="line">title: &#x27;Not Render Math&#x27;</span><br><span class="line">mathjax: false</span><br><span class="line">---</span><br><span class="line">....</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 這篇文章不會顯示數學公式式 --&gt;</span><br><span class="line">---</span><br><span class="line">title: &#x27;Not Render Math Either&#x27;</span><br><span class="line">---</span><br><span class="line">....</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web網頁設計 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> website </tag>
+            
+            <tag> NexT </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>橢圓曲線密碼學(ECC)</title>
       <link href="/blog/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/"/>
       <url>/blog/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/</url>
@@ -78,9 +107,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> NexT </tag>
-            
             <tag> website </tag>
+            
+            <tag> NexT </tag>
             
         </tags>
       
@@ -107,9 +136,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> website </tag>
-            
             <tag> GitHub </tag>
+            
+            <tag> website </tag>
             
         </tags>
       
