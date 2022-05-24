@@ -20,17 +20,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
 
     <meta name="description" content="系統版本 基本上為linux至於使用哪個版本的都可以  其他版本可能指令略為不同或需多修改防火牆設定">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux上建立WLAN AP">
-<meta property="og:url" content="https://poyu-liao.github.io/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/index.html">
+<meta property="og:url" content="https://poyu-liao.github.io/blog/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/index.html">
 <meta property="og:site_name" content="Robert&#39;s Blog">
 <meta property="og:description" content="系統版本 基本上為linux至於使用哪個版本的都可以  其他版本可能指令略為不同或需多修改防火牆設定">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-02-10T10:55:51.000Z">
-<meta property="article:modified_time" content="2022-03-06T09:54:18.131Z">
+<meta property="article:modified_time" content="2022-05-24T16:25:40.085Z">
 <meta property="article:author" content="Po Yu Liao">
 <meta property="article:tag" content="ubuntu">
 <meta property="article:tag" content="hostapd">
@@ -38,11 +38,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://poyu-liao.github.io/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/">
+<link rel="canonical" href="https://poyu-liao.github.io/blog/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/","path":"2022/02/10/linux上建立WLAN-AP/","title":"linux上建立WLAN AP"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/blog/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/","path":"2022/02/10/linux上建立WLAN-AP/","title":"linux上建立WLAN AP"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>linux上建立WLAN AP | Robert's Blog</title>
@@ -242,7 +242,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/">
+    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/blog/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/A.gif">
@@ -278,7 +278,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-03-06 17:54:18" itemprop="dateModified" datetime="2022-03-06T17:54:18+08:00">2022-03-06</time>
+      <time title="修改時間：2022-05-25 00:25:40" itemprop="dateModified" datetime="2022-05-25T00:25:40+08:00">2022-05-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -326,7 +326,7 @@
 <li>設置 hostapd.conf</li>
 </ol>
 <p><code>vim /etc/hostapd/hostapd.conf</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface=wlp8s0                  //網卡接口名稱，用ifconfig獲得</span><br><span class="line">driver=nl80211`</span><br><span class="line">ssid=My_WiFi                        //wifi名稱</span><br><span class="line">channel=10`</span><br><span class="line">hw_mode=g`</span><br><span class="line">macaddr_acl=0                       //mac設備過濾</span><br><span class="line">auth_algs=1`</span><br><span class="line">ignore_broadcast_ssid=0   </span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">interface=wlp8s0</span>                  <span class="string">//網卡接口名稱，用ifconfig獲得</span></span><br><span class="line"><span class="string">driver=nl80211`</span></span><br><span class="line"><span class="string">ssid=My_WiFi</span>                        <span class="string">//wifi名稱</span></span><br><span class="line"><span class="string">channel=10`</span></span><br><span class="line"><span class="string">hw_mode=g`</span></span><br><span class="line"><span class="string">macaddr_acl=0</span>                       <span class="string">//mac設備過濾</span></span><br><span class="line"><span class="string">auth_algs=1`</span></span><br><span class="line"><span class="string">ignore_broadcast_ssid=0</span>   </span><br></pre></td></tr></table></figure>
 <ol start="3" type="1">
 <li>安裝isc-dhcp-server</li>
 </ol>
@@ -342,7 +342,7 @@
 </ol>
 <p><code>vim /etc/dhcp/dhcpd.conf</code></p>
 <p>打開後找到</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">option domain-name &quot;example.org&quot;; # 網域名稱</span><br><span class="line">option domain-name-servers 8.8.8.8, 1.1.1.1; # DNS Server</span><br><span class="line"></span><br><span class="line">default-lease-time 600; # 預設租賃時間</span><br><span class="line">max-lease-time 7200; # 最大租賃時間</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">subnet 192.168.100.0 netmask 255.255.255.0 &#123;</span><br><span class="line">    range 192.168.100.2 10.121.210.254;</span><br><span class="line">    option subnet-mask 255.255.255.0;</span><br><span class="line">    option routers 192.168.100.1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">option</span> <span class="string">domain-name</span> <span class="string">&quot;example.org&quot;</span><span class="string">;</span> <span class="comment"># 網域名稱</span></span><br><span class="line"><span class="string">option</span> <span class="string">domain-name-servers</span> <span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span><span class="string">,</span> <span class="number">1.1</span><span class="number">.1</span><span class="number">.1</span><span class="string">;</span> <span class="comment"># DNS Server</span></span><br><span class="line"></span><br><span class="line"><span class="string">default-lease-time</span> <span class="number">600</span><span class="string">;</span> <span class="comment"># 預設租賃時間</span></span><br><span class="line"><span class="string">max-lease-time</span> <span class="number">7200</span><span class="string">;</span> <span class="comment"># 最大租賃時間</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">subnet</span> <span class="number">192.168</span><span class="number">.100</span><span class="number">.0</span> <span class="string">netmask</span> <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span> &#123;</span><br><span class="line">    <span class="string">range</span> <span class="number">192.168</span><span class="number">.100</span><span class="number">.2</span> <span class="number">10.121</span><span class="number">.210</span><span class="number">.254</span><span class="string">;</span></span><br><span class="line">    <span class="string">option</span> <span class="string">subnet-mask</span> <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span><span class="string">;</span></span><br><span class="line">    <span class="string">option</span> <span class="string">routers</span> <span class="number">192.168</span><span class="number">.100</span><span class="number">.1</span><span class="string">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="6" type="1">
 <li>安裝iptables(如用其他版本的linux可不裝，如:centOS)</li>
 </ol>
@@ -382,9 +382,7 @@
 <code>iptables -t nat -A PREROUTING -i wlp8s0 -p tcp -s 192.168.100.0/24 -j DNAT --to-destination 92.168.100.1</code><br />
 這樣有認證網頁功能的wifi就建置完成了。</li>
 </ol>
-<blockquote>
-<p>這認證網頁只有一次性的效果</p>
-</blockquote>
+<p><strong>這認證網頁只有一次性的效果</strong></p>
 
     </div>
 

@@ -20,12 +20,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
 
     <meta name="description" content="橢圓曲線密碼學 Elliptic Curve Cryptography (ECC) 特色優點  最早開始發展於1980年中期 與 RSA 和離散對數相同的安全級別 更少的計算量 更短的簽名(signatures)和密鑰(keys) trap-door function 在同安全級別下，與RSA相比加密可以更快地使用短公鑰">
 <meta property="og:type" content="article">
 <meta property="og:title" content="橢圓曲線密碼學(ECC)">
-<meta property="og:url" content="https://poyu-liao.github.io/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/index.html">
+<meta property="og:url" content="https://poyu-liao.github.io/blog/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/index.html">
 <meta property="og:site_name" content="Robert&#39;s Blog">
 <meta property="og:description" content="橢圓曲線密碼學 Elliptic Curve Cryptography (ECC) 特色優點  最早開始發展於1980年中期 與 RSA 和離散對數相同的安全級別 更少的計算量 更短的簽名(signatures)和密鑰(keys) trap-door function 在同安全級別下，與RSA相比加密可以更快地使用短公鑰">
 <meta property="og:locale" content="zh_TW">
@@ -49,11 +49,11 @@
 <meta name="twitter:image" content="https://i.imgur.com/6fR8EKR.png">
 
 
-<link rel="canonical" href="https://poyu-liao.github.io/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/">
+<link rel="canonical" href="https://poyu-liao.github.io/blog/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/","path":"2022/03/05/橢圓曲線密碼學-ECC/","title":"橢圓曲線密碼學(ECC)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/blog/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/","path":"2022/03/05/橢圓曲線密碼學-ECC/","title":"橢圓曲線密碼學(ECC)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>橢圓曲線密碼學(ECC) | Robert's Blog</title>
@@ -258,7 +258,7 @@ Curve Diffie–Hellman key Exchange(ECDH)</span></a></li><li class="nav-item nav
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/">
+    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/blog/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/A.gif">
