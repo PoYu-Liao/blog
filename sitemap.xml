@@ -150,20 +150,6 @@
   </url>
   
   <url>
-    <loc>https://poyu-liao.github.io/blog/tags/409/</loc>
-    <lastmod>2022-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://poyu-liao.github.io/blog/tags/lab/</loc>
-    <lastmod>2022-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://poyu-liao.github.io/blog/tags/ECC/</loc>
     <lastmod>2022-05-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -172,6 +158,20 @@
   
   <url>
     <loc>https://poyu-liao.github.io/blog/tags/ECDH/</loc>
+    <lastmod>2022-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://poyu-liao.github.io/blog/tags/409/</loc>
+    <lastmod>2022-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://poyu-liao.github.io/blog/tags/lab/</loc>
     <lastmod>2022-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -201,14 +201,14 @@
   </url>
   
   <url>
-    <loc>https://poyu-liao.github.io/blog/categories/%E5%AF%A6%E9%A9%97%E5%AE%A4%E6%97%A5%E8%AA%8C/</loc>
+    <loc>https://poyu-liao.github.io/blog/categories/security/</loc>
     <lastmod>2022-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://poyu-liao.github.io/blog/categories/security/</loc>
+    <loc>https://poyu-liao.github.io/blog/categories/%E5%AF%A6%E9%A9%97%E5%AE%A4%E6%97%A5%E8%AA%8C/</loc>
     <lastmod>2022-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
