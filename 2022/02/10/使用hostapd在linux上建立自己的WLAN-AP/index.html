@@ -25,7 +25,7 @@
     <meta name="description" content="系統版本 基本上為linux至於使用哪個版本的都可以  其他版本可能指令略為不同或需多修改防火牆設定">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux上建立WLAN AP">
-<meta property="og:url" content="https://poyu-liao.github.io/blog/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/index.html">
+<meta property="og:url" content="https://poyu-liao.github.io/blog/2022/02/10/%E4%BD%BF%E7%94%A8hostapd%E5%9C%A8linux%E4%B8%8A%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84WLAN-AP/index.html">
 <meta property="og:site_name" content="Robert&#39;s Blog">
 <meta property="og:description" content="系統版本 基本上為linux至於使用哪個版本的都可以  其他版本可能指令略為不同或需多修改防火牆設定">
 <meta property="og:locale" content="zh_TW">
@@ -38,11 +38,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://poyu-liao.github.io/blog/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/">
+<link rel="canonical" href="https://poyu-liao.github.io/blog/2022/02/10/%E4%BD%BF%E7%94%A8hostapd%E5%9C%A8linux%E4%B8%8A%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84WLAN-AP/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/blog/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/","path":"2022/02/10/linux上建立WLAN-AP/","title":"linux上建立WLAN AP"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/blog/2022/02/10/%E4%BD%BF%E7%94%A8hostapd%E5%9C%A8linux%E4%B8%8A%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84WLAN-AP/","path":"2022/02/10/使用hostapd在linux上建立自己的WLAN-AP/","title":"linux上建立WLAN AP"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>linux上建立WLAN AP | Robert's Blog</title>
@@ -242,7 +242,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/blog/2022/02/10/linux%E4%B8%8A%E5%BB%BA%E7%AB%8BWLAN-AP/">
+    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/blog/2022/02/10/%E4%BD%BF%E7%94%A8hostapd%E5%9C%A8linux%E4%B8%8A%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84WLAN-AP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/A.gif">
@@ -487,7 +487,7 @@ darkmode.showWidget();
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","labels":"Blog-Gitalk","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"7edbd3299a3eb346cb3aca675d32b57d"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","labels":"Blog-Gitalk","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"3e4f8e4447cdd3d5a956012ea0860e86"}</script>
 <script src="/blog/js/third-party/comments/gitalk.js"></script>
 <div class="moon-menu">
   <div class="moon-menu-items">
