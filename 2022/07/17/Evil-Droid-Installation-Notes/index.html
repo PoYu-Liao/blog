@@ -22,30 +22,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
 
-    <meta name="description" content="此篇介紹如何透過Mathjax套件 使得能在hexo NexT能在hexo 下使用數學公式 只不過數學公式其他寫法等我有空時再來寫 (我有點懶應該會拖很久才補齊或者沒補齊(?))">
+    <meta name="description" content="在Evil-Droid一個開源在github上的，基於Android安卓進行滲透測試並運行在linux架構下的工具。 是以現今已公開已知漏洞進行攻擊測試。 工具github頁面:https:&#x2F;&#x2F;github.com&#x2F;M4sc3r4n0&#x2F;Evil-Droid">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在Hexo中插入數學公式並顯示">
-<meta property="og:url" content="https://poyu-liao.github.io/blog/2022/03/06/%E5%9C%A8Hexo%E4%B8%AD%E6%8F%92%E5%85%A5%E4%B8%A6%E9%A1%AF%E7%A4%BA%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/index.html">
+<meta property="og:title" content="如何安裝使用Evil-Droid進行滲透測試">
+<meta property="og:url" content="https://poyu-liao.github.io/blog/2022/07/17/Evil-Droid-Installation-Notes/index.html">
 <meta property="og:site_name" content="Robert&#39;s Blog">
-<meta property="og:description" content="此篇介紹如何透過Mathjax套件 使得能在hexo NexT能在hexo 下使用數學公式 只不過數學公式其他寫法等我有空時再來寫 (我有點懶應該會拖很久才補齊或者沒補齊(?))">
+<meta property="og:description" content="在Evil-Droid一個開源在github上的，基於Android安卓進行滲透測試並運行在linux架構下的工具。 是以現今已公開已知漏洞進行攻擊測試。 工具github頁面:https:&#x2F;&#x2F;github.com&#x2F;M4sc3r4n0&#x2F;Evil-Droid">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2022-03-06T13:05:32.000Z">
-<meta property="article:modified_time" content="2022-05-24T16:32:54.923Z">
+<meta property="article:published_time" content="2022-07-16T16:31:43.000Z">
+<meta property="article:modified_time" content="2022-07-16T17:28:36.567Z">
 <meta property="article:author" content="Po Yu Liao">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="website">
-<meta property="article:tag" content="NexT">
+<meta property="article:tag" content="skysnowstarshine,Robert&#39;s Blog">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://poyu-liao.github.io/blog/2022/03/06/%E5%9C%A8Hexo%E4%B8%AD%E6%8F%92%E5%85%A5%E4%B8%A6%E9%A1%AF%E7%A4%BA%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/">
+<link rel="canonical" href="https://poyu-liao.github.io/blog/2022/07/17/Evil-Droid-Installation-Notes/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/blog/2022/03/06/%E5%9C%A8Hexo%E4%B8%AD%E6%8F%92%E5%85%A5%E4%B8%A6%E9%A1%AF%E7%A4%BA%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/","path":"2022/03/06/在Hexo中插入並顯示數學公式/","title":"在Hexo中插入數學公式並顯示"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/blog/2022/07/17/Evil-Droid-Installation-Notes/","path":"2022/07/17/Evil-Droid-Installation-Notes/","title":"如何安裝使用Evil-Droid進行滲透測試"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>在Hexo中插入數學公式並顯示 | Robert's Blog</title>
+<title>如何安裝使用Evil-Droid進行滲透測試 | Robert's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WYW6952KH"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5WYW6952KH","only_pageview":false}</script>
@@ -151,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9Dmathjax%E7%9B%B8%E9%97%9C%E5%A5%97%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">安裝MathJax相關套件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E6%95%B8%E8%AA%AA%E6%98%8E"><span class="nav-number">1.1.</span> <span class="nav-text">參數說明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#per_page"><span class="nav-number">1.1.1.</span> <span class="nav-text">per_page</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="nav-number">1.</span> <span class="nav-text">注意事項</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E8%AA%AA%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">安裝說明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%8C%AF%E8%AA%A4%E8%AA%AA%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">可能遇到的錯誤說明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%B6%E4%BD%A0%E5%A6%82%E6%9E%9C%E9%81%87%E5%88%B0%E4%BB%A5%E4%B8%8B%E9%8C%AF%E8%AA%A4"><span class="nav-number">3.1.</span> <span class="nav-text">當你如果遇到以下錯誤：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">解決方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C"><span class="nav-number">4.1.</span> <span class="nav-text">執行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%B8%E9%A0%85%E8%AA%AA%E6%98%8E"><span class="nav-number">4.2.</span> <span class="nav-text">選項說明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%99%E5%AD%B8%E5%BD%B1%E7%89%87"><span class="nav-number">5.</span> <span class="nav-text">教學影片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -238,7 +236,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/blog/2022/03/06/%E5%9C%A8Hexo%E4%B8%AD%E6%8F%92%E5%85%A5%E4%B8%A6%E9%A1%AF%E7%A4%BA%E6%95%B8%E5%AD%B8%E5%85%AC%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/blog/2022/07/17/Evil-Droid-Installation-Notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/A.gif">
@@ -251,12 +249,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="在Hexo中插入數學公式並顯示 | Robert's Blog">
+      <meta itemprop="name" content="如何安裝使用Evil-Droid進行滲透測試 | Robert's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在Hexo中插入數學公式並顯示
+          如何安裝使用Evil-Droid進行滲透測試
         </h1>
 
         <div class="post-meta-container">
@@ -266,24 +264,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
+      
 
-      <time title="創建時間：2022-03-06 21:05:32" itemprop="dateCreated datePublished" datetime="2022-03-06T21:05:32+08:00">2022-03-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-05-25 00:32:54" itemprop="dateModified" datetime="2022-05-25T00:32:54+08:00">2022-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/Web%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" itemprop="url" rel="index"><span itemprop="name">Web網頁設計</span></a>
-        </span>
+      <time title="創建時間：2022-07-17 00:31:43 / 修改時間：01:28:36" itemprop="dateCreated datePublished" datetime="2022-07-17T00:31:43+08:00">2022-07-17</time>
     </span>
 
   
@@ -296,36 +279,64 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>此篇介紹如何透過Mathjax套件<br />
-使得能在hexo NexT能在hexo 下使用數學公式<br />
-只不過數學公式其他寫法等我有空時再來寫<br />
-(我有點懶應該會拖很久才補齊或者沒補齊(?))<br />
+        <p>在Evil-Droid一個開源在github上的，基於Android安卓進行滲透測試並運行在linux架構下的工具。<br />
+是以現今已公開已知漏洞進行攻擊測試。<br />
+工具github頁面:<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL000c2MzcjRuMC9FdmlsLURyb2lk">https://github.com/M4sc3r4n0/Evil-Droid<i class="fa fa-external-link-alt"></i></span><br />
 <span id="more"></span></p>
-<p>不過這篇主要是給我自己做個紀錄筆記用的</p>
-<h2 id="安裝mathjax相關套件">安裝MathJax相關套件</h2>
-<p>首先，解除安裝原有的渲染器 <code>hexo-renderer-marked</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked</span><br><span class="line">npm install hexo-renderer-pandoc</span><br></pre></td></tr></table></figure>
-<p>然後，在電腦上安裝 <span class="exturl" data-url="aHR0cHM6Ly9wYW5kb2Mub3JnL2luc3RhbGxpbmcuaHRtbA==">pandoc<i class="fa fa-external-link-alt"></i></span></p>
-<p>接者，修改 next 主题配置<br />
-找到<code>mathjax</code>下的<code>enable</code>設定為true</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front-matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># See: https://mhchem.github.io/MathJax-mhchem/</span></span><br><span class="line">    <span class="attr">mhchem:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<h3 id="參數說明">參數說明</h3>
-<h4 id="per_page">per_page</h4>
-<p><code>true</code> 或者 <code>false</code>，預設為 <code>true</code>
-這個選項是控制是否在每篇文章都使用到pandoc顯示數學公式<br />
-當設為 false 時，它就會在每個頁面都載入 MathJax<br />
-因為Mathjax載入會影響文章載入的速度，所以當沒有使用數學公式的頁面時，建議關閉。<br />
-預設(true) 是只對 Front-matter 中含有 mathjax: true
-的文章進行顯示數學公式。<br />
-如果 Front-matter 中不含有 <code>mathjax: true</code>，或者
-<code>mathjax: false</code>，那麼 NexT
-將不會對這些文章使用到該套件。<br />
-例如：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;!-- 這篇文章會顯示數學公式式 --&gt;</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line">title: &#x27;Will Render Math&#x27;</span><br><span class="line"><span class="section">mathjax: true</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;!-- 這篇文章不會顯示數學公式式 --&gt;</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line">title: &#x27;Not Render Math&#x27;</span><br><span class="line"><span class="section">mathjax: false</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line">....</span><br></pre></td></tr></table></figure>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;!-- 這篇文章不會顯示數學公式式 --&gt;</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"><span class="section">title: &#x27;Not Render Math Either&#x27;</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line">....</span><br></pre></td></tr></table></figure>
-<hr />
-<p>參考資料: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvaGV4by10aGVtZS1uZXh0L2Jsb2IvbWFzdGVyL2RvY3MvemgtQ04vTUFUSC5tZA==">https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/MATH.md<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="注意事項">注意事項</h2>
+<p>請勿使用該工具進行<strong>惡意攻擊</strong>或<strong>侵犯他人隱私</strong>的事情，以免<strong>觸法</strong>！！！<br />
+該工具所生成的app目前皆能已被市面上防毒軟體偵測封鎖。</p>
+<h2 id="安裝說明">安裝說明</h2>
+<ol type="1">
+<li>首先使用git將套件下載下來</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/M4sc3r4n0/Evil-Droid.git  </span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li><p>並切換到該目錄底下<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Evil-Droid  </span><br></pre></td></tr></table></figure></p></li>
+<li><p>權限設定並安裝or執行(下列指令擇一使用及可)<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> +755 evil-droid &amp;&amp; ./evil-droid  </span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> u + x evil-droid &amp;&amp; ./evil-droid  </span><br></pre></td></tr></table></figure>
+<h2 id="可能遇到的錯誤說明">可能遇到的錯誤說明</h2>
+<h3 id="當你如果遇到以下錯誤">當你如果遇到以下錯誤：</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[ ✔ ] Metasploit-Framework..............[ found ]  </span><br><span class="line">[ ✔ ] Xterm.............................[ found ]  </span><br><span class="line">[ ✔ ] Zenity............................[ found ]  </span><br><span class="line">[ ✔ ] Aapt..............................[ found ]  </span><br><span class="line">[ ✔ ] Apktool...........................[ found ]</span><br><span class="line">[ ✔ ] Zipalign..........................[ found ]</span><br><span class="line">[✔] BYPASS AV APK</span><br><span class="line"></span><br><span class="line">[ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ]</span><br><span class="line">[] Generating apk payload</span><br><span class="line">[ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ]</span><br><span class="line">[] Decompiling Payload APK...</span><br><span class="line">[ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ]</span><br><span class="line">[] Scrubbing the payload contents to avoid AV signatures...</span><br><span class="line">[ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ]</span><br><span class="line">[] Changing name and icon payload...</span><br><span class="line">[ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ]</span><br><span class="line">[] Rebuilding APK file...</span><br><span class="line">[ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ]</span><br><span class="line">[] Checking for ~/.android/debug.keystore for signing...</span><br><span class="line">[ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ]</span><br><span class="line">[] Attempting to sign the package with your android debug key</span><br><span class="line">[ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ]</span><br><span class="line">[] Verifying signed artifacts...</span><br><span class="line">[ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ]</span><br><span class="line">[!] Failed to verify signed artifacts</span><br></pre></td></tr></table></figure>
+<p>代表你電腦少了套件或tool版本過舊。</p>
+<h3 id="解決方法">解決方法</h3>
+<p>安裝套件<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openjdk-11-jdk-headless</span><br></pre></td></tr></table></figure> <strong><em>以及更新apktool。</em></strong></p>
+<h2 id="使用方法">使用方法</h2>
+<h3 id="執行">執行</h3>
+<p>切換到evil-droid目錄下執行該工具<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./evil-droid  </span><br></pre></td></tr></table></figure> 啟動成功結果如下圖：<br />
+<img
+src="https://camo.githubusercontent.com/61f3e17b85d5830f6135ee76da769a3a4d2b892d84050a58682e90d178b32a61/68747470733a2f2f692e696d6775722e636f6d2f4c637a4f3633362e706e67"
+alt="evil-droid介面" /><br />
+這時再根據你想要執行的功能輸入數字，然後enter。</p>
+<h3 id="選項說明">選項說明</h3>
+<p><strong>[1]APK MSF</strong><br />
+直接產生一個MSF的後門程式。<br />
+<strong>[2]BACKDOOR APK ORIGINAL(OLD)</strong><br />
+將後門程式注入進某個APK安裝檔裡。<br />
+<strong>[3]BACKDOOR APK ORIGINAL(NEW)</strong><br />
+將後門程式注入進某個APK安裝檔裡。 <strong>[4]BYPASS AV APK(ICON
+CHANGE)</strong><br />
+將選項1的MSF的apk圖示使用自行選用icon來生成<br />
+<strong>[5]START LISTENER</strong><br />
+監聽之前生成的後門程式</p>
+<h2 id="教學影片">教學影片</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly95b3V0dS5iZS9yYTgwRmV1LTQyZw==">安裝說明<i class="fa fa-external-link-alt"></i></span>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ra80Feu-42g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly95b3V0dS5iZS9scU52QWJ4ZXRydw==">實作1<i class="fa fa-external-link-alt"></i></span>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/lqNvAbxetrw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<span class="exturl" data-url="aHR0cHM6Ly95b3V0dS5iZS9GY3VoRFZ3ODBxQQ==">實作2<i class="fa fa-external-link-alt"></i></span>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/FcuhDVw80qA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<h2 id="參考資料">參考資料</h2>
+<ol type="1">
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL000c2MzcjRuMC9FdmlsLURyb2lk">https://github.com/M4sc3r4n0/Evil-Droid<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL000c2MzcjRuMC9FdmlsLURyb2lkL2lzc3Vlcy81">https://github.com/M4sc3r4n0/Evil-Droid/issues/5<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
 
     </div>
 
@@ -334,24 +345,16 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/blog/tags/Hexo/" rel="tag"># Hexo</a>
-              <a href="/blog/tags/website/" rel="tag"># website</a>
-              <a href="/blog/tags/NexT/" rel="tag"># NexT</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/blog/2022/03/05/%E6%A9%A2%E5%9C%93%E6%9B%B2%E7%B7%9A%E5%AF%86%E7%A2%BC%E5%AD%B8-ECC/" rel="prev" title="橢圓曲線密碼學(ECC)">
-                  <i class="fa fa-chevron-left"></i> 橢圓曲線密碼學(ECC)
+                <a href="/blog/2022/07/16/409lab-log610x01b/" rel="prev" title="實驗室409日誌610x01b">
+                  <i class="fa fa-chevron-left"></i> 實驗室409日誌610x01b
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/blog/2022/07/16/409lab-log610x01b/" rel="next" title="實驗室409日誌610x01b">
-                  實驗室409日誌610x01b <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -430,7 +433,7 @@ darkmode.showWidget();
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","labels":"Blog-Gitalk","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"1cda0e411c637f2f646257da0d330c14"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","labels":"Blog-Gitalk","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"ded9f9a5fe8777436565f293390e5b14"}</script>
 <script src="/blog/js/third-party/comments/gitalk.js"></script>
 <div class="moon-menu">
   <div class="moon-menu-items">
