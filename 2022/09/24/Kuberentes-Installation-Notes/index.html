@@ -30,7 +30,7 @@
 <meta property="og:description" content="使用環境 Ubuntu 20.04 docker 20.10.7 kubernetes 1.24.3 kubectl 1.24.3 kustomize 4.54 kubeadm 1.24.3 kubelet 1.24.3">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-09-23T16:23:38.000Z">
-<meta property="article:modified_time" content="2022-09-23T17:04:58.554Z">
+<meta property="article:modified_time" content="2022-09-23T17:07:35.073Z">
 <meta property="article:author" content="Po Yu Liao">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="ubuntu">
@@ -152,7 +152,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%92%B0%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">使用環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker%E5%AE%89%E8%A3%9D"><span class="nav-number">2.</span> <span class="nav-text">docker安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kuberentes%E5%AE%89%E8%A3%9D"><span class="nav-number">3.</span> <span class="nav-text">Kuberentes安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kuberentes-%E5%9C%A8-master-%E4%B8%AD%E5%88%9D%E5%A7%8B%E5%8C%96-kubeadm%E5%8F%AA%E6%9C%89master%E7%AB%AF%E8%A6%81%E5%81%9Anode%E7%AB%AF%E8%AB%8B%E8%B7%B3%E9%81%8E%E9%80%99%E6%AD%A5"><span class="nav-number">4.</span> <span class="nav-text">Kuberentes
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%92%B0%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">使用環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker%E5%AE%89%E8%A3%9D%E5%BB%BA%E8%AD%B0%E9%80%99%E9%82%8A%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8docker-desktop%E7%89%88%E6%9C%AC"><span class="nav-number">2.</span> <span class="nav-text">docker安裝(建議這邊不要使用docker
+desktop版本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kuberentes%E5%AE%89%E8%A3%9D"><span class="nav-number">3.</span> <span class="nav-text">Kuberentes安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kuberentes-%E5%9C%A8-master-%E4%B8%AD%E5%88%9D%E5%A7%8B%E5%8C%96-kubeadm%E5%8F%AA%E6%9C%89master%E7%AB%AF%E8%A6%81%E5%81%9Anode%E7%AB%AF%E8%AB%8B%E8%B7%B3%E9%81%8E%E9%80%99%E6%AD%A5"><span class="nav-number">4.</span> <span class="nav-text">Kuberentes
 在 master 中初始化 kubeadm(只有master端要做，node端請跳過這步)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%8A%E9%99%90%E8%AA%BF%E6%95%B4"><span class="nav-number">4.1.</span> <span class="nav-text">權限調整</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kuberentes%E6%AA%A2%E6%9F%A5%E7%89%88%E6%9C%AC"><span class="nav-number">5.</span> <span class="nav-text">Kuberentes檢查版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kuberentes%E6%AA%A2%E6%9F%A5node%E7%9A%84status"><span class="nav-number">6.</span> <span class="nav-text">Kuberentes檢查node的Status</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9Dcni"><span class="nav-number">7.</span> <span class="nav-text">安裝CNI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%87node%E7%AB%AF%E5%8A%A0%E5%85%A5cluster"><span class="nav-number">8.</span> <span class="nav-text">將node端加入cluster</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2%E7%AF%80%E9%BB%9Etoken%E5%A6%82%E6%9E%9C%E5%89%9B%E5%89%9Bmaster%E7%AB%AF%E9%82%A3%E6%AD%A5%E6%B2%92%E6%9C%89%E8%A8%98%E4%B8%8B%E4%BE%86%E7%9A%84%E8%A9%B1"><span class="nav-number">8.1.</span> <span class="nav-text">查詢節點token(如果剛剛master端那步沒有記下來的話)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kuberentes%E6%AA%A2%E6%9F%A5%E5%85%83%E4%BB%B6%E7%8B%80%E6%85%8B"><span class="nav-number">9.</span> <span class="nav-text">Kuberentes檢查元件狀態</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9Dkuberentes-dashboard"><span class="nav-number">10.</span> <span class="nav-text">安裝Kuberentes dashboard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%B5%E5%BB%BAkuberentes-dashboard%E5%B8%B3%E8%99%9F"><span class="nav-number">11.</span> <span class="nav-text">創建Kuberentes dashboard帳號</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E5%B8%B3%E8%99%9F"><span class="nav-number">12.</span> <span class="nav-text">刪除帳號</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9Dkubernetes-metrics-server%E8%A6%81%E5%AE%89%E8%A3%9Dmetrics%E6%89%8D%E8%83%BD%E5%9C%A8dashboard%E7%9C%8B%E5%88%B0%E8%B3%87%E6%96%99"><span class="nav-number">13.</span> <span class="nav-text">安裝kubernetes
 metrics-server(要安裝metrics才能在dashboard看到資料)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%8C%AF%E8%AA%A4%E6%8E%92%E9%99%A4"><span class="nav-number">14.</span> <span class="nav-text">錯誤排除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">15.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
@@ -271,7 +272,7 @@ metrics-server(要安裝metrics才能在dashboard看到資料)</span></a></li><l
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2022-09-24 00:23:38 / 修改時間：01:04:58" itemprop="dateCreated datePublished" datetime="2022-09-24T00:23:38+08:00">2022-09-24</time>
+      <time title="創建時間：2022-09-24 00:23:38 / 修改時間：01:07:35" itemprop="dateCreated datePublished" datetime="2022-09-24T00:23:38+08:00">2022-09-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -306,7 +307,9 @@ kustomize 4.54<br />
 kubeadm 1.24.3<br />
 kubelet 1.24.3<br />
 <span id="more"></span></p>
-<h2 id="docker安裝">docker安裝</h2>
+<h2
+id="docker安裝建議這邊不要使用docker-desktop版本">docker安裝(建議這邊不要使用docker
+desktop版本)</h2>
 <p>先移除舊版<br />
 <code>sudo apt-get remove docker docker-engine docker.io containerd runc</code></p>
 <p>更新現有apt資料庫(這一步跟我前面寫的docker桌面版本安裝一樣就不一一說明了)<br />
