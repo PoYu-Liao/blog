@@ -2,9 +2,13 @@ User-agent: *
 Allow: /
 Allow: /archives/
 Allow: /categories/
-Allow: /tags/ 
+Allow: /tags/
+
+Disallow: /js/
+Disallow: /css/
 Disallow: /vendors/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
+Disallow: /lib/
 Sitemap: https://poyu-liao.github.io/blog/sitemap.xml
