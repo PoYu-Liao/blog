@@ -320,6 +320,13 @@
   </url>
   
   <url>
+    <loc>https://poyu-liao.github.io/blog/tags/kali/</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://poyu-liao.github.io/blog/tags/Parrot/</loc>
     <lastmod>2025-02-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -327,7 +334,7 @@
   </url>
   
   <url>
-    <loc>https://poyu-liao.github.io/blog/tags/kali/</loc>
+    <loc>https://poyu-liao.github.io/blog/tags/NexT/</loc>
     <lastmod>2025-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -342,13 +349,6 @@
   
   <url>
     <loc>https://poyu-liao.github.io/blog/tags/HW/</loc>
-    <lastmod>2025-02-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://poyu-liao.github.io/blog/tags/NexT/</loc>
     <lastmod>2025-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -399,14 +399,14 @@
   </url>
   
   <url>
-    <loc>https://poyu-liao.github.io/blog/categories/Security/</loc>
+    <loc>https://poyu-liao.github.io/blog/categories/Kuberentes/</loc>
     <lastmod>2025-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://poyu-liao.github.io/blog/categories/Kuberentes/</loc>
+    <loc>https://poyu-liao.github.io/blog/categories/Security/</loc>
     <lastmod>2025-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
