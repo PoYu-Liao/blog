@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/snowflake180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/snowflake32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/snowflake16x16.png">
+  <link rel="mask-icon" href="/blog/images/snowflake.svg" color="#222">
+  <meta name="google-site-verification" content="google76b4f15a94f05f2c.html">
+  <meta name="msvalidate.01" content="BingSiteAuth.xml">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="本篇將介紹目前資安界所使用的一些AI工具。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cybersecurity 專門的AI工具">
+<meta property="og:url" content="https://poyu-liao.github.io/blog/2025/02/09/Cybersecurity-PT-GPT/index.html">
+<meta property="og:site_name" content="Robert&#39;s Blog">
+<meta property="og:description" content="本篇將介紹目前資安界所使用的一些AI工具。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2025-02-09T13:29:27.000Z">
+<meta property="article:modified_time" content="2025-02-09T14:09:14.649Z">
+<meta property="article:author" content="Po Yu Liao">
+<meta property="article:tag" content="PT">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://poyu-liao.github.io/blog/2025/02/09/Cybersecurity-PT-GPT/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/blog/2025/02/09/Cybersecurity-PT-GPT/","path":"2025/02/09/Cybersecurity-PT-GPT/","title":"Cybersecurity 專門的AI工具"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Cybersecurity 專門的AI工具 | Robert's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WYW6952KH"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5WYW6952KH","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/blog/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/blog/css/injector/main.css" /><link rel="preload" as="style" href="/blog/css/injector/light.css" /><link rel="preload" as="style" href="/blog/css/injector/dark.css" />
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Robert's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">skysnowstarshine</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#white-rabbit-neo-hacker-gpt"><span class="nav-number">1.</span> <span class="nav-text">White Rabbit Neo Hacker GPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E8%89%B2"><span class="nav-number">1.1.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#worm-gpt"><span class="nav-number">2.</span> <span class="nav-text">Worm GPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-1"><span class="nav-number">2.1.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pentest-gpt"><span class="nav-number">3.</span> <span class="nav-text">Pentest GPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-2"><span class="nav-number">3.1.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fraud-gpt"><span class="nav-number">4.</span> <span class="nav-text">Fraud GPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-3"><span class="nav-number">4.1.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bug-hunter-gpt"><span class="nav-number">5.</span> <span class="nav-text">Bug Hunter GPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-4"><span class="nav-number">5.1.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Po Yu Liao"
+      src="/blog/images/A.gif">
+  <p class="site-author-name" itemprop="name">Po Yu Liao</p>
+  <div class="site-description" itemprop="description">一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BvWXUtTGlhbw==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PoYu-Liao"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnBveXVsaWFvQHByb3Rvbi5tZQ==" title="E-Mail → mailto:poyuliao@proton.me"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vY2hhbm5lbC9VQzVFOExBOVZSRUp2QUNOcUVobG0zWlE=" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UC5E8LA9VREJvACNqEhlm3ZQ"><i class="fab fa-youtube fa-fw"></i>YouTube</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          連結
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly93d3cudGlueXRzdW5hbWkuaW5mby8=" title="https:&#x2F;&#x2F;www.tinytsunami.info&#x2F;">羊羽手札</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/blog/2025/02/09/Cybersecurity-PT-GPT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/A.gif">
+      <meta itemprop="name" content="Po Yu Liao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Robert's Blog">
+      <meta itemprop="description" content="一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Cybersecurity 專門的AI工具 | Robert's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Cybersecurity 專門的AI工具
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2025-02-09 21:29:27 / 修改時間：22:09:14" itemprop="dateCreated datePublished" datetime="2025-02-09T21:29:27+08:00">2025-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Penetration-Test/" itemprop="url" rel="index"><span itemprop="name">Penetration Test</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Security/" itemprop="url" rel="index"><span itemprop="name">Security</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本篇將介紹目前資安界所使用的一些AI工具。 <span id="more"></span></p>
+<h2 id="white-rabbit-neo-hacker-gpt">White Rabbit Neo Hacker GPT</h2>
+<p>White Rabbit Neo Hacker GPT 是一款專為 DevSecOps
+和資安專業人士打造的生成式 AI
+模型，旨在協助網路安全操作、紅隊測試與安全基礎設施自動化。這款模型提供高效的漏洞分析與修復建議，幫助使用者在攻防對抗中取得優勢。</p>
+<h3 id="特色">特色</h3>
+<ul>
+<li>開源且無審查：允許更靈活的應用，適用於資安研究與測試。<br />
+</li>
+<li>專為網安領域設計：支援漏洞檢測、紅隊攻防與自動化安全配置。</li>
+<li>本地部署與雲端使用：可在 Hugging Face 下載模型，或透過 Web
+介面進行交互。</li>
+</ul>
+<h2 id="worm-gpt">Worm GPT</h2>
+<p>WormGPT是以2021年推出的大型語言模型GPT-J打造而成，此語言模型具備無限長度字數的支援、聊天內容保留在記憶體，旨在模擬
+OpenAI 的 GPT 模型，但不受安全與道德約束。這款 AI
+特別受到資安專家與駭客社群的關注，因為它能夠生成惡意代碼，進行社交工程攻擊建議，甚至協助網路詐騙...等非法活動。</p>
+<h3 id="特色-1">特色</h3>
+<ul>
+<li>不受約束：與傳統 AI 模型不同，WormGPT
+不受道德約束，允許生成各類攻擊性內容。<br />
+</li>
+<li>專為惡意用途設計：可用於製作網路釣魚郵件、開發惡意軟體，甚至自動化攻擊策略。<br />
+</li>
+<li>類似 GPT-3：基於先進的語言模型技術，具備強大的生成與分析能力。<br />
+</li>
+<li>黑帽駭客工具：經常在地下論壇討論，部分威脅情境顯示其能被用於網路犯罪活動。</li>
+</ul>
+<h2 id="pentest-gpt">Pentest GPT</h2>
+<p>Pentest GPT 是一款基於 GPT AI 技術
+的滲透測試輔助工具，可進行自動化與半自動化的安全測試分析。它利用自然語言處理（NLP）
+來解析攻擊向量並提供對應的建議，甚至協助生成滲透測試腳本，提高測試效率與準確性。</p>
+<h3 id="特色-2">特色</h3>
+<ul>
+<li>漏洞分析
+<ul>
+<li>能夠根據目標系統的資訊，分析可能存在的安全漏洞。<br />
+</li>
+<li>可自動提供 CVE（常見漏洞與曝露）資料，幫助使用者判斷風險程度。<br />
+</li>
+</ul></li>
+<li>自動化測試建議
+<ul>
+<li>依據用戶需求，自動產生 Bash、Python、PowerShell
+等滲透測試相關的腳本與指令。<br />
+</li>
+</ul></li>
+<li>指令與腳本生成<br />
+</li>
+<li>提升滲透測試流程效率</li>
+</ul>
+<h2 id="fraud-gpt">Fraud GPT</h2>
+<p>Fraud GPT 是一款專門用於詐欺相關攻擊的 AI
+工具。它被設計為惡意網路攻擊者的輔助工具，幫助進行詐騙、社交工程、網路釣魚、詐欺攻擊...等活動。這類工具通常在暗網（Dark
+Web） 或地下論壇流傳，被用於非法活動。</p>
+<h3 id="特色-3">特色</h3>
+<ul>
+<li>網路釣魚攻擊
+<ul>
+<li>生成高仿真的釣魚郵件、詐騙網站內容，讓受害者更容易上當。</li>
+<li>自動修改文字以繞過垃圾郵件過濾系統，提高詐騙成功率。</li>
+</ul></li>
+<li>社交工程攻擊
+<ul>
+<li>模擬人類對話，誘導受害者提供敏感資訊（例如銀行帳戶、密碼）。</li>
+</ul></li>
+<li>惡意程式開發輔助
+<ul>
+<li>可用於開發繞過防毒軟體的零日攻擊（Zero-Day Exploit）。</li>
+</ul></li>
+<li>帳戶入侵
+<ul>
+<li>提供繞過驗證機制的方法，如破解 CAPTCHA。</li>
+</ul></li>
+</ul>
+<h2 id="bug-hunter-gpt">Bug Hunter GPT</h2>
+<p>Bug Hunter GPT 是一款基於 GPT AI
+技術的漏洞挖掘輔助工具。它能夠幫助用戶分析目標系統的安全性，提供漏洞利用建議並生成測試腳本，提高漏洞挖掘的效率與準確性。</p>
+<h3 id="特色-4">特色</h3>
+<ul>
+<li>漏洞偵測與分析
+<ul>
+<li>根據目標網站、應用程式或 API，分析可能存在的安全漏洞。</li>
+<li>提供漏洞類型（如 SQL
+注入、XSS、RCE）、影響評估及可能的利用方式。</li>
+</ul></li>
+<li>自動化安全測試建議
+<ul>
+<li>針對不同類型的目標（Web、Mobile、API、Cloud）提供測試方法。</li>
+<li>指導測試人員進行手動與自動化測試，提高漏洞發現率。</li>
+</ul></li>
+<li>指令與測試腳本生成
+<ul>
+<li>根據測試需求，生成 Python、Bash、PowerShell 等漏洞測試腳本。</li>
+<li>可用於 Fuzzing、Payload 測試、Exploit 開發等安全測試場景。</li>
+</ul></li>
+<li>漏洞報告與修復建議</li>
+</ul>
+<h2 id="參考資料">參考資料</h2>
+<ol type="1">
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cud2hpdGVyYWJiaXRuZW8uY29tLw==">White Rabbit Neo Hacker
+GPT<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93b3JtZ3B0LmNvbS5jby8=">Worm GPT<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9wZW50ZXN0Z3B0LmFpLw==">Pentest GPT<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0dyZXlER0wvUGVudGVzdEdQVA==">Pentest GPT
+Github<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9oYWNrZXJub29uLmNvbS93aGF0LWlzLWZyYXVkZ3B0">https://hackernoon.com/what-is-fraudgpt<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/PT/" rel="tag"># PT</a>
+              <a href="/blog/tags/AI/" rel="tag"># AI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2025/02/09/SQL-injectioni/" rel="prev" title="SQL injection">
+                  <i class="fa fa-angle-left"></i> SQL injection
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-snowflake"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Po Yu Liao</span>
+  </div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","cdn":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/blog/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://poyu-liao.github.io/blog/2025/02/09/Cybersecurity-PT-GPT/"}</script>
+  <script src="/blog/js/third-party/quicklink.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","labels":"Blog-Gitalk","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"6f25486d72b25d0cd6182afc43e14e90"}</script>
+<script src="/blog/js/third-party/comments/gitalk.js"></script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/blog/js/injector.js"></script>
+</body>
+</html>

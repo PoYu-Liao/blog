@@ -1,4 +1,555 @@
-<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0"><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="apple-touch-icon" sizes="180x180" href="/blog/images/snowflake180x180.png"><link rel="icon" type="image/png" sizes="32x32" href="/blog/images/snowflake32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/blog/images/snowflake16x16.png"><link rel="mask-icon" href="/blog/images/snowflake.svg" color="#222"><meta name="google-site-verification" content="google76b4f15a94f05f2c.html"><meta name="msvalidate.01" content="BingSiteAuth.xml"><link rel="stylesheet" href="/blog/css/main.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous"><script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script><meta name="description" content="DNS over TLS (DoT)和DNS over HTTPS (DoH)是兩種加密DNS查詢的方法，旨在提高用戶的隱私和安全性。DoT和DoH都是為了解決傳統DNS的安全和隱私問題而開發的。它們通過加密DNS查詢來提高用戶的網絡安全性和隱私保護。"><meta property="og:type" content="article"><meta property="og:title" content="安全DNS保護協定DOT和DOH"><meta property="og:url" content="https://poyu-liao.github.io/blog/2024/07/28/DOTandDOH-notes/index.html"><meta property="og:site_name" content="Robert&#39;s Blog"><meta property="og:description" content="DNS over TLS (DoT)和DNS over HTTPS (DoH)是兩種加密DNS查詢的方法，旨在提高用戶的隱私和安全性。DoT和DoH都是為了解決傳統DNS的安全和隱私問題而開發的。它們通過加密DNS查詢來提高用戶的網絡安全性和隱私保護。"><meta property="og:locale" content="zh_TW"><meta property="article:published_time" content="2024-07-28T05:59:47.000Z"><meta property="article:modified_time" content="2024-07-28T07:49:47.697Z"><meta property="article:author" content="Po Yu Liao"><meta property="article:tag" content="skysnowstarshine,Robert&#39;s Blog"><meta name="twitter:card" content="summary"><link rel="canonical" href="https://poyu-liao.github.io/blog/2024/07/28/DOTandDOH-notes/"><script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/blog/2024/07/28/DOTandDOH-notes/","path":"2024/07/28/DOTandDOH-notes/","title":"安全DNS保護協定DOT和DOH"}</script><script class="next-config" data-name="calendar" type="application/json">""</script><title>安全DNS保護協定DOT和DOH | Robert's Blog</title><script async src="https://www.googletagmanager.com/gtag/js?id=G-5WYW6952KH"></script><script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5WYW6952KH","only_pageview":false,"measure_protocol_api_secret":null}</script><script src="/blog/js/third-party/analytics/google-analytics.js"></script><link rel="stylesheet" type="text/css" href="/blog/css/injector/main.css"><link rel="preload" as="style" href="/blog/css/injector/light.css"><link rel="preload" as="style" href="/blog/css/injector/dark.css"><noscript><link rel="stylesheet" href="/blog/css/noscript.css"></noscript><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head><body itemscope itemtype="http://schema.org/WebPage" class="use-motion"><div class="headband"></div><main class="main"><div class="column"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container"><div class="site-nav-toggle"><div class="toggle" aria-label="切換導航欄" role="button"><span class="toggle-line"></span> <span class="toggle-line"></span> <span class="toggle-line"></span></div></div><div class="site-meta"><a href="/blog/" class="brand" rel="start"><i class="logo-line"></i><p class="site-title">Robert's Blog</p><i class="logo-line"></i></a><p class="site-subtitle" itemprop="description">skysnowstarshine</p></div><div class="site-nav-right"><div class="toggle popup-trigger" aria-label="搜尋" role="button"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class="site-nav"><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li><li class="menu-item menu-item-search"><a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋</a></li></ul></nav><div class="search-pop-overlay"><div class="popup search-popup"><div class="search-header"><span class="search-icon"><i class="fa fa-search"></i></span><div class="search-input-container"><input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="搜尋..." spellcheck="false" type="search" class="search-input"></div><span class="popup-btn-close" role="button"><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class="search-result-icon"><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></header><aside class="sidebar"><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class="sidebar-nav"><li class="sidebar-nav-toc">文章目錄</li><li class="sidebar-nav-overview">本站概要</li></ul><div class="sidebar-panel-container"><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">簡介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dns"><span class="nav-number">1.1.</span> <span class="nav-text">DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E8%A1%93%E7%89%B9%E9%BB%9E"><span class="nav-number">1.1.2.</span> <span class="nav-text">技術特點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%84%AA%E9%BB%9E"><span class="nav-number">1.1.3.</span> <span class="nav-text">優點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E9%BB%9E"><span class="nav-number">1.1.4.</span> <span class="nav-text">缺點</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dns-over-tls-dot"><span class="nav-number">1.2.</span> <span class="nav-text">DNS over TLS (DoT)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E8%A1%93%E7%89%B9%E9%BB%9E-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">技術特點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%84%AA%E9%BB%9E-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">優點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E9%BB%9E-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">缺點</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dns-over-https-doh"><span class="nav-number">1.3.</span> <span class="nav-text">DNS over HTTPS (DoH)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E8%A1%93%E7%89%B9%E9%BB%9E-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">技術特點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%84%AA%E9%BB%9E-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">優點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E9%BB%9E-2"><span class="nav-number">1.3.4.</span> <span class="nav-text">缺點</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E8%80%85%E6%AF%94%E8%BC%83"><span class="nav-number">2.</span> <span class="nav-text">三者比較</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%9F%E7%94%A8doh-windows10"><span class="nav-number">3.</span> <span class="nav-text">啟用DoH (windows10)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="nav-number">3.1.</span> <span class="nav-text">方式一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="nav-number">3.2.</span> <span class="nav-text">方式二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%9F%E7%94%A8doh-windows11"><span class="nav-number">4.</span> <span class="nav-text">啟用DoH (windows11)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%9F%E7%94%A8doh%E7%80%8F%E8%A6%BD%E5%99%A8browser"><span class="nav-number">5.</span> <span class="nav-text">啟用DoH(瀏覽器browser)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chrome"><span class="nav-number">5.1.</span> <span class="nav-text">chrome</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#edge"><span class="nav-number">5.2.</span> <span class="nav-text">Edge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#firefox"><span class="nav-number">5.3.</span> <span class="nav-text">firefox</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wifi-router%E8%A8%AD%E5%AE%9Adot%E4%BB%A5asus%E7%82%BA%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">wifi router設定DoT(以asus為例)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AA%A2%E6%9F%A5%E8%A8%AD%E5%82%99%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8doh%E6%88%96dot"><span class="nav-number">7.</span> <span class="nav-text">檢查設備是否使用DoH或DoT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">參考資料</span></a></li></ol></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" alt="Po Yu Liao" src="/blog/images/A.gif"><p class="site-author-name" itemprop="name">Po Yu Liao</p><div class="site-description" itemprop="description">一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員</div></div><div class="site-state-wrap animated"><nav class="site-state"><div class="site-state-item site-state-posts"><a href="/blog/archives/"><span class="site-state-item-count">24</span> <span class="site-state-item-name">文章</span></a></div><div class="site-state-item site-state-categories"><a href="/blog/categories/"><span class="site-state-item-count">7</span> <span class="site-state-item-name">分類</span></a></div><div class="site-state-item site-state-tags"><a href="/blog/tags/"><span class="site-state-item-count">18</span> <span class="site-state-item-name">標籤</span></a></div></nav></div><div class="links-of-author animated"><span class="links-of-author-item"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BvWXUtTGlhbw==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PoYu-Liao"><i class="fab fa-github fa-fw"></i>GitHub</span> </span><span class="links-of-author-item"><span class="exturl" data-url="bWFpbHRvOnBveXVsaWFvQHByb3Rvbi5tZQ==" title="E-Mail → mailto:poyuliao@proton.me"><i class="fa fa-envelope fa-fw"></i>E-Mail</span> </span><span class="links-of-author-item"><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vY2hhbm5lbC9VQzVFOExBOVZSRUp2QUNOcUVobG0zWlE=" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UC5E8LA9VREJvACNqEhlm3ZQ"><i class="fab fa-youtube fa-fw"></i>YouTube</span></span></div></div></div></div><div class="sidebar-inner sidebar-blogroll"><div class="links-of-blogroll animated"><div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i> Links</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"><span class="exturl" data-url="aHR0cHM6Ly93d3cudGlueXRzdW5hbWkuaW5mby8=" title="https:&#x2F;&#x2F;www.tinytsunami.info&#x2F;">羊羽手札</span></li></ul></div></div></aside></div><div class="main-inner post posts-expand"><div class="post-block"><article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW"><link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/blog/2024/07/28/DOTandDOH-notes/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/blog/images/A.gif"><meta itemprop="name" content="Po Yu Liao"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Robert's Blog"><meta itemprop="description" content="一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員"></span><span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork"><meta itemprop="name" content="安全DNS保護協定DOT和DOH | Robert's Blog"><meta itemprop="description" content=""></span><header class="post-header"><h1 class="post-title" itemprop="name headline">安全DNS保護協定DOT和DOH</h1><div class="post-meta-container"><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar"></i> </span><span class="post-meta-item-text">發表於</span> <time title="創建時間：2024-07-28 13:59:47 / 修改時間：15:49:47" itemprop="dateCreated datePublished" datetime="2024-07-28T13:59:47+08:00">2024-07-28</time></span></div></div></header><div class="post-body" itemprop="articleBody"><p>DNS over TLS (DoT)和DNS over HTTPS (DoH)是兩種加密DNS查詢的方法，旨在提高用戶的隱私和安全性。DoT和DoH都是為了解決傳統DNS的安全和隱私問題而開發的。它們通過加密DNS查詢來提高用戶的網絡安全性和隱私保護。<br><span id="more"></span></p><h2 id="簡介">簡介</h2><p>接下來針對DNS、DNS over TLS和DNS over HTTPS分別作介紹</p><h3 id="dns">DNS</h3><h4 id="工作原理">工作原理</h4><p>將易於記憶的域名轉換為網際網路協議（IP）地址，使用戶可以通過域名訪問網站。當用戶在瀏覽器中輸入域名時，瀏覽器向DNS解析伺服器發送查詢請求。DNS解析伺服器查找對應的IP地址並將其返回給用戶的設備。這個過程可能涉及多個DNS伺服器之間的通信，包括遞歸伺服器和權威伺服器，以最終獲取準確的IP地址。這樣，用戶可以通過IP地址與目標伺服器建立連接並訪問網站。</p><h4 id="技術特點">技術特點</h4><ul><li>使用UDP或TCP協議，默認端口為53。</li><li>查詢和響應都是明文傳輸。</li><li>支持各種記錄類型，如A (IPv4)、 AAAA (IPv6)、 MX (郵件服務器)、 CNAME (別名)等。</li></ul><h4 id="優點">優點</h4><ul><li>廣泛部署和支持。</li><li>查詢速度快，延遲低。</li><li>易於管理和故障排除。</li></ul><h4 id="缺點">缺點</h4><ul><li>缺乏加密，容易被竊聽或篡改。</li><li>容易受到中間人攻擊和DNS劫持。</li></ul><h3 id="dns-over-tls-dot">DNS over TLS (DoT)</h3><h4 id="工作原理-1">工作原理</h4><p>DoT通過在傳統DNS協議之上添加TLS (傳輸層安全協議) 層來運作。當客戶端需要進行DNS查詢時，它首先與支持DoT的DNS服務器建立一個加密的TLS連接，通常使用TCP的853端口。在此安全通道建立後，客戶端將其DNS查詢封裝在TLS協議中發送。DNS服務器接收並解密這個查詢，處理它，然後通過同一加密通道發送加密的響應。客戶端接收到響應後進行解密，獲得所需的DNS信息。</p><h4 id="技術特點-1">技術特點</h4><ul><li>使用TCP協議,標準端口為853。</li><li>需要TLS 1.2或更高版本。</li><li>支持SNI (Server Name Indication) 以支持虛擬主機。</li><li>可以使用會話恢復來減少後續連接的延遲。</li></ul><h4 id="優點-1">優點</h4><ul><li>提供點對點加密,防止DNS查詢被竊聽。</li><li>驗證DNS服務器,減少中間人攻擊的風險。</li><li>相對容易實施,與現有DNS基礎設施兼容性好。</li></ul><h4 id="缺點-1">缺點</h4><ul><li>可能被防火牆阻擋(因為使用非標準端口)。</li><li>連接建立可能較慢(需要TLS握手)。</li></ul><h3 id="dns-over-https-doh">DNS over HTTPS (DoH)</h3><h4 id="工作原理-2">工作原理</h4><p>將DNS查詢和回應封裝在HTTPS協議之上，以加密和保護用戶的DNS流量。當用戶發出DNS查詢時，這些查詢通過HTTPS連接傳輸到DNS解析伺服器。HTTPS利用TLS（傳輸層安全）協議來加密數據，確保查詢內容在傳輸過程中保持私密和安全。這一過程不僅隱藏了DNS查詢，還讓它們看起來像普通的HTTPS流量，進一步防止流量監控和攔截，提高了用戶的網路隱私和安全性。</p><h4 id="技術特點-2">技術特點</h4><ul><li>使用標準HTTPS端口443。</li><li>支持HTTP/2和HTTP/3,允許多路複用。</li><li>查詢可以使用GET或POST方法,響應通常是JSON格式或DNS wire format。</li><li>可以利用現有的Web優化技術,如CDN。</li></ul><h4 id="優點-2">優點</h4><ul><li>高度加密,難以與普通Web流量區分。</li><li>可以繞過某些網絡限制和審查。</li><li>利用現有的Web安全機制(如HSTS, HPKP)。</li></ul><h4 id="缺點-2">缺點</h4><ul><li>實施相對複雜。</li><li>可能增加延遲(due to HTTPS開銷)。</li></ul><h2 id="三者比較">三者比較</h2><p>安全性: 傳統DNS &lt; DoT ≈ DoH</p><p>隱私保護: 傳統DNS &lt; DoT &lt; DoH</p><p>速度: 傳統DNS &gt; DoT &gt; DoH</p><p>實施複雜度: 傳統DNS &lt; DoT &lt; DoH</p><h2 id="啟用doh-windows10">啟用DoH (windows10)</h2><h3 id="方式一">方式一</h3><ol type="1"><li>開啟登錄編輯程式或win+R輸入regedit<br></li><li>到這<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters</code>目錄底下<br></li><li>右鍵新增DWORD 參數<code>EnableAutoDoh</code>並將值設定為2<br><img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722149741/DoHDoT/qu1fglbo5eqtdak7dmgt.webp" alt="登錄檔位置"> <img data-src="https://blog.netwrix.com/wp-content/uploads/2022/10/DNS-over-HTTPS-2.png.webp" alt="將值設為2"></li><li>網路介面卡設定有支援DoH的DNS server</li></ol><h3 id="方式二">方式二</h3><ol type="1"><li>在開始功能表中選擇設定。</li><li>開啟 網路設定。</li><li>在網路狀態下，開啟 所需網際網路連線的屬性選單。</li><li>點選 DNS 設定下的編輯 。</li><li>選擇 手動選項，然後指定首選 DNS 和備用 DNS IP 位址。 Windows 10 目前支援的 DNS</li></ol><blockquote><p>提供者有： Cloudflare – 主：1.1.1.1，備用：1.0.0.1 Google – 主：8.8.8.8，備用：8.8.4.4 Quad9 – 主：9.9.9.9，備用：149.112.112.112</p></blockquote><ol start="6" type="1"><li>在「首選 DNS」和「備用 DNS」下選擇「僅加密（透過 HTTPS 的 DNS）」進行加密。</li></ol><blockquote><p>如果需要，您可以為 IPv6 設定相同的內容（前面的步驟適用於 IPv4）。</p></blockquote><h2 id="啟用doh-windows11">啟用DoH (windows11)</h2><ol type="1"><li><p>打開設定或 <code>Win + I</code></p></li><li><p>網路和網際網路</p></li><li><p>選擇您正在使用的網路（例如 Wi-Fi 或乙太網），然後點擊「屬性」。</p></li><li><p>編輯 DNS 設定，在「IP 設定」下，找到「DNS 伺服器指派」並點擊「編輯」。</p></li><li><p>選擇「手動」，打開「IPv4」或「IPv6」，然後在「優先」和「替代」DNS 伺服器中輸入支援 DoH 的 DNS 伺服器地址（如 Google DNS 8.8.8.8 和 8.8.4.4 或 Cloudflare 1.1.1.1 和 1.0.0.1）。</p></li><li><p>選擇「加密的僅 (DNS over HTTPS)」或HTTPS上的DNS。 <img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722150856/DoHDoT/trru6q2h6pa8urz9dl8j.png" alt="設定位置"></p></li></ol><h2 id="啟用doh瀏覽器browser">啟用DoH(瀏覽器browser)</h2><h3 id="chrome">chrome</h3><p>設定→隱私權與安全性→安全性→進階→ 使用安全DNS<br><img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722152459/DoHDoT/wctbwhnzngxmjoyg2hom.png" alt="chrome設定位置"></p><h3 id="edge">Edge</h3><p>設定→隱私權、搜尋與服務→安全性→使用安全DNS→選擇服務提供者<br><img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722152737/DoHDoT/a2n8ic2qdo3baoisfodc.png" alt="Edge設定位置"></p><h3 id="firefox">firefox</h3><p>設定→隱私權與安全性→DNS over HTTPS→加強保護→選擇服務提供者<br><img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722152954/DoHDoT/c6e9juyzg86tcwqkmmwc.png" alt="firefox設定位置"></p><h2 id="wifi-router設定dot以asus為例">wifi router設定DoT(以asus為例)</h2><ol type="1"><li>外部網路(WAN) → 網際網路 → 在DNS 隱私通訊協定選擇DNS over TLS(DoT)啟用此功能。 <img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722151315/DoHDoT/vonbzrfsqkaady6olapk.png" alt="設定位置"></li><li>在重設伺服器項目的下拉清單中選擇您要使用的伺服器 <img data-src="https://km-ap.asus.com/uploads/PhotoLibrarys/66aa29cd-c141-45f0-9576-77de29c4f347/20231115172726569_2.png" alt="DNS下拉選單"> <img data-src="https://km-ap.asus.com/uploads/PhotoLibrarys/66aa29cd-c141-45f0-9576-77de29c4f347/20231115172726590_3.png" alt="儲存設定"></li></ol><blockquote><p>註：根據官方說法 (b1)DNS伺服器: 允許此路由器自動從網路服務供應商(ISP)中獲取DNS的IP位址。</p><p>(b2)Forward local domain queries to upstream DNS: 告知dnsmasq，路由器本地端網域中主機名稱查詢應轉送到WAN介面上的設定的上游DNS。 例如，適用於如果您的上游DNS是Windows Server。</p><p>(b3)Enable DNS Rebind protection: 啟用此功能將保護您的LAN免於DNS重新綁定功擊，但它會阻止上游DNS伺服器將查詢解析為任何無法路由器的IP(例如，192.168.1.1)。</p><p>(b4)Enable DNSSEC support: 確保在查詣啟用DNSSEC的網域時DNS查詢不會被惡意第三方破解入侵。 請確保您的WAN/ISP DNS與DNSSEC相容，否則DNS查詢將一直失敗。</p><p>(b5)Prevent client auto DoH: 某些戶端會自動透過HTTPS切換到DNS，略過您慣用的DNS伺服器。此選項可阻止這種情況。如果設定為<a href="預設值">自動</a>，則只有在全域模式下啟用DNSPrivacy或DNSFilter時才會阻止這情況。</p><p>(b6)DNS 隱私通訊協定: 預設為[無]，要撰擇[DNS-over-TLS (DoT)] 後才會出現以下3個項目，您可以將路由器設定為使用支援加密的第三方DNS伺服器，以防止窺探您的DNS查詢。</p><p>(b6-1)DNS-over-TLS 設定檔: 預設為[嚴格]模式，在嚴格模式下，只有在遠端伺服器的身份可以通過驗證的情況下，才允許使用DNS伺服器。在機會模式下，將會嘗試進行身份驗證，但如果身份驗證失敗，仍會使用該伺服器，讓名稱解析仍可以正常工作。</p><p>(b6-2)重設伺服器: 預先設定的伺服器，請選擇一個來為您預先填寫以下欄位(DNS-over-TLS 伺服器清單)，然後按下新增按鈕將伺服器加入到清單中。</p></blockquote><h2 id="檢查設備是否使用doh或dot">檢查設備是否使用DoH或DoT</h2><p>可以使用cloudflare提供的以下兩個網址做檢查<br>1. <span class="exturl" data-url="aHR0cHM6Ly9vbmUub25lLm9uZS5vbmUvaGVscC8=">https://one.one.one.one/help/<i class="fa fa-external-link-alt"></i></span><br>2. <span class="exturl" data-url="aHR0cHM6Ly93d3cuY2xvdWRmbGFyZS5jb20vemgtdHcvc3NsL2VuY3J5cHRlZC1zbmkvI3Jlc3VsdHM=">https://www.cloudflare.com/zh-tw/ssl/encrypted-sni/#results<i class="fa fa-external-link-alt"></i></span></p><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY2xvdWRmbGFyZS5jb20vemgtdHcvbGVhcm5pbmcvZG5zL2Rucy1vdmVyLXRscy8=">https://www.cloudflare.com/zh-tw/learning/dns/dns-over-tls/<i class="fa fa-external-link-alt"></i></span><br></li><li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLm5ldHdyaXguY29tLzIwMjIvMTAvMTEvZG5zLW92ZXItaHR0cHMv">https://blog.netwrix.com/2022/10/11/dns-over-https/<i class="fa fa-external-link-alt"></i></span><br></li><li><span class="exturl" data-url="aHR0cHM6Ly93b3NodWIuY29tL2VuYWJsZS1kbnMtb3Zlci1odHRwcy13aW5kb3dzLw==">https://woshub.com/enable-dns-over-https-windows/<i class="fa fa-external-link-alt"></i></span><br></li><li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmNsb3VkZmxhcmUuY29tLzEuMS4xLjEvZW5jcnlwdGlvbi9kbnMtb3Zlci1odHRwcy9lbmNyeXB0ZWQtZG5zLWJyb3dzZXJzLw==">https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/<i class="fa fa-external-link-alt"></i></span><br></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYXN1cy5jb20vdHcvc3VwcG9ydC9GQVEvMTAxMTcxNS8=">https://www.asus.com/tw/support/FAQ/1011715/<i class="fa fa-external-link-alt"></i></span><br></li><li><span class="exturl" data-url="aHR0cHM6Ly9yb2cuYXN1cy5jb20vdHcvc3VwcG9ydC9GQVEvMTA1MTQyOA==">https://rog.asus.com/tw/support/FAQ/1051428<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZmlzaG1hbi5pZHYudHcvcGhwZm9ydW0vdGhyZWFkLTIwMTE3LTEtMS5odG1s">https://www.fishman.idv.tw/phpforum/thread-20117-1-1.html<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZWxldmVuZm9ydW0uY29tL3QvZW5hYmxlLWRucy1vdmVyLXRscy1kb3QtaW4td2luZG93cy0xMS45MDEyLw==">https://www.elevenforum.com/t/enable-dns-over-tls-dot-in-windows-11.9012/<i class="fa fa-external-link-alt"></i></span></li></ol></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-item"><a href="/blog/2024/07/28/linux-version-upgrade-note/" rel="prev" title="linux 版本更新指令"><i class="fa fa-angle-left"></i> linux 版本更新指令</a></div><div class="post-nav-item"></div></div></footer></article></div><div class="comments gitalk-container"></div></div></main><footer class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2024</span> <span class="with-love"><i class="fa fa-snowflake"></i> </span><span class="author" itemprop="copyrightHolder">Po Yu Liao</span></div><div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 強力驅動</div></div></footer><div class="toggle sidebar-toggle" role="button"><span class="toggle-line"></span> <span class="toggle-line"></span> <span class="toggle-line"></span></div><div class="sidebar-dimmer"></div><div class="reading-progress-bar"></div><a role="button" class="book-mark-link book-mark-link-fixed"></a><noscript><div class="noscript-warning">Theme NexT works best with JavaScript enabled</div></noscript><script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script><script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script><script src="/blog/js/third-party/search/local-search.js"></script><script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","cdn":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script><script src="/blog/js/third-party/math/mathjax.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script><script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://poyu-liao.github.io/blog/2024/07/28/DOTandDOH-notes/"}</script><script src="/blog/js/third-party/quicklink.js"></script><script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script><script>var options = {
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/snowflake180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/snowflake32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/snowflake16x16.png">
+  <link rel="mask-icon" href="/blog/images/snowflake.svg" color="#222">
+  <meta name="google-site-verification" content="google76b4f15a94f05f2c.html">
+  <meta name="msvalidate.01" content="BingSiteAuth.xml">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="DNS over TLS (DoT)和DNS over HTTPS (DoH)是兩種加密DNS查詢的方法，旨在提高用戶的隱私和安全性。DoT和DoH都是為了解決傳統DNS的安全和隱私問題而開發的。它們通過加密DNS查詢來提高用戶的網絡安全性和隱私保護。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安全DNS保護協定DOT和DOH">
+<meta property="og:url" content="https://poyu-liao.github.io/blog/2024/07/28/DOTandDOH-notes/index.html">
+<meta property="og:site_name" content="Robert&#39;s Blog">
+<meta property="og:description" content="DNS over TLS (DoT)和DNS over HTTPS (DoH)是兩種加密DNS查詢的方法，旨在提高用戶的隱私和安全性。DoT和DoH都是為了解決傳統DNS的安全和隱私問題而開發的。它們通過加密DNS查詢來提高用戶的網絡安全性和隱私保護。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-07-28T05:59:47.000Z">
+<meta property="article:modified_time" content="2024-07-28T07:49:47.697Z">
+<meta property="article:author" content="Po Yu Liao">
+<meta property="article:tag" content="skysnowstarshine,Robert&#39;s Blog">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://poyu-liao.github.io/blog/2024/07/28/DOTandDOH-notes/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/blog/2024/07/28/DOTandDOH-notes/","path":"2024/07/28/DOTandDOH-notes/","title":"安全DNS保護協定DOT和DOH"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>安全DNS保護協定DOT和DOH | Robert's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WYW6952KH"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5WYW6952KH","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/blog/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/blog/css/injector/main.css" /><link rel="preload" as="style" href="/blog/css/injector/light.css" /><link rel="preload" as="style" href="/blog/css/injector/dark.css" />
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Robert's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">skysnowstarshine</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">簡介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dns"><span class="nav-number">1.1.</span> <span class="nav-text">DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E8%A1%93%E7%89%B9%E9%BB%9E"><span class="nav-number">1.1.2.</span> <span class="nav-text">技術特點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%84%AA%E9%BB%9E"><span class="nav-number">1.1.3.</span> <span class="nav-text">優點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E9%BB%9E"><span class="nav-number">1.1.4.</span> <span class="nav-text">缺點</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dns-over-tls-dot"><span class="nav-number">1.2.</span> <span class="nav-text">DNS over TLS (DoT)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E8%A1%93%E7%89%B9%E9%BB%9E-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">技術特點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%84%AA%E9%BB%9E-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">優點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E9%BB%9E-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">缺點</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dns-over-https-doh"><span class="nav-number">1.3.</span> <span class="nav-text">DNS over HTTPS (DoH)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E8%A1%93%E7%89%B9%E9%BB%9E-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">技術特點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%84%AA%E9%BB%9E-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">優點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E9%BB%9E-2"><span class="nav-number">1.3.4.</span> <span class="nav-text">缺點</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E8%80%85%E6%AF%94%E8%BC%83"><span class="nav-number">2.</span> <span class="nav-text">三者比較</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%9F%E7%94%A8doh-windows10"><span class="nav-number">3.</span> <span class="nav-text">啟用DoH (windows10)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="nav-number">3.1.</span> <span class="nav-text">方式一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="nav-number">3.2.</span> <span class="nav-text">方式二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%9F%E7%94%A8doh-windows11"><span class="nav-number">4.</span> <span class="nav-text">啟用DoH (windows11)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%9F%E7%94%A8doh%E7%80%8F%E8%A6%BD%E5%99%A8browser"><span class="nav-number">5.</span> <span class="nav-text">啟用DoH(瀏覽器browser)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chrome"><span class="nav-number">5.1.</span> <span class="nav-text">chrome</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#edge"><span class="nav-number">5.2.</span> <span class="nav-text">Edge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#firefox"><span class="nav-number">5.3.</span> <span class="nav-text">firefox</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wifi-router%E8%A8%AD%E5%AE%9Adot%E4%BB%A5asus%E7%82%BA%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">wifi
+router設定DoT(以asus為例)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AA%A2%E6%9F%A5%E8%A8%AD%E5%82%99%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8doh%E6%88%96dot"><span class="nav-number">7.</span> <span class="nav-text">檢查設備是否使用DoH或DoT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Po Yu Liao"
+      src="/blog/images/A.gif">
+  <p class="site-author-name" itemprop="name">Po Yu Liao</p>
+  <div class="site-description" itemprop="description">一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BvWXUtTGlhbw==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PoYu-Liao"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnBveXVsaWFvQHByb3Rvbi5tZQ==" title="E-Mail → mailto:poyuliao@proton.me"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vY2hhbm5lbC9VQzVFOExBOVZSRUp2QUNOcUVobG0zWlE=" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UC5E8LA9VREJvACNqEhlm3ZQ"><i class="fab fa-youtube fa-fw"></i>YouTube</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          連結
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly93d3cudGlueXRzdW5hbWkuaW5mby8=" title="https:&#x2F;&#x2F;www.tinytsunami.info&#x2F;">羊羽手札</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/blog/2024/07/28/DOTandDOH-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/A.gif">
+      <meta itemprop="name" content="Po Yu Liao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Robert's Blog">
+      <meta itemprop="description" content="一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="安全DNS保護協定DOT和DOH | Robert's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安全DNS保護協定DOT和DOH
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2024-07-28 13:59:47 / 修改時間：15:49:47" itemprop="dateCreated datePublished" datetime="2024-07-28T13:59:47+08:00">2024-07-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>DNS over TLS (DoT)和DNS over HTTPS
+(DoH)是兩種加密DNS查詢的方法，旨在提高用戶的隱私和安全性。DoT和DoH都是為了解決傳統DNS的安全和隱私問題而開發的。它們通過加密DNS查詢來提高用戶的網絡安全性和隱私保護。<br />
+<span id="more"></span></p>
+<h2 id="簡介">簡介</h2>
+<p>接下來針對DNS、DNS over TLS和DNS over HTTPS分別作介紹</p>
+<h3 id="dns">DNS</h3>
+<h4 id="工作原理">工作原理</h4>
+<p>將易於記憶的域名轉換為網際網路協議（IP）地址，使用戶可以通過域名訪問網站。當用戶在瀏覽器中輸入域名時，瀏覽器向DNS解析伺服器發送查詢請求。DNS解析伺服器查找對應的IP地址並將其返回給用戶的設備。這個過程可能涉及多個DNS伺服器之間的通信，包括遞歸伺服器和權威伺服器，以最終獲取準確的IP地址。這樣，用戶可以通過IP地址與目標伺服器建立連接並訪問網站。</p>
+<h4 id="技術特點">技術特點</h4>
+<ul>
+<li>使用UDP或TCP協議，默認端口為53。</li>
+<li>查詢和響應都是明文傳輸。</li>
+<li>支持各種記錄類型，如A (IPv4)、 AAAA (IPv6)、 MX (郵件服務器)、 CNAME
+(別名)等。</li>
+</ul>
+<h4 id="優點">優點</h4>
+<ul>
+<li>廣泛部署和支持。</li>
+<li>查詢速度快，延遲低。</li>
+<li>易於管理和故障排除。</li>
+</ul>
+<h4 id="缺點">缺點</h4>
+<ul>
+<li>缺乏加密，容易被竊聽或篡改。</li>
+<li>容易受到中間人攻擊和DNS劫持。</li>
+</ul>
+<h3 id="dns-over-tls-dot">DNS over TLS (DoT)</h3>
+<h4 id="工作原理-1">工作原理</h4>
+<p>DoT通過在傳統DNS協議之上添加TLS (傳輸層安全協議)
+層來運作。當客戶端需要進行DNS查詢時，它首先與支持DoT的DNS服務器建立一個加密的TLS連接，通常使用TCP的853端口。在此安全通道建立後，客戶端將其DNS查詢封裝在TLS協議中發送。DNS服務器接收並解密這個查詢，處理它，然後通過同一加密通道發送加密的響應。客戶端接收到響應後進行解密，獲得所需的DNS信息。</p>
+<h4 id="技術特點-1">技術特點</h4>
+<ul>
+<li>使用TCP協議,標準端口為853。</li>
+<li>需要TLS 1.2或更高版本。</li>
+<li>支持SNI (Server Name Indication) 以支持虛擬主機。</li>
+<li>可以使用會話恢復來減少後續連接的延遲。</li>
+</ul>
+<h4 id="優點-1">優點</h4>
+<ul>
+<li>提供點對點加密,防止DNS查詢被竊聽。</li>
+<li>驗證DNS服務器,減少中間人攻擊的風險。</li>
+<li>相對容易實施,與現有DNS基礎設施兼容性好。</li>
+</ul>
+<h4 id="缺點-1">缺點</h4>
+<ul>
+<li>可能被防火牆阻擋(因為使用非標準端口)。</li>
+<li>連接建立可能較慢(需要TLS握手)。</li>
+</ul>
+<h3 id="dns-over-https-doh">DNS over HTTPS (DoH)</h3>
+<h4 id="工作原理-2">工作原理</h4>
+<p>將DNS查詢和回應封裝在HTTPS協議之上，以加密和保護用戶的DNS流量。當用戶發出DNS查詢時，這些查詢通過HTTPS連接傳輸到DNS解析伺服器。HTTPS利用TLS（傳輸層安全）協議來加密數據，確保查詢內容在傳輸過程中保持私密和安全。這一過程不僅隱藏了DNS查詢，還讓它們看起來像普通的HTTPS流量，進一步防止流量監控和攔截，提高了用戶的網路隱私和安全性。</p>
+<h4 id="技術特點-2">技術特點</h4>
+<ul>
+<li>使用標準HTTPS端口443。</li>
+<li>支持HTTP/2和HTTP/3,允許多路複用。</li>
+<li>查詢可以使用GET或POST方法,響應通常是JSON格式或DNS wire format。</li>
+<li>可以利用現有的Web優化技術,如CDN。</li>
+</ul>
+<h4 id="優點-2">優點</h4>
+<ul>
+<li>高度加密,難以與普通Web流量區分。</li>
+<li>可以繞過某些網絡限制和審查。</li>
+<li>利用現有的Web安全機制(如HSTS, HPKP)。</li>
+</ul>
+<h4 id="缺點-2">缺點</h4>
+<ul>
+<li>實施相對複雜。</li>
+<li>可能增加延遲(due to HTTPS開銷)。</li>
+</ul>
+<h2 id="三者比較">三者比較</h2>
+<p>安全性: 傳統DNS &lt; DoT ≈ DoH</p>
+<p>隱私保護: 傳統DNS &lt; DoT &lt; DoH</p>
+<p>速度: 傳統DNS &gt; DoT &gt; DoH</p>
+<p>實施複雜度: 傳統DNS &lt; DoT &lt; DoH</p>
+<h2 id="啟用doh-windows10">啟用DoH (windows10)</h2>
+<h3 id="方式一">方式一</h3>
+<ol type="1">
+<li>開啟登錄編輯程式或win+R輸入regedit<br />
+</li>
+<li>到這<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters</code>目錄底下<br />
+</li>
+<li>右鍵新增DWORD 參數<code>EnableAutoDoh</code>並將值設定為2<br />
+<img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722149741/DoHDoT/qu1fglbo5eqtdak7dmgt.webp"
+alt="登錄檔位置" /> <img data-src="https://blog.netwrix.com/wp-content/uploads/2022/10/DNS-over-HTTPS-2.png.webp"
+alt="將值設為2" /></li>
+<li>網路介面卡設定有支援DoH的DNS server</li>
+</ol>
+<h3 id="方式二">方式二</h3>
+<ol type="1">
+<li>在開始功能表中選擇設定。</li>
+<li>開啟 網路設定。</li>
+<li>在網路狀態下，開啟 所需網際網路連線的屬性選單。</li>
+<li>點選 DNS 設定下的編輯 。</li>
+<li>選擇 手動選項，然後指定首選 DNS 和備用 DNS IP 位址。 Windows 10
+目前支援的 DNS</li>
+</ol>
+<blockquote>
+<p>提供者有： Cloudflare – 主：1.1.1.1，備用：1.0.0.1 Google –
+主：8.8.8.8，備用：8.8.4.4 Quad9 –
+主：9.9.9.9，備用：149.112.112.112</p>
+</blockquote>
+<ol start="6" type="1">
+<li>在「首選 DNS」和「備用 DNS」下選擇「僅加密（透過 HTTPS 的
+DNS）」進行加密。</li>
+</ol>
+<blockquote>
+<p>如果需要，您可以為 IPv6 設定相同的內容（前面的步驟適用於 IPv4）。</p>
+</blockquote>
+<h2 id="啟用doh-windows11">啟用DoH (windows11)</h2>
+<ol type="1">
+<li><p>打開設定或 <code>Win + I</code></p></li>
+<li><p>網路和網際網路</p></li>
+<li><p>選擇您正在使用的網路（例如 Wi-Fi
+或乙太網），然後點擊「屬性」。</p></li>
+<li><p>編輯 DNS 設定，在「IP 設定」下，找到「DNS
+伺服器指派」並點擊「編輯」。</p></li>
+<li><p>選擇「手動」，打開「IPv4」或「IPv6」，然後在「優先」和「替代」DNS
+伺服器中輸入支援 DoH 的 DNS 伺服器地址（如 Google DNS 8.8.8.8 和 8.8.4.4
+或 Cloudflare 1.1.1.1 和 1.0.0.1）。</p></li>
+<li><p>選擇「加密的僅 (DNS over HTTPS)」或HTTPS上的DNS。 <img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722150856/DoHDoT/trru6q2h6pa8urz9dl8j.png"
+alt="設定位置" /></p></li>
+</ol>
+<h2 id="啟用doh瀏覽器browser">啟用DoH(瀏覽器browser)</h2>
+<h3 id="chrome">chrome</h3>
+<p>設定→隱私權與安全性→安全性→進階→ 使用安全DNS<br />
+<img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722152459/DoHDoT/wctbwhnzngxmjoyg2hom.png"
+alt="chrome設定位置" /></p>
+<h3 id="edge">Edge</h3>
+<p>設定→隱私權、搜尋與服務→安全性→使用安全DNS→選擇服務提供者<br />
+<img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722152737/DoHDoT/a2n8ic2qdo3baoisfodc.png"
+alt="Edge設定位置" /></p>
+<h3 id="firefox">firefox</h3>
+<p>設定→隱私權與安全性→DNS over HTTPS→加強保護→選擇服務提供者<br />
+<img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722152954/DoHDoT/c6e9juyzg86tcwqkmmwc.png"
+alt="firefox設定位置" /></p>
+<h2 id="wifi-router設定dot以asus為例">wifi
+router設定DoT(以asus為例)</h2>
+<ol type="1">
+<li>外部網路(WAN) → 網際網路 → 在DNS 隱私通訊協定選擇DNS over
+TLS(DoT)啟用此功能。 <img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722151315/DoHDoT/vonbzrfsqkaady6olapk.png"
+alt="設定位置" /></li>
+<li>在重設伺服器項目的下拉清單中選擇您要使用的伺服器 <img data-src="https://km-ap.asus.com/uploads/PhotoLibrarys/66aa29cd-c141-45f0-9576-77de29c4f347/20231115172726569_2.png"
+alt="DNS下拉選單" /> <img data-src="https://km-ap.asus.com/uploads/PhotoLibrarys/66aa29cd-c141-45f0-9576-77de29c4f347/20231115172726590_3.png"
+alt="儲存設定" /></li>
+</ol>
+<blockquote>
+<p>註：根據官方說法 (b1)DNS伺服器:
+允許此路由器自動從網路服務供應商(ISP)中獲取DNS的IP位址。</p>
+<p>(b2)Forward local domain queries to upstream DNS:
+告知dnsmasq，路由器本地端網域中主機名稱查詢應轉送到WAN介面上的設定的上游DNS。
+例如，適用於如果您的上游DNS是Windows Server。</p>
+<p>(b3)Enable DNS Rebind protection:
+啟用此功能將保護您的LAN免於DNS重新綁定功擊，但它會阻止上游DNS伺服器將查詢解析為任何無法路由器的IP(例如，192.168.1.1)。</p>
+<p>(b4)Enable DNSSEC support:
+確保在查詣啟用DNSSEC的網域時DNS查詢不會被惡意第三方破解入侵。
+請確保您的WAN/ISP DNS與DNSSEC相容，否則DNS查詢將一直失敗。</p>
+<p>(b5)Prevent client auto DoH:
+某些戶端會自動透過HTTPS切換到DNS，略過您慣用的DNS伺服器。此選項可阻止這種情況。如果設定為<a
+href="預設值">自動</a>，則只有在全域模式下啟用DNSPrivacy或DNSFilter時才會阻止這情況。</p>
+<p>(b6)DNS 隱私通訊協定: 預設為[無]，要撰擇[DNS-over-TLS (DoT)]
+後才會出現以下3個項目，您可以將路由器設定為使用支援加密的第三方DNS伺服器，以防止窺探您的DNS查詢。</p>
+<p>(b6-1)DNS-over-TLS 設定檔:
+預設為[嚴格]模式，在嚴格模式下，只有在遠端伺服器的身份可以通過驗證的情況下，才允許使用DNS伺服器。在機會模式下，將會嘗試進行身份驗證，但如果身份驗證失敗，仍會使用該伺服器，讓名稱解析仍可以正常工作。</p>
+<p>(b6-2)重設伺服器:
+預先設定的伺服器，請選擇一個來為您預先填寫以下欄位(DNS-over-TLS
+伺服器清單)，然後按下新增按鈕將伺服器加入到清單中。</p>
+</blockquote>
+<h2 id="檢查設備是否使用doh或dot">檢查設備是否使用DoH或DoT</h2>
+<p>可以使用cloudflare提供的以下兩個網址做檢查<br />
+1. <span class="exturl" data-url="aHR0cHM6Ly9vbmUub25lLm9uZS5vbmUvaGVscC8=">https://one.one.one.one/help/<i class="fa fa-external-link-alt"></i></span><br />
+2. <span class="exturl" data-url="aHR0cHM6Ly93d3cuY2xvdWRmbGFyZS5jb20vemgtdHcvc3NsL2VuY3J5cHRlZC1zbmkvI3Jlc3VsdHM=">https://www.cloudflare.com/zh-tw/ssl/encrypted-sni/#results<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="參考資料">參考資料</h2>
+<ol type="1">
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY2xvdWRmbGFyZS5jb20vemgtdHcvbGVhcm5pbmcvZG5zL2Rucy1vdmVyLXRscy8=">https://www.cloudflare.com/zh-tw/learning/dns/dns-over-tls/<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLm5ldHdyaXguY29tLzIwMjIvMTAvMTEvZG5zLW92ZXItaHR0cHMv">https://blog.netwrix.com/2022/10/11/dns-over-https/<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93b3NodWIuY29tL2VuYWJsZS1kbnMtb3Zlci1odHRwcy13aW5kb3dzLw==">https://woshub.com/enable-dns-over-https-windows/<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmNsb3VkZmxhcmUuY29tLzEuMS4xLjEvZW5jcnlwdGlvbi9kbnMtb3Zlci1odHRwcy9lbmNyeXB0ZWQtZG5zLWJyb3dzZXJzLw==">https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYXN1cy5jb20vdHcvc3VwcG9ydC9GQVEvMTAxMTcxNS8=">https://www.asus.com/tw/support/FAQ/1011715/<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9yb2cuYXN1cy5jb20vdHcvc3VwcG9ydC9GQVEvMTA1MTQyOA==">https://rog.asus.com/tw/support/FAQ/1051428<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZmlzaG1hbi5pZHYudHcvcGhwZm9ydW0vdGhyZWFkLTIwMTE3LTEtMS5odG1s">https://www.fishman.idv.tw/phpforum/thread-20117-1-1.html<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZWxldmVuZm9ydW0uY29tL3QvZW5hYmxlLWRucy1vdmVyLXRscy1kb3QtaW4td2luZG93cy0xMS45MDEyLw==">https://www.elevenforum.com/t/enable-dns-over-tls-dot-in-windows-11.9012/<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2024/07/28/linux-version-upgrade-note/" rel="prev" title="linux 版本更新指令">
+                  <i class="fa fa-angle-left"></i> linux 版本更新指令
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2025/02/09/SQL-injectioni/" rel="next" title="SQL injection">
+                  SQL injection <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-snowflake"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Po Yu Liao</span>
+  </div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","cdn":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/blog/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://poyu-liao.github.io/blog/2024/07/28/DOTandDOH-notes/"}</script>
+  <script src="/blog/js/third-party/quicklink.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
   bottom: '64px',
   right: 'unset',
   left: '32px',
@@ -13,4 +564,32 @@
 }
 const darkmode = new Darkmode(options);
 window.darkmode = darkmode;
-darkmode.showWidget();</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous"><script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","labels":"Blog-Gitalk","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"ff107349b289d0e8836b2b029a796b6d"}</script><script src="/blog/js/third-party/comments/gitalk.js"></script><div class="moon-menu"><div class="moon-menu-items"><div id="moon-menu-item-back2bottom" class="moon-menu-item"><i class="fas fa-chevron-down"></i></div><div id="moon-menu-item-back2top" class="moon-menu-item"><i class="fas fa-chevron-up"></i></div></div><div class="moon-menu-button"><svg class="moon-menu-bg"><circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle><circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle></svg><div class="moon-menu-content"><div class="moon-menu-icon"><i class="fas fa-ellipsis-v"></i></div><div class="moon-menu-text"></div></div></div></div><script src="/blog/js/injector.js"></script></body></html>
+darkmode.showWidget();
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","labels":"Blog-Gitalk","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"ff107349b289d0e8836b2b029a796b6d"}</script>
+<script src="/blog/js/third-party/comments/gitalk.js"></script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/blog/js/injector.js"></script>
+</body>
+</html>
