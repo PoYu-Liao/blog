@@ -13,9 +13,9 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -42,18 +42,18 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> PT </tag>
-            
             <tag> website </tag>
+            
+            <tag> PT </tag>
             
             <tag> SQL </tag>
             
@@ -71,6 +71,20 @@
         <content type="html"><![CDATA[<p>DNS over TLS (DoT)和DNS over HTTPS(DoH)是兩種加密DNS查詢的方法，旨在提高用戶的隱私和安全性。DoT和DoH都是為了解決傳統DNS的安全和隱私問題而開發的。它們通過加密DNS查詢來提高用戶的網絡安全性和隱私保護。<br /><span id="more"></span></p><h2 id="簡介">簡介</h2><p>接下來針對DNS、DNS over TLS和DNS over HTTPS分別作介紹</p><h3 id="dns">DNS</h3><h4 id="工作原理">工作原理</h4><p>將易於記憶的域名轉換為網際網路協議（IP）地址，使用戶可以通過域名訪問網站。當用戶在瀏覽器中輸入域名時，瀏覽器向DNS解析伺服器發送查詢請求。DNS解析伺服器查找對應的IP地址並將其返回給用戶的設備。這個過程可能涉及多個DNS伺服器之間的通信，包括遞歸伺服器和權威伺服器，以最終獲取準確的IP地址。這樣，用戶可以通過IP地址與目標伺服器建立連接並訪問網站。</p><h4 id="技術特點">技術特點</h4><ul><li>使用UDP或TCP協議，默認端口為53。</li><li>查詢和響應都是明文傳輸。</li><li>支持各種記錄類型，如A (IPv4)、 AAAA (IPv6)、 MX (郵件服務器)、 CNAME(別名)等。</li></ul><h4 id="優點">優點</h4><ul><li>廣泛部署和支持。</li><li>查詢速度快，延遲低。</li><li>易於管理和故障排除。</li></ul><h4 id="缺點">缺點</h4><ul><li>缺乏加密，容易被竊聽或篡改。</li><li>容易受到中間人攻擊和DNS劫持。</li></ul><h3 id="dns-over-tls-dot">DNS over TLS (DoT)</h3><h4 id="工作原理-1">工作原理</h4><p>DoT通過在傳統DNS協議之上添加TLS (傳輸層安全協議)層來運作。當客戶端需要進行DNS查詢時，它首先與支持DoT的DNS服務器建立一個加密的TLS連接，通常使用TCP的853端口。在此安全通道建立後，客戶端將其DNS查詢封裝在TLS協議中發送。DNS服務器接收並解密這個查詢，處理它，然後通過同一加密通道發送加密的響應。客戶端接收到響應後進行解密，獲得所需的DNS信息。</p><h4 id="技術特點-1">技術特點</h4><ul><li>使用TCP協議,標準端口為853。</li><li>需要TLS 1.2或更高版本。</li><li>支持SNI (Server Name Indication) 以支持虛擬主機。</li><li>可以使用會話恢復來減少後續連接的延遲。</li></ul><h4 id="優點-1">優點</h4><ul><li>提供點對點加密,防止DNS查詢被竊聽。</li><li>驗證DNS服務器,減少中間人攻擊的風險。</li><li>相對容易實施,與現有DNS基礎設施兼容性好。</li></ul><h4 id="缺點-1">缺點</h4><ul><li>可能被防火牆阻擋(因為使用非標準端口)。</li><li>連接建立可能較慢(需要TLS握手)。</li></ul><h3 id="dns-over-https-doh">DNS over HTTPS (DoH)</h3><h4 id="工作原理-2">工作原理</h4><p>將DNS查詢和回應封裝在HTTPS協議之上，以加密和保護用戶的DNS流量。當用戶發出DNS查詢時，這些查詢通過HTTPS連接傳輸到DNS解析伺服器。HTTPS利用TLS（傳輸層安全）協議來加密數據，確保查詢內容在傳輸過程中保持私密和安全。這一過程不僅隱藏了DNS查詢，還讓它們看起來像普通的HTTPS流量，進一步防止流量監控和攔截，提高了用戶的網路隱私和安全性。</p><h4 id="技術特點-2">技術特點</h4><ul><li>使用標準HTTPS端口443。</li><li>支持HTTP/2和HTTP/3,允許多路複用。</li><li>查詢可以使用GET或POST方法,響應通常是JSON格式或DNS wire format。</li><li>可以利用現有的Web優化技術,如CDN。</li></ul><h4 id="優點-2">優點</h4><ul><li>高度加密,難以與普通Web流量區分。</li><li>可以繞過某些網絡限制和審查。</li><li>利用現有的Web安全機制(如HSTS, HPKP)。</li></ul><h4 id="缺點-2">缺點</h4><ul><li>實施相對複雜。</li><li>可能增加延遲(due to HTTPS開銷)。</li></ul><h2 id="三者比較">三者比較</h2><p>安全性: 傳統DNS &lt; DoT ≈ DoH</p><p>隱私保護: 傳統DNS &lt; DoT &lt; DoH</p><p>速度: 傳統DNS &gt; DoT &gt; DoH</p><p>實施複雜度: 傳統DNS &lt; DoT &lt; DoH</p><h2 id="啟用doh-windows10">啟用DoH (windows10)</h2><h3 id="方式一">方式一</h3><ol type="1"><li>開啟登錄編輯程式或win+R輸入regedit<br /></li><li>到這<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters</code>目錄底下<br /></li><li>右鍵新增DWORD 參數<code>EnableAutoDoh</code>並將值設定為2<br /><img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722149741/DoHDoT/qu1fglbo5eqtdak7dmgt.webp"alt="登錄檔位置" /> <img data-src="https://blog.netwrix.com/wp-content/uploads/2022/10/DNS-over-HTTPS-2.png.webp"alt="將值設為2" /></li><li>網路介面卡設定有支援DoH的DNS server</li></ol><h3 id="方式二">方式二</h3><ol type="1"><li>在開始功能表中選擇設定。</li><li>開啟 網路設定。</li><li>在網路狀態下，開啟 所需網際網路連線的屬性選單。</li><li>點選 DNS 設定下的編輯 。</li><li>選擇 手動選項，然後指定首選 DNS 和備用 DNS IP 位址。 Windows 10目前支援的 DNS</li></ol><blockquote><p>提供者有： Cloudflare – 主：1.1.1.1，備用：1.0.0.1 Google –主：8.8.8.8，備用：8.8.4.4 Quad9 –主：9.9.9.9，備用：149.112.112.112</p></blockquote><ol start="6" type="1"><li>在「首選 DNS」和「備用 DNS」下選擇「僅加密（透過 HTTPS 的DNS）」進行加密。</li></ol><blockquote><p>如果需要，您可以為 IPv6 設定相同的內容（前面的步驟適用於 IPv4）。</p></blockquote><h2 id="啟用doh-windows11">啟用DoH (windows11)</h2><ol type="1"><li><p>打開設定或 <code>Win + I</code></p></li><li><p>網路和網際網路</p></li><li><p>選擇您正在使用的網路（例如 Wi-Fi或乙太網），然後點擊「屬性」。</p></li><li><p>編輯 DNS 設定，在「IP 設定」下，找到「DNS伺服器指派」並點擊「編輯」。</p></li><li><p>選擇「手動」，打開「IPv4」或「IPv6」，然後在「優先」和「替代」DNS伺服器中輸入支援 DoH 的 DNS 伺服器地址（如 Google DNS 8.8.8.8 和 8.8.4.4或 Cloudflare 1.1.1.1 和 1.0.0.1）。</p></li><li><p>選擇「加密的僅 (DNS over HTTPS)」或HTTPS上的DNS。 <img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722150856/DoHDoT/trru6q2h6pa8urz9dl8j.png"alt="設定位置" /></p></li></ol><h2 id="啟用doh瀏覽器browser">啟用DoH(瀏覽器browser)</h2><h3 id="chrome">chrome</h3><p>設定→隱私權與安全性→安全性→進階→ 使用安全DNS<br /><img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722152459/DoHDoT/wctbwhnzngxmjoyg2hom.png"alt="chrome設定位置" /></p><h3 id="edge">Edge</h3><p>設定→隱私權、搜尋與服務→安全性→使用安全DNS→選擇服務提供者<br /><img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722152737/DoHDoT/a2n8ic2qdo3baoisfodc.png"alt="Edge設定位置" /></p><h3 id="firefox">firefox</h3><p>設定→隱私權與安全性→DNS over HTTPS→加強保護→選擇服務提供者<br /><img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722152954/DoHDoT/c6e9juyzg86tcwqkmmwc.png"alt="firefox設定位置" /></p><h2 id="wifi-router設定dot以asus為例">wifirouter設定DoT(以asus為例)</h2><ol type="1"><li>外部網路(WAN) → 網際網路 → 在DNS 隱私通訊協定選擇DNS overTLS(DoT)啟用此功能。 <img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722151315/DoHDoT/vonbzrfsqkaady6olapk.png"alt="設定位置" /></li><li>在重設伺服器項目的下拉清單中選擇您要使用的伺服器 <img data-src="https://km-ap.asus.com/uploads/PhotoLibrarys/66aa29cd-c141-45f0-9576-77de29c4f347/20231115172726569_2.png"alt="DNS下拉選單" /> <img data-src="https://km-ap.asus.com/uploads/PhotoLibrarys/66aa29cd-c141-45f0-9576-77de29c4f347/20231115172726590_3.png"alt="儲存設定" /></li></ol><blockquote><p>註：根據官方說法 (b1)DNS伺服器:允許此路由器自動從網路服務供應商(ISP)中獲取DNS的IP位址。</p><p>(b2)Forward local domain queries to upstream DNS:告知dnsmasq，路由器本地端網域中主機名稱查詢應轉送到WAN介面上的設定的上游DNS。例如，適用於如果您的上游DNS是Windows Server。</p><p>(b3)Enable DNS Rebind protection:啟用此功能將保護您的LAN免於DNS重新綁定功擊，但它會阻止上游DNS伺服器將查詢解析為任何無法路由器的IP(例如，192.168.1.1)。</p><p>(b4)Enable DNSSEC support:確保在查詣啟用DNSSEC的網域時DNS查詢不會被惡意第三方破解入侵。請確保您的WAN/ISP DNS與DNSSEC相容，否則DNS查詢將一直失敗。</p><p>(b5)Prevent client auto DoH:某些戶端會自動透過HTTPS切換到DNS，略過您慣用的DNS伺服器。此選項可阻止這種情況。如果設定為<ahref="預設值">自動</a>，則只有在全域模式下啟用DNSPrivacy或DNSFilter時才會阻止這情況。</p><p>(b6)DNS 隱私通訊協定: 預設為[無]，要撰擇[DNS-over-TLS (DoT)]後才會出現以下3個項目，您可以將路由器設定為使用支援加密的第三方DNS伺服器，以防止窺探您的DNS查詢。</p><p>(b6-1)DNS-over-TLS 設定檔:預設為[嚴格]模式，在嚴格模式下，只有在遠端伺服器的身份可以通過驗證的情況下，才允許使用DNS伺服器。在機會模式下，將會嘗試進行身份驗證，但如果身份驗證失敗，仍會使用該伺服器，讓名稱解析仍可以正常工作。</p><p>(b6-2)重設伺服器:預先設定的伺服器，請選擇一個來為您預先填寫以下欄位(DNS-over-TLS伺服器清單)，然後按下新增按鈕將伺服器加入到清單中。</p></blockquote><h2 id="檢查設備是否使用doh或dot">檢查設備是否使用DoH或DoT</h2><p>可以使用cloudflare提供的以下兩個網址做檢查<br />1. <span class="exturl" data-url="aHR0cHM6Ly9vbmUub25lLm9uZS5vbmUvaGVscC8=">https://one.one.one.one/help/<i class="fa fa-external-link-alt"></i></span><br />2. <span class="exturl" data-url="aHR0cHM6Ly93d3cuY2xvdWRmbGFyZS5jb20vemgtdHcvc3NsL2VuY3J5cHRlZC1zbmkvI3Jlc3VsdHM=">https://www.cloudflare.com/zh-tw/ssl/encrypted-sni/#results<i class="fa fa-external-link-alt"></i></span></p><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY2xvdWRmbGFyZS5jb20vemgtdHcvbGVhcm5pbmcvZG5zL2Rucy1vdmVyLXRscy8=">https://www.cloudflare.com/zh-tw/learning/dns/dns-over-tls/<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLm5ldHdyaXguY29tLzIwMjIvMTAvMTEvZG5zLW92ZXItaHR0cHMv">https://blog.netwrix.com/2022/10/11/dns-over-https/<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93b3NodWIuY29tL2VuYWJsZS1kbnMtb3Zlci1odHRwcy13aW5kb3dzLw==">https://woshub.com/enable-dns-over-https-windows/<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmNsb3VkZmxhcmUuY29tLzEuMS4xLjEvZW5jcnlwdGlvbi9kbnMtb3Zlci1odHRwcy9lbmNyeXB0ZWQtZG5zLWJyb3dzZXJzLw==">https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYXN1cy5jb20vdHcvc3VwcG9ydC9GQVEvMTAxMTcxNS8=">https://www.asus.com/tw/support/FAQ/1011715/<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9yb2cuYXN1cy5jb20vdHcvc3VwcG9ydC9GQVEvMTA1MTQyOA==">https://rog.asus.com/tw/support/FAQ/1051428<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZmlzaG1hbi5pZHYudHcvcGhwZm9ydW0vdGhyZWFkLTIwMTE3LTEtMS5odG1s">https://www.fishman.idv.tw/phpforum/thread-20117-1-1.html<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZWxldmVuZm9ydW0uY29tL3QvZW5hYmxlLWRucy1vdmVyLXRscy1kb3QtaW4td2luZG93cy0xMS45MDEyLw==">https://www.elevenforum.com/t/enable-dns-over-tls-dot-in-windows-11.9012/<i class="fa fa-external-link-alt"></i></span></li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> Security </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DNS </tag>
+            
+            <tag> Network </tag>
+            
+        </tags>
       
     </entry>
     
@@ -117,11 +131,11 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Linux </category>
           
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -157,9 +171,9 @@
       
         <tags>
             
-            <tag> GitHub </tag>
-            
             <tag> website </tag>
+            
+            <tag> GitHub </tag>
             
             <tag> Hexo </tag>
             
@@ -380,9 +394,9 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -436,9 +450,9 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -615,9 +629,9 @@
       
         <tags>
             
-            <tag> GitHub </tag>
-            
             <tag> website </tag>
+            
+            <tag> GitHub </tag>
             
             <tag> Hexo </tag>
             
