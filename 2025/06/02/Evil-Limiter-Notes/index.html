@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/snowflake180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/snowflake32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/snowflake16x16.png">
+  <link rel="mask-icon" href="/blog/images/snowflake.svg" color="#222">
+  <meta name="google-site-verification" content="google76b4f15a94f05f2c.html">
+  <meta name="msvalidate.01" content="BingSiteAuth.xml">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="簡介 Evil Limiter 是一款用於監控、分析並限制本地網路中裝置頻寬的工具，無需對目標裝置具有實體或管理員權限。它透過 ARP 欺騙（ARP spoofing）和流量控制技術，因此Evil Limiter 僅支援 IPv4 網路對目標裝置的上傳與下載速度進行限制或完全封鎖。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="開源工具 Evil Limiter(控制區域網路流量)">
+<meta property="og:url" content="https://poyu-liao.github.io/2025/06/02/Evil-Limiter-Notes/">
+<meta property="og:site_name" content="Robert&#39;s Blog">
+<meta property="og:description" content="簡介 Evil Limiter 是一款用於監控、分析並限制本地網路中裝置頻寬的工具，無需對目標裝置具有實體或管理員權限。它透過 ARP 欺騙（ARP spoofing）和流量控制技術，因此Evil Limiter 僅支援 IPv4 網路對目標裝置的上傳與下載速度進行限制或完全封鎖。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2025-06-02T13:11:52.000Z">
+<meta property="article:modified_time" content="2025-06-02T15:09:17.787Z">
+<meta property="article:author" content="Po Yu Liao">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="GitHub">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://poyu-liao.github.io/2025/06/02/Evil-Limiter-Notes/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/2025/06/02/Evil-Limiter-Notes/","path":"2025/06/02/Evil-Limiter-Notes/","title":"開源工具 Evil Limiter(控制區域網路流量)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>開源工具 Evil Limiter(控制區域網路流量) | Robert's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WYW6952KH"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5WYW6952KH","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/blog/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/blog/css/injector/main.css" /><link rel="preload" as="style" href="/blog/css/injector/light.css" /><link rel="preload" as="style" href="/blog/css/injector/dark.css" />
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Robert's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">skysnowstarshine</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D"><span class="nav-number">2.</span> <span class="nav-text">安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%B4%B9"><span class="nav-number">3.</span> <span class="nav-text">指令介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scan---range-ip-range"><span class="nav-number">3.1.</span> <span class="nav-text">scan [--range IP range]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hosts---force"><span class="nav-number">3.2.</span> <span class="nav-text">hosts [--force]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit-id1id2...-rate---upload---download"><span class="nav-number">3.3.</span> <span class="nav-text">limit [ID1,ID2,...]
+[rate] (--upload) (--download)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#block-id1id2...---upload---download"><span class="nav-number">3.4.</span> <span class="nav-text">block [ID1,ID2,...]
+(--upload) (--download)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#free-id1id2..."><span class="nav-number">3.5.</span> <span class="nav-text">free [ID1,ID2,...]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add-ip---mac-mac"><span class="nav-number">3.6.</span> <span class="nav-text">add [IP] (--mac [MAC])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#monitor---interval-time-in-ms"><span class="nav-number">3.7.</span> <span class="nav-text">monitor (--interval [time in
+ms])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#analyze-id1id2...---duration-time-in-s"><span class="nav-number">3.8.</span> <span class="nav-text">analyze [ID1,ID2,...]
+(--duration [time in s])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watch-%E7%B3%BB%E5%88%97%E6%8C%87%E4%BB%A4%E8%87%AA%E5%8B%95%E8%BF%BD%E8%B9%A4-ip-%E8%AE%8A%E5%8B%95"><span class="nav-number">3.9.</span> <span class="nav-text">Watch 系列指令（自動追蹤 IP
+變動）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Po Yu Liao"
+      src="/blog/images/A.gif">
+  <p class="site-author-name" itemprop="name">Po Yu Liao</p>
+  <div class="site-description" itemprop="description">一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BvWXUtTGlhbw==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PoYu-Liao"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnBveXVsaWFvQHByb3Rvbi5tZQ==" title="E-Mail → mailto:poyuliao@proton.me"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vY2hhbm5lbC9VQzVFOExBOVZSRUp2QUNOcUVobG0zWlE=" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UC5E8LA9VREJvACNqEhlm3ZQ"><i class="fab fa-youtube fa-fw"></i>YouTube</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          連結
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly93d3cudGlueXRzdW5hbWkuaW5mby8=" title="https:&#x2F;&#x2F;www.tinytsunami.info&#x2F;">羊羽手札</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/2025/06/02/Evil-Limiter-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/A.gif">
+      <meta itemprop="name" content="Po Yu Liao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Robert's Blog">
+      <meta itemprop="description" content="一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="開源工具 Evil Limiter(控制區域網路流量) | Robert's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          開源工具 Evil Limiter(控制區域網路流量)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2025-06-02 21:11:52 / 修改時間：23:09:17" itemprop="dateCreated datePublished" datetime="2025-06-02T21:11:52+08:00">2025-06-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Security/" itemprop="url" rel="index"><span itemprop="name">Security</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="簡介">簡介</h2>
+<p>Evil Limiter
+是一款用於監控、分析並限制本地網路中裝置頻寬的工具，無需對目標裝置具有實體或管理員權限。它透過
+ARP 欺騙（ARP spoofing）和流量控制技術，因此Evil Limiter 僅支援 IPv4
+網路對目標裝置的上傳與下載速度進行限制或完全封鎖。<br />
+<span id="more"></span></p>
+<blockquote>
+<p><em>免責聲明：</em><br />
+未經網路或設備所有者明確授權，任何人不得以任何形式干擾、入侵或破壞；本工具僅供教育研究與示範用途，不得用於任何非法或未經授權之活動。</p>
+</blockquote>
+<h2 id="安裝">安裝</h2>
+<p>安裝指令<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/bitbrute/evillimiter.git</span><br><span class="line"><span class="built_in">cd</span> evillimiter</span><br><span class="line"><span class="built_in">sudo</span> python3 setup.py install</span><br></pre></td></tr></table></figure></p>
+<p>執行指令</p>
+<p><code>evillimiter</code>或<code>python3 bin/evillimiter</code></p>
+<h2 id="指令介紹">指令介紹</h2>
+<h3 id="scan---range-ip-range">scan [--range IP range]</h3>
+<ul>
+<li>功能：掃描網路中所有在線的裝置。為了限制裝置的頻寬，必須先使用 scan
+掃描裝置並取得後續使用的識別碼ID。<br />
+</li>
+<li>參數： --range：指定要掃描的 IP 範圍。<br />
+</li>
+<li>範例：<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scan</span><br><span class="line">scan --range 192.168.178.1-192.168.178.50</span><br><span class="line">scan --range 192.168.178.1/24</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="hosts---force">hosts [--force]</h3>
+<ul>
+<li>功能：列出已掃描的裝置資訊，包括：
+<ul>
+<li>ID（供後續使用的識別碼）<br />
+</li>
+<li>IP 地址<br />
+</li>
+<li>MAC 位址<br />
+</li>
+<li>狀態（是否已限制、封鎖等）<br />
+</li>
+</ul></li>
+<li>參數：--force：強制重新列出所有掃描到的裝置資訊。<br />
+</li>
+<li>範例：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hosts</span><br><span class="line">hosts --force</span><br></pre></td></tr></table></figure>
+<h3 id="limit-id1id2...-rate---upload---download">limit [ID1,ID2,...]
+[rate] (--upload) (--download)</h3>
+<ul>
+<li>功能：對指定的裝置設定頻寬上限，限制其上傳與/或下載速度。<br />
+</li>
+<li>參數：
+<ul>
+<li>ID：裝置的 ID（可從 hosts 指令查得）<br />
+</li>
+<li>rate：限制速度，例如 100kbit, 1mbit<br />
+</li>
+<li>--upload：僅限制上傳速度<br />
+</li>
+<li>--download：僅限制下載速度</li>
+</ul></li>
+<li>範例：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">limit</span> 4 100kbit</span><br><span class="line"><span class="built_in">limit</span> 2,3,4 1gbit --download</span><br><span class="line"><span class="built_in">limit</span> all 200kbit --upload</span><br></pre></td></tr></table></figure>
+<h3 id="block-id1id2...---upload---download">block [ID1,ID2,...]
+(--upload) (--download)</h3>
+<ul>
+<li>功能：完全封鎖指定裝置的網路連線，可選擇封鎖上傳或下載。<br />
+</li>
+<li>範例：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">block 3,2</span><br><span class="line">block all --upload</span><br></pre></td></tr></table></figure>
+<h3 id="free-id1id2...">free [ID1,ID2,...]</h3>
+<ul>
+<li>功能：解除對裝置的頻寬限制或封鎖。<br />
+</li>
+<li>範例：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">free 3</span><br><span class="line">free all</span><br></pre></td></tr></table></figure>
+<h3 id="add-ip---mac-mac">add [IP] (--mac [MAC])</h3>
+<ul>
+<li>功能：手動新增裝置（若未被掃描到）至主機清單。MAC
+地址會自動解析，但也可手動指定。<br />
+</li>
+<li>範例：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add 192.168.178.24</span><br><span class="line">add 192.168.1.50 --mac 1c:<span class="built_in">fc</span>:bc:2d:a6:37</span><br></pre></td></tr></table></figure>
+<h3 id="monitor---interval-time-in-ms">monitor (--interval [time in
+ms])</h3>
+<ul>
+<li>功能：監控目前被限制裝置的頻寬使用情況。<br />
+</li>
+<li>參數：--interval：設定更新頻率（毫秒）<br />
+</li>
+<li>範例：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">monitor --interval 600</span><br></pre></td></tr></table></figure>
+<h3 id="analyze-id1id2...---duration-time-in-s">analyze [ID1,ID2,...]
+(--duration [time in s])</h3>
+<ul>
+<li>功能：分析指定裝置在指定時間內的頻寬使用情況（不會限制它們）。<br />
+</li>
+<li>參數：--duration：分析持續時間（秒）<br />
+</li>
+<li>範例：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">analyze 2,3 --duration 120</span><br></pre></td></tr></table></figure>
+<h3 id="watch-系列指令自動追蹤-ip-變動">Watch 系列指令（自動追蹤 IP
+變動）</h3>
+<ul>
+<li>功能：這組指令讓你追蹤在 IP 變動後（例如 DHCP 導致 IP
+改變）仍能持續識別裝置。<br />
+</li>
+<li>參數：
+<ul>
+<li><code>watch</code> 顯示目前的監控狀態與追蹤清單。<br />
+</li>
+<li><code>watch add [ID1,ID2,...]</code> 將指定 ID 加入追蹤清單。<br />
+</li>
+<li><code>watch remove [ID1,ID2,...]</code> 從追蹤清單中移除指定
+ID。<br />
+</li>
+<li><code>watch set [attr] [value]</code>
+設定追蹤監控的參數。(例如：interval：掃描時間間隔（秒）)</li>
+</ul></li>
+<li>範例：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">watch</span><br><span class="line">watch add 3,4</span><br><span class="line">watch remove all</span><br><span class="line">watch <span class="built_in">set</span> interval 120</span><br></pre></td></tr></table></figure>
+<h2 id="參考資料">參考資料</h2>
+<ol type="1">
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2JpdGJydXRlL2V2aWxsaW1pdGVyP3JlZj1qb25lYXRvbi5uZXQ=">Evil
+Limiter<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qb25lYXRvbi5uZXQva2FsaS8=">How-To use Evil Limiter on
+Kali<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/linux/" rel="tag"># linux</a>
+              <a href="/blog/tags/GitHub/" rel="tag"># GitHub</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2025/02/09/Cybersecurity-PT-GPT/" rel="prev" title="Cybersecurity 專門的AI工具">
+                  <i class="fa fa-angle-left"></i> Cybersecurity 專門的AI工具
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-snowflake"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Po Yu Liao</span>
+  </div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","cdn":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/blog/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://poyu-liao.github.io/2025/06/02/Evil-Limiter-Notes/"}</script>
+  <script src="/blog/js/third-party/quicklink.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","labels":"Blog-Gitalk","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"97b6be16c6b83e6bfcbba3c05b42d059"}</script>
+<script src="/blog/js/third-party/comments/gitalk.js"></script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/blog/js/injector.js"></script>
+</body>
+</html>
