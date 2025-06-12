@@ -21,31 +21,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/blog/js/config.js"></script>
 
-    <meta name="description" content="硬體需求 CPU處理器: Dual Core CPU Graphics: 不需要圖形加速功能 記憶體: 1 GB RAM 儲存空間: 至少20 GB可用空間">
+    <meta name="description" content="簡介 SSLyze是一款快速且功能強大的 SSL&#x2F;TLS開源掃描工具，能夠分析伺服器的 SSL&#x2F;TLS 配置，檢測web頁面加密設定是否安全，並識別已知的 TLS 漏洞（如 Heartbleed、ROBOT、OpenSSL CCS Injection...等）。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="取代kali輕量化滲透測試作業系統parrotOS">
-<meta property="og:url" content="https://poyu-liao.github.io/2023/11/24/parrotOS-introduction/">
+<meta property="og:title" content="開源工具 sslyze">
+<meta property="og:url" content="https://poyu-liao.github.io/2025/06/12/sslyze-Notes/">
 <meta property="og:site_name" content="Robert&#39;s Blog">
-<meta property="og:description" content="硬體需求 CPU處理器: Dual Core CPU Graphics: 不需要圖形加速功能 記憶體: 1 GB RAM 儲存空間: 至少20 GB可用空間">
+<meta property="og:description" content="簡介 SSLyze是一款快速且功能強大的 SSL&#x2F;TLS開源掃描工具，能夠分析伺服器的 SSL&#x2F;TLS 配置，檢測web頁面加密設定是否安全，並識別已知的 TLS 漏洞（如 Heartbleed、ROBOT、OpenSSL CCS Injection...等）。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://parrotsec.org/docs/img/parrot-logo.svg">
-<meta property="article:published_time" content="2023-11-24T07:50:15.000Z">
-<meta property="article:modified_time" content="2024-07-28T04:36:23.240Z">
+<meta property="article:published_time" content="2025-06-12T12:18:28.000Z">
+<meta property="article:modified_time" content="2025-06-12T13:20:59.694Z">
 <meta property="article:author" content="Po Yu Liao">
 <meta property="article:tag" content="PT">
 <meta property="article:tag" content="linux">
-<meta property="article:tag" content="Parrot">
+<meta property="article:tag" content="GitHub">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://parrotsec.org/docs/img/parrot-logo.svg">
 
 
-<link rel="canonical" href="https://poyu-liao.github.io/2023/11/24/parrotOS-introduction/">
+<link rel="canonical" href="https://poyu-liao.github.io/2025/06/12/sslyze-Notes/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/2023/11/24/parrotOS-introduction/","path":"2023/11/24/parrotOS-introduction/","title":"取代kali輕量化滲透測試作業系統parrotOS"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/2025/06/12/sslyze-Notes/","path":"2025/06/12/sslyze-Notes/","title":"開源工具 sslyze"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>取代kali輕量化滲透測試作業系統parrotOS | Robert's Blog</title>
+<title>開源工具 sslyze | Robert's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WYW6952KH"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5WYW6952KH","only_pageview":false,"measure_protocol_api_secret":null}</script>
@@ -148,8 +146,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E9%AB%94%E9%9C%80%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">硬體需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%B4%B9"><span class="nav-number">2.</span> <span class="nav-text">介紹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8%E4%BB%A5%E4%B8%8B%E7%A4%BA%E7%AF%84%E4%BB%A5-security-edition%E5%92%8Chome-edition%E7%82%BA%E4%B8%BB"><span class="nav-number">3.</span> <span class="nav-text">安裝教學(以下示範以
-Security Edition和Home Edition為主)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os%E6%AF%94%E8%BC%83"><span class="nav-number">4.</span> <span class="nav-text">OS比較</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D"><span class="nav-number">2.</span> <span class="nav-text">安裝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E6%96%B9%E6%B3%95%E4%B8%80debian-linux"><span class="nav-number">2.1.</span> <span class="nav-text">安裝方法一(Debian linux)：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E6%96%B9%E6%B3%95%E4%BA%8Cpython"><span class="nav-number">2.2.</span> <span class="nav-text">安裝方法二(python)：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E6%96%B9%E6%B3%95%E4%B8%89github"><span class="nav-number">2.3.</span> <span class="nav-text">安裝方法三(github)：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%B4%B9"><span class="nav-number">3.</span> <span class="nav-text">指令介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mozilla-%E9%85%8D%E7%BD%AE%E7%AC%A6%E5%90%88%E6%80%A7%E6%AA%A2%E6%9F%A5"><span class="nav-number">3.1.</span> <span class="nav-text">Mozilla 配置符合性檢查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E4%BF%A1%E4%BB%BB%E6%86%91%E8%AD%89"><span class="nav-number">3.2.</span> <span class="nav-text">更新信任憑證</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BC%B8%E5%85%A5%E8%BC%B8%E5%87%BA%E9%81%B8%E9%A0%85"><span class="nav-number">3.3.</span> <span class="nav-text">輸入&#x2F;輸出選項</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%A3%E7%B7%9A%E9%81%B8%E9%A0%85"><span class="nav-number">3.4.</span> <span class="nav-text">連線選項</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B6%E7%AB%AF%E8%AD%89%E6%9B%B8%E9%81%B8%E9%A0%85"><span class="nav-number">3.5.</span> <span class="nav-text">客戶端證書選項</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%8B%E5%88%A5%E6%8E%83%E6%8F%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">3.6.</span> <span class="nav-text">個別掃描功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tlsssl-%E5%8D%94%E5%AE%9A%E7%89%88%E6%9C%AC%E6%94%AF%E6%8F%B4%E6%AA%A2%E6%9F%A5"><span class="nav-number">3.7.</span> <span class="nav-text">TLS&#x2F;SSL 協定版本支援檢查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +222,7 @@ Security Edition和Home Edition為主)</span></a></li><li class="nav-item nav-le
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/2023/11/24/parrotOS-introduction/">
+    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/2025/06/12/sslyze-Notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/A.gif">
@@ -238,12 +235,12 @@ Security Edition和Home Edition為主)</span></a></li><li class="nav-item nav-le
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="取代kali輕量化滲透測試作業系統parrotOS | Robert's Blog">
+      <meta itemprop="name" content="開源工具 sslyze | Robert's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          取代kali輕量化滲透測試作業系統parrotOS
+          開源工具 sslyze
         </h1>
 
         <div class="post-meta-container">
@@ -253,15 +250,9 @@ Security Edition和Home Edition為主)</span></a></li><li class="nav-item nav-le
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
+      
 
-      <time title="創建時間：2023-11-24 15:50:15" itemprop="dateCreated datePublished" datetime="2023-11-24T15:50:15+08:00">2023-11-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-07-28 12:36:23" itemprop="dateModified" datetime="2024-07-28T12:36:23+08:00">2024-07-28</time>
+      <time title="創建時間：2025-06-12 20:18:28 / 修改時間：21:20:59" itemprop="dateCreated datePublished" datetime="2025-06-12T20:18:28+08:00">2025-06-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -290,113 +281,232 @@ Security Edition和Home Edition為主)</span></a></li><li class="nav-item nav-le
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="硬體需求">硬體需求</h2>
-<p>CPU處理器: Dual Core CPU<br />
-Graphics: 不需要圖形加速功能<br />
-記憶體: 1 GB RAM<br />
-儲存空間: 至少20 GB可用空間<br />
-<span id="more"></span> <img data-src="https://parrotsec.org/docs/img/parrot-logo.svg"
-alt="Parrot Security 5.0 與 MATE 桌面" /></p>
-<h2 id="介紹">介紹</h2>
-<p>Parrot OS 是一個基於 Debian
-的免費開源Linux發行版，主要設計用於測試、漏洞評估、渗透測試、數位鑑識和匿名上網等安全性相關的任務。Parrot提供了一個強大而靈活的環境，專為安全專業人員、測試人員和注重隱私的人員而設計。Parrot內建Kali
-Linux的常見的工具之外，還有自己衍生的工具如AnonSurf、Airgeddon、Wifiphisher...等。該系統的設計初衷是讓安全專家熟悉並讓新入門的學生易於使用，但它並沒有像其他通用發行版那樣試圖隱藏其內部結構。這意味著系統中包含了許多自動化工具，使其更易於使用，同時也很好地暴露了系統的底層內容。一個很好的例子是鸚鵡更新提醒：這是一個簡單但功能強大的程序，每週提示使用者檢查一次系統升級。但它不是將升級過程隱藏在進度條後面，而是從
-apt 輸出向用戶顯示完整的升級過程。另一個重要的區別是，Parrot
-預設會停用系統中預先安裝的所有網路服務，不僅是為了保持非常低的 RAM
-佔用空間並提供更好的效能，而且還可以避免目標網路中的服務暴露。每個網路服務都需要在使用者需要時手動啟動。此外parrot有分為多個版本：Security、Home、Cloud...等版本，以滿足所有可能的硬體和使用者的需求。</p>
-<h2
-id="安裝教學以下示範以-security-edition和home-edition為主">安裝教學(以下示範以
-Security Edition和Home Edition為主)</h2>
-<p>1.到官網下載所需版本的iso檔<span class="exturl" data-url="aHR0cHM6Ly93d3cucGFycm90c2VjLm9yZy9kb3dubG9hZC8=">https://www.parrotsec.org/download/<i class="fa fa-external-link-alt"></i></span>，其中左側欄位可以選擇版本，右側download為直接使用瀏覽器下載，torrent則是使用BT。</p>
-<p><img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722141214/rcrtyyz0dcncmp66vzqf.png"
-alt="Parrot下載頁面" /> 2. 選擇第一項try/install<br />
-<img data-src="https://www.parrotsec.org/docs/assets/images/10-a4ba568741ce671143c3602e67e7be06.png"
-alt="啟動選單" /></p>
-<ol start="3" type="1">
-<li><p>選擇install
-Parrot(如果沒有要安裝只是想要嘗試的話，到這步即可)<br />
-<img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722137817/rwvymg4xutdggzq0fyfs.png"
-alt="安裝系統" /></p></li>
-<li><p>接下來，選擇系統語言、區域跟輸入法<br />
-<img data-src="https://www.parrotsec.org/docs/assets/images/12-bd7087d65b02e36d298ac845a5bed0de.png"
-alt="選擇系統語言" /> <img data-src="https://www.parrotsec.org/docs/assets/images/13-a888fa8989c1524576fd6f5bf1e8f171.png"
-alt="選擇區域" /> <img data-src="https://www.parrotsec.org/docs/assets/images/14-9611f25231f447c3448535356496f7e2.png"
-alt="選擇輸入法" /></p></li>
-<li><p>分割磁區和選擇是否使用swap<br />
-<img data-src="https://www.parrotsec.org/docs/assets/images/16-b30e006873bd056da0f4b7c015b1e8a5.png"
-alt="選擇磁區選擇swap" /></p></li>
-</ol>
+    <div class="post-body" itemprop="articleBody"><h2 id="簡介">簡介</h2>
+<p>SSLyze是一款快速且功能強大的 SSL/TLS開源掃描工具，能夠分析伺服器的
+SSL/TLS 配置，檢測web頁面加密設定是否安全，並識別已知的 TLS 漏洞（如
+Heartbleed、ROBOT、OpenSSL CCS Injection...等）。</p>
+<span id="more"></span>
 <blockquote>
-<p>如果需要可以透過新增密碼來加密系統<br />
-<img data-src="https://www.parrotsec.org/docs/assets/images/18-e8ba6429db8a4dabc7c57628c148e6a2.png"
-alt="設定密碼和加密" /></p>
+<p><em>免責聲明：</em><br />
+未經網路或設備所有者明確授權，任何人不得以任何形式干擾、入侵或破壞；本工具僅供教育研究與示範用途，不得用於任何非法或未經授權之活動。</p>
 </blockquote>
-<ol start="6" type="1">
-<li><p>設定完使用者帳戶後，確認配置都沒有問題就能按下install<br />
-<img data-src="https://www.parrotsec.org/docs/assets/images/20-1b66236a7ea62ec414f39e68c0316894.png"
-alt="install" /></p></li>
-<li><p>完成<br />
-<img data-src="https://www.parrotsec.org/docs/assets/images/22-698f019e90a6a249bfb9f619fe13e50e.png"
-alt="finish" /></p></li>
-</ol>
-<figure>
-<img data-src="https://res.cloudinary.com/dh4qxvzys/image/upload/v1722138020/duj74crkdttyqzbhyncn.png"
-alt="Parrot desktop" />
-<figcaption aria-hidden="true">Parrot desktop</figcaption>
-</figure>
-<blockquote>
-<p><strong>安裝教學圖片來自於parrot Documentation</strong></p>
-</blockquote>
-<h2 id="os比較">OS比較</h2>
+<h2 id="安裝">安裝</h2>
+<h3 id="安裝方法一debian-linux">安裝方法一(Debian linux)：</h3>
+<p>安裝指令<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install sslyze</span><br></pre></td></tr></table></figure></p>
+<p>執行</p>
+<p><code>sslyze &lt;Target host&gt;</code></p>
+<p>範例</p>
+<p><code>sslyze www.google.com</code></p>
+<h3 id="安裝方法二python">安裝方法二(python)：</h3>
+<p>安裝指令<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade pip setuptools wheel</span><br><span class="line">pip install --upgrade sslyze</span><br></pre></td></tr></table></figure> 執行</p>
+<p><code>python -m sslyze &lt;Target host&gt;</code></p>
+<p>範例<br />
+<code>python -m sslyze www.google.com</code></p>
+<h3 id="安裝方法三github">安裝方法三(github)：</h3>
+<p>安裝指令<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/nabla-c0d3/sslyze.git</span><br><span class="line"><span class="built_in">cd</span> sslyze</span><br><span class="line">pip install .</span><br></pre></td></tr></table></figure> 執行</p>
+<p><code>sslyze &lt;Target host&gt;</code></p>
+<p>範例</p>
+<p><code>sslyze www.google.com</code></p>
+<h2 id="指令介紹">指令介紹</h2>
+<h3 id="mozilla-配置符合性檢查">Mozilla 配置符合性檢查</h3>
+<p>--mozilla_config {modern,intermediate,old,disable}<br />
+檢查伺服器是否符合 Mozilla 的 TLS 配置建議，預設為
+"intermediate"。<br />
+<code>sslyze --mozilla_config modern &lt;Target host&gt;</code></p>
+<h3 id="更新信任憑證">更新信任憑證</h3>
+<p>--update_trust_stores<br />
+下載並更新內建的憑證信任清單。<br />
+<code>sslyze --update_trust_stores</code></p>
+<h3 id="輸入輸出選項">輸入/輸出選項</h3>
+<ul>
+<li><code>--json_out JSON_FILE</code>：將掃描結果輸出為 JSON
+檔案。<br />
+</li>
+<li><code>--targets_in TARGET_FILE</code>：從檔案讀取掃描目標列表，每行一個主機:端口。<br />
+</li>
+<li><code>--quiet</code>：不輸出任何訊息。<br />
+範例<br />
+<code>sslyze --json_out results.json example.com</code></li>
+</ul>
+<h3 id="連線選項">連線選項</h3>
+<ul>
+<li><code>--slow_connection</code>：減少並發連線數量，適用於網路不穩或伺服器負載有限的情況。<br />
+</li>
+<li><code>--https_tunnel &lt;PROXY_SETTINGS&gt;</code>：通過 HTTP
+CONNECT 代理傳送流量（例如 http://user:pw@proxy:8080/）。<br />
+</li>
+<li><code>--starttls &lt;PROTOCOL&gt;</code>：執行 StartTLS
+握手，支援協議包括 smtp、xmpp、pop3、imap 等。<br />
+</li>
+<li><code>--xmpp_to &lt;HOSTNAME&gt;</code>：為 XMPP 的 StartTLS 指定
+'to' 屬性主機名。<br />
+</li>
+<li><code>--sni &lt;SERVER_NAME_INDICATION&gt;</code>：使用 SNI
+指定連線主機名，適用於 TLS 1.0 以上。<br />
+範例<br />
+<code>sslyze --starttls smtp smtp.example.com:587</code></li>
+</ul>
+<h3 id="客戶端證書選項">客戶端證書選項</h3>
+<ul>
+<li><code>--cert &lt;CERTIFICATE_FILE&gt;</code>：指定客戶端證書鏈檔案（PEM
+格式）。<br />
+</li>
+<li><code>--key &lt;KEY_FILE&gt;</code>：指定客戶端私鑰檔案。<br />
+</li>
+<li><code>--keyform &lt;KEY_FORMAT&gt;</code>：私鑰格式（DER 或
+PEM，預設為 PEM）。<br />
+</li>
+<li><code>--pass &lt;PASSPHRASE&gt;</code>：私鑰的密碼短語。<br />
+範例<br />
+<code>sslyze --cert client.crt --key client.key --pass mypass example.com</code></li>
+</ul>
+<h3 id="個別掃描功能">個別掃描功能</h3>
 <table>
 <colgroup>
-<col style="width: 29%" />
-<col style="width: 34%" />
-<col style="width: 36%" />
+<col style="width: 18%" />
+<col style="width: 50%" />
+<col style="width: 31%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th>ParrotOS</th>
-<th>Kali Linux</th>
+<th>參數</th>
+<th>說明</th>
+<th>範例指令</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">硬體需求</td>
-<td>輕量化</td>
-<td>不適合效能低下的舊設備</td>
+<td><code>--certinfo</code></td>
+<td>分析 SSL 憑證內容與有效性</td>
+<td><code>sslyze --certinfo example.com</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">工具</td>
-<td>1000多個預先安裝工具</td>
-<td>600多個預先安裝工具</td>
+<td><code>--certinfo_ca_file</code></td>
+<td>指定驗證憑證用的 CA 根憑證檔</td>
+<td><code>--certinfo_ca_file my_ca.pem</code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Desktop Environment</td>
-<td>MATE</td>
-<td>GNOME、Xfce、KDE 和 Enlightenment</td>
+<td><code>--elliptic_curves</code></td>
+<td>顯示伺服器支援的橢圓曲線演算法</td>
+<td><code>sslyze --elliptic_curves example.com</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">IDE</td>
-<td>沒有預先安裝</td>
-<td>有預先安裝</td>
+<td><code>--ems</code></td>
+<td>測試 TLS EMS（Extended Master Secret）支援</td>
+<td><code>sslyze --ems example.com</code></td>
+</tr>
+<tr class="odd">
+<td><code>--heartbleed</code></td>
+<td>測試是否存在 Heartbleed 漏洞</td>
+<td><code>sslyze --heartbleed example.com</code></td>
+</tr>
+<tr class="even">
+<td><code>--robot</code></td>
+<td>測試是否存在 ROBOT 攻擊漏洞</td>
+<td><code>sslyze --robot example.com</code></td>
+</tr>
+<tr class="odd">
+<td><code>--openssl_ccs</code></td>
+<td>測試是否存在 OpenSSL CCS Injection 漏洞</td>
+<td><code>sslyze --openssl_ccs example.com</code></td>
+</tr>
+<tr class="even">
+<td><code>--reneg</code></td>
+<td>測試是否允許不安全的 TLS 重新協商</td>
+<td><code>sslyze --reneg example.com</code></td>
+</tr>
+<tr class="odd">
+<td><code>--resum</code></td>
+<td>測試 TLS 會話恢復（Session Resumption）功能支援</td>
+<td><code>sslyze --resum example.com</code></td>
+</tr>
+<tr class="even">
+<td><code>--resum_attempts</code></td>
+<td>指定會話恢復嘗試次數（預設為 5 次）</td>
+<td><code>--resum_attempts 20</code></td>
+</tr>
+<tr class="odd">
+<td><code>--fallback</code></td>
+<td>測試是否支援 TLS_FALLBACK_SCSV，防止降級攻擊</td>
+<td><code>sslyze --fallback example.com</code></td>
+</tr>
+<tr class="even">
+<td><code>--http_headers</code></td>
+<td>檢查 HTTPS 回應中的安全標頭（如 HSTS、CSP 等）</td>
+<td><code>sslyze --http_headers example.com</code></td>
+</tr>
+<tr class="odd">
+<td><code>--compression</code></td>
+<td>測試是否啟用 TLS 壓縮（可能導致 CRIME 攻擊）</td>
+<td><code>sslyze --compression example.com</code></td>
+</tr>
+<tr class="even">
+<td><code>--early_data</code></td>
+<td>檢查是否支援 TLS 1.3 Early Data（0-RTT）</td>
+<td><code>sslyze --early_data example.com</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tlsssl-協定版本支援檢查">TLS/SSL 協定版本支援檢查</h3>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 40%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>參數</th>
+<th>說明</th>
+<th>範例指令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--sslv2</code></td>
+<td>檢查是否支援過時的 SSL 2.0</td>
+<td><code>sslyze --sslv2 example.com</code></td>
+</tr>
+<tr class="even">
+<td><code>--sslv3</code></td>
+<td>檢查是否支援過時的 SSL 3.0</td>
+<td><code>sslyze --sslv3 example.com</code></td>
+</tr>
+<tr class="odd">
+<td><code>--tlsv1</code></td>
+<td>檢查是否支援 TLS 1.0</td>
+<td><code>sslyze --tlsv1 example.com</code></td>
+</tr>
+<tr class="even">
+<td><code>--tlsv1_1</code></td>
+<td>檢查是否支援 TLS 1.1</td>
+<td><code>sslyze --tlsv1_1 example.com</code></td>
+</tr>
+<tr class="odd">
+<td><code>--tlsv1_2</code></td>
+<td>檢查是否支援 TLS 1.2</td>
+<td><code>sslyze --tlsv1_2 example.com</code></td>
+</tr>
+<tr class="even">
+<td><code>--tlsv1_3</code></td>
+<td>檢查是否支援 TLS 1.3</td>
+<td><code>sslyze --tlsv1_3 example.com</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="參考資料">參考資料</h2>
 <ol type="1">
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucGFycm90c2VjLm9yZy9kb2NzL2ludHJvZHVjdGlvbi93aGF0LWlzLXBhcnJvdA==">What
-is ParrotOS?<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucGFycm90c2VjLm9yZy9kb2NzL2NhdGVnb3J5L2luc3RhbGxhdGlvbg==">How
-to install ParrotOS<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0B0ZWNobGF0ZXN0Lm5ldC9wYXJyb3Rvcy12cy1rYWxpLWxpbnV4LWEtY29tcHJlaGVuc2l2ZS1jb21wYXJpc29uLW9mLXR3by1wb3dlcmhvdXNlLXBlbmV0cmF0aW9uLXRlc3Rpbmctb3BlcmF0aW5nLTlmNWZiY2I3YmU4OQ==">ParrotOS
-vs Kali Linux: A Comprehensive Comparison of Two most widely used
-Penetration Testing Operating Systems<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZWR1cmVrYS5jby9ibG9nL3BhcnJvdC1vcy12cy1rYWxpLWxpbnV4Lw==">ParrotOS vs
-Kali Linux: How to choose the Best?<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUGFycm90X09T">wikipedia Parrot
-OS<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25hYmxhLWMwZDMvc3NseXpl">sslyze<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cua2FsaS5vcmcvdG9vbHMvc3NseXplLw==">sslyze Kali<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9uYWJsYS1jMGQzLmdpdGh1Yi5pby9zc2x5emUvZG9jdW1lbnRhdGlvbi9pbnN0YWxsYXRpb24uaHRtbA==">Installation
+of SSLyze<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9uYWJsYS1jMGQzLmdpdGh1Yi5pby9zc2x5emUvZG9jdW1lbnRhdGlvbi8=">SSLyze<i class="fa fa-external-link-alt"></i></span></li>
 </ol>
 
     </div>
@@ -409,21 +519,18 @@ OS<i class="fa fa-external-link-alt"></i></span></li>
           <div class="post-tags">
               <a href="/blog/tags/PT/" rel="tag"># PT</a>
               <a href="/blog/tags/linux/" rel="tag"># linux</a>
-              <a href="/blog/tags/Parrot/" rel="tag"># Parrot</a>
+              <a href="/blog/tags/GitHub/" rel="tag"># GitHub</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/blog/2023/04/05/hexo-next-optimization/" rel="prev" title="hexo-next 網頁載入效能優化">
-                  <i class="fa fa-angle-left"></i> hexo-next 網頁載入效能優化
+                <a href="/blog/2025/06/02/Evil-Limiter-Notes/" rel="prev" title="開源工具 Evil Limiter(控制區域網路流量)">
+                  <i class="fa fa-angle-left"></i> 開源工具 Evil Limiter(控制區域網路流量)
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/blog/2024/07/28/linux-version-upgrade-note/" rel="next" title="linux 版本更新指令">
-                  linux 版本更新指令 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -497,7 +604,7 @@ OS<i class="fa fa-external-link-alt"></i></span></li>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://poyu-liao.github.io/2023/11/24/parrotOS-introduction/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://poyu-liao.github.io/2025/06/12/sslyze-Notes/"}</script>
   <script src="/blog/js/third-party/quicklink.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 
@@ -521,7 +628,7 @@ darkmode.showWidget();
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","labels":"Blog-Gitalk","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"35f4dedddbfd401c709e8878f50d1131"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","labels":"Blog-Gitalk","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"64862bc32f5c7e03bf6e3cc49c0bad2b"}</script>
 <script src="/blog/js/third-party/comments/gitalk.js"></script>
 <div class="moon-menu">
   <div class="moon-menu-items">

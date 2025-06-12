@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>開源工具 sslyze</title>
+      <link href="/blog/2025/06/12/sslyze-Notes/"/>
+      <url>/blog/2025/06/12/sslyze-Notes/</url>
+      
+        <content type="html"><![CDATA[<h2 id="簡介">簡介</h2><p>SSLyze是一款快速且功能強大的 SSL/TLS開源掃描工具，能夠分析伺服器的SSL/TLS 配置，檢測web頁面加密設定是否安全，並識別已知的 TLS 漏洞（如Heartbleed、ROBOT、OpenSSL CCS Injection...等）。</p><span id="more"></span><blockquote><p><em>免責聲明：</em><br />未經網路或設備所有者明確授權，任何人不得以任何形式干擾、入侵或破壞；本工具僅供教育研究與示範用途，不得用於任何非法或未經授權之活動。</p></blockquote><h2 id="安裝">安裝</h2><h3 id="安裝方法一debian-linux">安裝方法一(Debian linux)：</h3><p>安裝指令<br /><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install sslyze</span><br></pre></td></tr></table></figure></p><p>執行</p><p><code>sslyze &lt;Target host&gt;</code></p><p>範例</p><p><code>sslyze www.google.com</code></p><h3 id="安裝方法二python">安裝方法二(python)：</h3><p>安裝指令<br /><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade pip setuptools wheel</span><br><span class="line">pip install --upgrade sslyze</span><br></pre></td></tr></table></figure> 執行</p><p><code>python -m sslyze &lt;Target host&gt;</code></p><p>範例<br /><code>python -m sslyze www.google.com</code></p><h3 id="安裝方法三github">安裝方法三(github)：</h3><p>安裝指令<br /><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/nabla-c0d3/sslyze.git</span><br><span class="line"><span class="built_in">cd</span> sslyze</span><br><span class="line">pip install .</span><br></pre></td></tr></table></figure> 執行</p><p><code>sslyze &lt;Target host&gt;</code></p><p>範例</p><p><code>sslyze www.google.com</code></p><h2 id="指令介紹">指令介紹</h2><h3 id="mozilla-配置符合性檢查">Mozilla 配置符合性檢查</h3><p>--mozilla_config {modern,intermediate,old,disable}<br />檢查伺服器是否符合 Mozilla 的 TLS 配置建議，預設為"intermediate"。<br /><code>sslyze --mozilla_config modern &lt;Target host&gt;</code></p><h3 id="更新信任憑證">更新信任憑證</h3><p>--update_trust_stores<br />下載並更新內建的憑證信任清單。<br /><code>sslyze --update_trust_stores</code></p><h3 id="輸入輸出選項">輸入/輸出選項</h3><ul><li><code>--json_out JSON_FILE</code>：將掃描結果輸出為 JSON檔案。<br /></li><li><code>--targets_in TARGET_FILE</code>：從檔案讀取掃描目標列表，每行一個主機:端口。<br /></li><li><code>--quiet</code>：不輸出任何訊息。<br />範例<br /><code>sslyze --json_out results.json example.com</code></li></ul><h3 id="連線選項">連線選項</h3><ul><li><code>--slow_connection</code>：減少並發連線數量，適用於網路不穩或伺服器負載有限的情況。<br /></li><li><code>--https_tunnel &lt;PROXY_SETTINGS&gt;</code>：通過 HTTPCONNECT 代理傳送流量（例如 http://user:pw@proxy:8080/）。<br /></li><li><code>--starttls &lt;PROTOCOL&gt;</code>：執行 StartTLS握手，支援協議包括 smtp、xmpp、pop3、imap 等。<br /></li><li><code>--xmpp_to &lt;HOSTNAME&gt;</code>：為 XMPP 的 StartTLS 指定'to' 屬性主機名。<br /></li><li><code>--sni &lt;SERVER_NAME_INDICATION&gt;</code>：使用 SNI指定連線主機名，適用於 TLS 1.0 以上。<br />範例<br /><code>sslyze --starttls smtp smtp.example.com:587</code></li></ul><h3 id="客戶端證書選項">客戶端證書選項</h3><ul><li><code>--cert &lt;CERTIFICATE_FILE&gt;</code>：指定客戶端證書鏈檔案（PEM格式）。<br /></li><li><code>--key &lt;KEY_FILE&gt;</code>：指定客戶端私鑰檔案。<br /></li><li><code>--keyform &lt;KEY_FORMAT&gt;</code>：私鑰格式（DER 或PEM，預設為 PEM）。<br /></li><li><code>--pass &lt;PASSPHRASE&gt;</code>：私鑰的密碼短語。<br />範例<br /><code>sslyze --cert client.crt --key client.key --pass mypass example.com</code></li></ul><h3 id="個別掃描功能">個別掃描功能</h3><table><colgroup><col style="width: 18%" /><col style="width: 50%" /><col style="width: 31%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例指令</th></tr></thead><tbody><tr class="odd"><td><code>--certinfo</code></td><td>分析 SSL 憑證內容與有效性</td><td><code>sslyze --certinfo example.com</code></td></tr><tr class="even"><td><code>--certinfo_ca_file</code></td><td>指定驗證憑證用的 CA 根憑證檔</td><td><code>--certinfo_ca_file my_ca.pem</code></td></tr><tr class="odd"><td><code>--elliptic_curves</code></td><td>顯示伺服器支援的橢圓曲線演算法</td><td><code>sslyze --elliptic_curves example.com</code></td></tr><tr class="even"><td><code>--ems</code></td><td>測試 TLS EMS（Extended Master Secret）支援</td><td><code>sslyze --ems example.com</code></td></tr><tr class="odd"><td><code>--heartbleed</code></td><td>測試是否存在 Heartbleed 漏洞</td><td><code>sslyze --heartbleed example.com</code></td></tr><tr class="even"><td><code>--robot</code></td><td>測試是否存在 ROBOT 攻擊漏洞</td><td><code>sslyze --robot example.com</code></td></tr><tr class="odd"><td><code>--openssl_ccs</code></td><td>測試是否存在 OpenSSL CCS Injection 漏洞</td><td><code>sslyze --openssl_ccs example.com</code></td></tr><tr class="even"><td><code>--reneg</code></td><td>測試是否允許不安全的 TLS 重新協商</td><td><code>sslyze --reneg example.com</code></td></tr><tr class="odd"><td><code>--resum</code></td><td>測試 TLS 會話恢復（Session Resumption）功能支援</td><td><code>sslyze --resum example.com</code></td></tr><tr class="even"><td><code>--resum_attempts</code></td><td>指定會話恢復嘗試次數（預設為 5 次）</td><td><code>--resum_attempts 20</code></td></tr><tr class="odd"><td><code>--fallback</code></td><td>測試是否支援 TLS_FALLBACK_SCSV，防止降級攻擊</td><td><code>sslyze --fallback example.com</code></td></tr><tr class="even"><td><code>--http_headers</code></td><td>檢查 HTTPS 回應中的安全標頭（如 HSTS、CSP 等）</td><td><code>sslyze --http_headers example.com</code></td></tr><tr class="odd"><td><code>--compression</code></td><td>測試是否啟用 TLS 壓縮（可能導致 CRIME 攻擊）</td><td><code>sslyze --compression example.com</code></td></tr><tr class="even"><td><code>--early_data</code></td><td>檢查是否支援 TLS 1.3 Early Data（0-RTT）</td><td><code>sslyze --early_data example.com</code></td></tr></tbody></table><h3 id="tlsssl-協定版本支援檢查">TLS/SSL 協定版本支援檢查</h3><table><colgroup><col style="width: 18%" /><col style="width: 40%" /><col style="width: 41%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例指令</th></tr></thead><tbody><tr class="odd"><td><code>--sslv2</code></td><td>檢查是否支援過時的 SSL 2.0</td><td><code>sslyze --sslv2 example.com</code></td></tr><tr class="even"><td><code>--sslv3</code></td><td>檢查是否支援過時的 SSL 3.0</td><td><code>sslyze --sslv3 example.com</code></td></tr><tr class="odd"><td><code>--tlsv1</code></td><td>檢查是否支援 TLS 1.0</td><td><code>sslyze --tlsv1 example.com</code></td></tr><tr class="even"><td><code>--tlsv1_1</code></td><td>檢查是否支援 TLS 1.1</td><td><code>sslyze --tlsv1_1 example.com</code></td></tr><tr class="odd"><td><code>--tlsv1_2</code></td><td>檢查是否支援 TLS 1.2</td><td><code>sslyze --tlsv1_2 example.com</code></td></tr><tr class="even"><td><code>--tlsv1_3</code></td><td>檢查是否支援 TLS 1.3</td><td><code>sslyze --tlsv1_3 example.com</code></td></tr></tbody></table><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25hYmxhLWMwZDMvc3NseXpl">sslyze<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cua2FsaS5vcmcvdG9vbHMvc3NseXplLw==">sslyze Kali<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9uYWJsYS1jMGQzLmdpdGh1Yi5pby9zc2x5emUvZG9jdW1lbnRhdGlvbi9pbnN0YWxsYXRpb24uaHRtbA==">Installationof SSLyze<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9uYWJsYS1jMGQzLmdpdGh1Yi5pby9zc2x5emUvZG9jdW1lbnRhdGlvbi8=">SSLyze<i class="fa fa-external-link-alt"></i></span></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Penetration Test </category>
+          
+          <category> Linux </category>
+          
+          <category> Security </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PT </tag>
+            
+            <tag> linux </tag>
+            
+            <tag> GitHub </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>開源工具 Evil Limiter(控制區域網路流量)</title>
       <link href="/blog/2025/06/02/Evil-Limiter-Notes/"/>
       <url>/blog/2025/06/02/Evil-Limiter-Notes/</url>
@@ -140,9 +173,9 @@
             
             <tag> ubuntu </tag>
             
-            <tag> Parrot </tag>
-            
             <tag> kali </tag>
+            
+            <tag> Parrot </tag>
             
         </tags>
       
