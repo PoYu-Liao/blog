@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title>開源的協作漏洞管理平台Faraday</title>
+      <link href="/blog/2025/06/18/Faraday-Installation-Notes/"/>
+      <url>/blog/2025/06/18/Faraday-Installation-Notes/</url>
+      
+        <content type="html"><![CDATA[<h2 id="簡介">簡介</h2><p>Faraday是一個開源的協作漏洞管理平台，專為網絡安全團隊設計，旨在優化漏洞數據的管理和分析流程。它通過整合多種安全工具的數據，提供一個集中化且圖形化的管理界面，用於簡化整個漏洞管理工作流程。</p><span id="more"></span><blockquote><p><em>免責聲明：</em><br />未經網路或設備所有者明確授權，任何人不得以任何形式干擾、入侵或破壞；本工具僅供教育研究與示範用途，不得用於任何非法或未經授權之活動。</p></blockquote><h2 id="硬體需求">硬體需求</h2><table><colgroup><col style="width: 18%" /><col style="width: 36%" /><col style="width: 44%" /></colgroup><thead><tr class="header"><th></th><th>最低硬體配置</th><th>建議硬體配置</th></tr></thead><tbody><tr class="odd"><td>作業系統</td><td>Ubuntu Server 18.04 (LTS)</td><td>64 位元 Linux（Ubuntu、RHEL 等）</td></tr><tr class="even"><td>CPU</td><td>四核心 2Ghz Intel/AMD CPU</td><td>八核心處理器 2Ghz Intel/AMD CPU</td></tr><tr class="odd"><td>記憶體（RAM）</td><td>4GB</td><td>8GB或以上</td></tr><tr class="even"><td>磁碟空間</td><td>40 GB</td><td>40 GB（取決於使用情況，PostgreSQL 最多可能消耗 80 GB）</td></tr><tr class="odd"><td>資料庫</td><td>PostgreSQL 9.6 以上</td><td>PostgreSQL 9.6 以上</td></tr><tr class="even"><td>Python</td><td>Python 3.7 以上</td><td>Python 3.7 以上</td></tr></tbody></table><h2 id="特色">特色</h2><ul><li>數據整合：集成多種掃描器（如 Nmap、Burp Suite、Nessus等），可將結果匯入並進行統一管理與分析。<br /></li><li>多使用者協作機制：支援多人同時進行作業，透過標籤、優先級與狀態標記來追蹤漏洞處理流程。<br /></li><li>API 支持：提供 RESTAPI，允許用戶通過編程方式管理漏洞、生成報告或與其他系統集成。</li></ul><h2 id="安裝執行">安裝/執行</h2><p><strong>請注意Faraday有分專業/企業版和社群版(github)</strong></p><h3 id="docker-compose">Docker Compose</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/infobyte/faraday/master/docker-compose.yaml</span><br><span class="line">docker-compose up</span><br></pre></td></tr></table></figure><h3 id="docker社群版">Docker(社群版)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:infobyte/faraday.git</span><br><span class="line">docker-compose up -d</span><br><span class="line"><span class="comment">#檢查 pod 是否正在運行</span></span><br><span class="line">docker-compose ps</span><br><span class="line">docker pull postgres</span><br><span class="line">docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres</span><br><span class="line"></span><br><span class="line">faraday-manage initdb</span><br><span class="line"><span class="built_in">sudo</span> systemctl start faraday-server</span><br></pre></td></tr></table></figure><h3 id="liunx">liunx</h3><p>請先上github下載安裝包(https://github.com/infobyte/faraday/releases)[https://github.com/infobyte/faraday/releases]</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install postgresql</span><br><span class="line"><span class="built_in">sudo</span> apt install redis</span><br><span class="line"><span class="comment">#安裝包所在的路徑</span></span><br><span class="line"><span class="built_in">sudo</span> dpkg -i ./faraday-server_amd64.deb</span><br><span class="line"><span class="comment">#新增使用者群組</span></span><br><span class="line"><span class="built_in">sudo</span> usermod -aG faraday <span class="variable">$USER</span></span><br><span class="line"><span class="comment">#初始化資料庫</span></span><br><span class="line">faraday-manage initdb</span><br><span class="line"><span class="comment"># 導入許可證</span></span><br><span class="line">faraday-manage import-licens</span><br><span class="line">(或放在/home/faraday/.faraday/doc/底下)</span><br><span class="line"></span><br><span class="line">systemctl start faraday-server</span><br><span class="line">systemctl <span class="built_in">enable</span> faraday-server</span><br><span class="line"></span><br><span class="line">systemctl start faraday-worker</span><br><span class="line">systemctl <span class="built_in">enable</span> faraday-worker</span><br><span class="line"></span><br><span class="line">systemctl start faraday-worker-reports</span><br><span class="line">systemctl <span class="built_in">enable</span> faraday-worker-reports</span><br></pre></td></tr></table></figure><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly9mYXJhZGF5c2VjLmNvbS8=">Faraday<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2luZm9ieXRlL2ZhcmFkYXk=">Faradaygithub<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmZhcmFkYXlzZWMuY29tL0luc3RhbGwtZ3VpZGUtTGludXgv">FaradayDocs<i class="fa fa-external-link-alt"></i></span></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> Penetration Test </category>
+          
+          <category> Security </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> PT </tag>
+            
+            <tag> GitHub </tag>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>開源工具 sslyze</title>
       <link href="/blog/2025/06/12/sslyze-Notes/"/>
       <url>/blog/2025/06/12/sslyze-Notes/</url>
@@ -13,9 +48,9 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Linux </category>
+          
+          <category> Penetration Test </category>
           
           <category> Security </category>
           
@@ -24,9 +59,9 @@
       
         <tags>
             
-            <tag> PT </tag>
-            
             <tag> linux </tag>
+            
+            <tag> PT </tag>
             
             <tag> GitHub </tag>
             
@@ -113,9 +148,9 @@
       
         <tags>
             
-            <tag> PT </tag>
-            
             <tag> website </tag>
+            
+            <tag> PT </tag>
             
             <tag> SQL </tag>
             
@@ -193,9 +228,9 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Linux </category>
+          
+          <category> Penetration Test </category>
           
           <category> Security </category>
           
@@ -204,9 +239,9 @@
       
         <tags>
             
-            <tag> PT </tag>
-            
             <tag> linux </tag>
+            
+            <tag> PT </tag>
             
             <tag> Parrot </tag>
             
@@ -465,9 +500,9 @@
       
         <tags>
             
-            <tag> PT </tag>
-            
             <tag> linux </tag>
+            
+            <tag> PT </tag>
             
             <tag> GitHub </tag>
             
@@ -521,9 +556,9 @@
       
         <tags>
             
-            <tag> PT </tag>
-            
             <tag> linux </tag>
+            
+            <tag> PT </tag>
             
             <tag> GitHub </tag>
             
