@@ -4,16 +4,14 @@
   
     
     <entry>
-      <title>開源自動化滲透測試框架和漏洞掃描儀 OWASP Nettacker</title>
-      <link href="/blog/2025/06/25/OWASP-Nettacker-Notes/"/>
-      <url>/blog/2025/06/25/OWASP-Nettacker-Notes/</url>
+      <title>開源網路掃描工具 Nmap</title>
+      <link href="/blog/2025/07/22/Nmap-Notes/"/>
+      <url>/blog/2025/07/22/Nmap-Notes/</url>
       
-        <content type="html"><![CDATA[<h2 id="簡介">簡介</h2><p>OWASP Nettacker 是一個功能強大的開源自動化滲透測試框架，由 OWASP基金會開發，旨在幫助網絡安全專業人員和道德黑客高效地進行偵察、漏洞評估。它使用Python語言編寫，採用模塊化架構，支持多種協議和掃描方法，無需依賴外部工具。該工具支持自動化信息收集、漏洞掃描和憑證爆破...等功能，能夠識別網絡、Web應用程序、物聯網設備和 API 中的弱點。它可以生成 HTML、TXT、JSON 和 CSV格式的報告，並支持命令列、API、Web GUI 和 Maltego轉換等多種運行模式。</p><span id="more"></span><blockquote><p><em>免責聲明：</em><br />未經網路或設備所有者明確授權，任何人不得以任何形式干擾、入侵或破壞；本工具僅供教育研究與示範用途，不得用於任何非法或未經授權之活動。</p></blockquote><h2 id="安裝方法">安裝方法</h2><p>前置安裝配置</p><ul><li>python3-dev<br /></li><li>python3-pip<br /></li><li>libcurl4-openssl-dev<br /></li><li>libcurl4-gnutls-dev<br /></li><li>librtmp-dev<br /></li><li>libssl-dev<br /></li><li>libpq-dev (required if you wish to use PostgreSQL database)<br /></li><li>libffi-dev<br /></li><li>musl-dev<br /></li><li>make<br /></li><li>gcc<br /></li><li>git</li></ul><h3 id="透過pipx">透過PIPX</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install pipx</span><br><span class="line">pipx ensurepath</span><br><span class="line">pipx --version</span><br><span class="line">pipx install nettacker</span><br></pre></td></tr></table></figure><h3 id="透過-github">透過 Github</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install python3-poetry git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/OWASP/Nettacker --depth 1</span><br><span class="line"><span class="built_in">cd</span> Nettacker</span><br><span class="line">poetry install</span><br><span class="line">poetry run nettacker --<span class="built_in">help</span></span><br></pre></td></tr></table></figure><h3 id="透過-docker">透過 Docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull owasp/nettacker</span><br><span class="line">docker run -it owasp/nettacker /bin/bash</span><br></pre></td></tr></table></figure><h2 id="用法">用法</h2><h3 id="engine選項">Engine選項</h3><table><colgroup><col style="width: 20%" /><col style="width: 47%" /><col style="width: 31%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例</th></tr></thead><tbody><tr class="odd"><td><code>-L</code></td><td>設定語言（如 zh-cn）</td><td><code>nettacker -L zh-cn</code></td></tr><tr class="even"><td><code>-v</code></td><td>設置 verbose 模式級別 (0-5，默認 0)</td><td><code>nettacker -v 3</code></td></tr><tr class="odd"><td><code>--verbose-event</code></td><td>顯示每個執行緒事件狀態</td><td><code>nettacker --verbose-event</code></td></tr><tr class="even"><td><code>-V</code></td><td>顯示版本資訊</td><td><code>nettacker -V</code></td></tr><tr class="odd"><td><code>-o</code></td><td>輸出報告檔（可為 .html/.json/.csv/.txt）</td><td><code>nettacker -o result.html</code></td></tr><tr class="even"><td><code>--graph</code></td><td>輸出互動式圖形報告（需配合 HTML）</td><td><code>nettacker --graph d3_tree_v2_graph</code></td></tr><tr class="odd"><td><code>-h</code></td><td>顯示說明</td><td><code>nettacker -h</code></td></tr></tbody></table><h3 id="target">Target</h3><table><colgroup><col style="width: 7%" /><col style="width: 40%" /><col style="width: 51%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例</th></tr></thead><tbody><tr class="odd"><td><code>-i</code></td><td>指定目標列表（IP、域名等，用逗號分隔））</td><td><code>nettacker -i 192.168.1.1,example.com</code></td></tr><tr class="even"><td><code>-l</code></td><td>從檔案讀取目標清單</td><td><code>nettacker -l targets.txt</code></td></tr></tbody></table><h3 id="method選項">Method選項</h3><table><colgroup><col style="width: 29%" /><col style="width: 21%" /><col style="width: 48%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例</th></tr></thead><tbody><tr class="odd"><td><code>-m</code></td><td>指定模組（支援模糊搜尋）</td><td><code>nettacker -m ssh_brute,port_scan</code></td></tr><tr class="even"><td><code>--modules-extra-args</code></td><td>傳入模組專用參數</td><td><code>nettacker --modules-extra-args "api_key=123"</code></td></tr><tr class="odd"><td><code>--show-all-modules</code></td><td>顯示所有可用模組</td><td><code>nettacker --show-all-modules</code></td></tr><tr class="even"><td><code>--profile</code></td><td>使用預設模組組合</td><td><code>nettacker --profile apache</code></td></tr><tr class="odd"><td><code>--show-all-profiles</code></td><td>顯示所有模組組合資訊</td><td><code>nettacker --show-all-profiles</code></td></tr><tr class="even"><td><code>-x</code></td><td>排除模組</td><td><code>nettacker -x ftp_brute</code></td></tr><tr class="odd"><td><code>-u</code></td><td>指定帳號</td><td><code>nettacker -u admin,test</code></td></tr><tr class="even"><td><code>-U</code></td><td>從檔案載入帳號清單</td><td><code>nettacker -U users.txt</code></td></tr><tr class="odd"><td><code>-p</code></td><td>指定密碼</td><td><code>nettacker -p 123456,admin</code></td></tr><tr class="even"><td><code>-P</code></td><td>從檔案載入密碼清單</td><td><code>nettacker -P passwords.txt</code></td></tr><tr class="odd"><td><code>-g</code></td><td>指定端口（可用逗號分隔）</td><td><code>nettacker -g 21,22,80</code></td></tr><tr class="even"><td><code>--user-agent</code></td><td>指定或亂數 User-Agent</td><td><code>nettacker --user-agent random_user_agent</code></td></tr><tr class="odd"><td><code>-T</code></td><td>設定逾時時間（默認 3.0 秒）</td><td><code>nettacker -T 1.0</code></td></tr><tr class="even"><td><code>-w</code></td><td>請求間延遲（秒）</td><td><code>nettacker  -w 1</code></td></tr><tr class="odd"><td><code>-r</code></td><td>掃描整個 IP 範圍</td><td><code>nettacker  -i 192.168.1.0/24 -r</code></td></tr><tr class="even"><td><code>-s</code></td><td>掃描子網域</td><td><code>nettacker  -i example.com -s</code></td></tr><tr class="odd"><td><code>-d</code></td><td>強制掃描，不偵測服務類型</td><td><code>nettacker  -d</code></td></tr><tr class="even"><td><code>-t</code></td><td>每主機執行緒數（默認 250）</td><td><code>nettacker  -t 10</code></td></tr><tr class="odd"><td><code>-M</code></td><td>模組並行掃描數量（默認 20）</td><td><code>nettacker  -M 5</code></td></tr><tr class="even"><td><code>--set-hardware-usage</code></td><td>設定硬體使用量（low、normal、high、maximum，默認 maximum）</td><td><code>nettacker --set-hardware-usage high</code></td></tr><tr class="odd"><td><code>-R</code></td><td>使用 SOCKS 代理</td><td><code>nettacker -R socks5://127.0.0.1:9050</code></td></tr><tr class="even"><td><code>--retries</code></td><td>逾時重試次數（默認 3）</td><td><code>nettacker --retries 2</code></td></tr><tr class="odd"><td><code>--ping-before-scan</code></td><td>掃描前先 ping 主機</td><td><code>nettacker --ping-before-scan</code></td></tr></tbody></table><h3 id="scan-compare選項">Scan Compare選項</h3><table><colgroup><col style="width: 8%" /><col style="width: 39%" /><col style="width: 52%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例</th></tr></thead><tbody><tr class="odd"><td><code>-K</code></td><td>使用唯一 scan_id 比較當前掃描與舊掃描</td><td><code>nettacker -K 20240625-001</code></td></tr><tr class="even"><td><code>-J</code></td><td>指定比較報告文件路徑</td><td><code>nettacker -J compare_report.html</code></td></tr></tbody></table><h3 id="api-介面選項restful-api">API 介面選項（RESTful API）</h3><table><colgroup><col style="width: 30%" /><col style="width: 13%" /><col style="width: 56%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例</th></tr></thead><tbody><tr class="odd"><td><code>--start-api</code></td><td>啟動 API 服務</td><td><code>nettacker --start-api</code></td></tr><tr class="even"><td><code>--api-host</code></td><td>指定 API 監聽主機</td><td><code>nettacker --api-host 0.0.0.0</code></td></tr><tr class="odd"><td><code>--api-port</code></td><td>指定 API 埠號（默認 5000）</td><td><code>nettacker --api-port 5000</code></td></tr><tr class="even"><td><code>--api-debug-mode</code></td><td>啟用除錯模式</td><td><code>nettacker --api-debug-mode</code></td></tr><tr class="odd"><td><code>--api-access-key</code></td><td>設置 API 訪問密鑰（默認隨機 MD5 哈希）</td><td><code>nettacker --api-access-key mykey123</code></td></tr><tr class="even"><td><code>--api-client-whitelisted-ips</code></td><td>限定 API 可存取 IP</td><td><code>nettacker --api-client-whitelisted-ips 127.0.0.1,192.168.1.0/24</code></td></tr><tr class="odd"><td><code>--api-access-log</code></td><td>設定 API 訪問日誌檔案</td><td><code>nettacker --api-access-log api.log</code></td></tr><tr class="even"><td><code>--api-cert</code></td><td>指定 HTTPS 憑證</td><td><code>nettacker --api-cert cert.pem</code></td></tr><tr class="odd"><td><code>--api-cert-key</code></td><td>指定憑證私鑰</td><td><code>nettacker --api-cert-key cert.key</code></td></tr></tbody></table><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly9vd2FzcC5vcmcvd3d3LXByb2plY3QtbmV0dGFja2VyLw==">OWASPNettacker<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9uZXR0YWNrZXIucmVhZHRoZWRvY3MuaW8vZW4vbGF0ZXN0L0hvbWUv">OWASPNettacker Documentation<i class="fa fa-external-link-alt"></i></span></li></ol>]]></content>
+        <content type="html"><![CDATA[<h2 id="簡介">簡介</h2><p>Nmap是一個功能強大的開源網路掃描工具，廣泛應用於網路探索和漏洞偵測。它可以快速掃描單個主機或大型網路，幫助用戶識別網路上的可用主機、運行服務（包括應用程式名稱和版本）、作業系統和防火牆。Nmap以下特色：<br />網路清查：了解網路中的主機和設備。<br />服務管理：檢查服務版本以計劃升級。<br />漏洞偵測：發現潛在的安全漏洞。<br />監控：監控主機或服務的運行狀態。</p><span id="more"></span><blockquote><p><em>免責聲明：</em><br />未經網路或設備所有者明確授權，任何人不得以任何形式干擾、入侵或破壞；本工具僅供教育研究與示範用途，不得用於任何非法或未經授權之活動。</p></blockquote><h2 id="安裝方法">安裝方法</h2><h3 id="debianubuntu-系統">Debian/Ubuntu 系統</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line"><span class="built_in">sudo</span> apt-get install nmap</span><br></pre></td></tr></table></figure><h3 id="red-hatcentos-系統">Red Hat/CentOS 系統</h3><p><code>sudo dnf install nmap</code></p><h3 id="其他作業系統">其他作業系統</h3><ol type="1"><li>下載源碼壓縮包（例如 nmap-7.97.tar.bz2）從 Nmap 官方網站。<br /></li><li>解壓並編譯：<br /><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bzip2 -<span class="built_in">cd</span> nmap-7.97.tar.bz2 | tar xvf -</span><br><span class="line"><span class="built_in">cd</span> nmap-7.97</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line"><span class="built_in">sudo</span> make install</span><br></pre></td></tr></table></figure></li></ol><h2 id="用法">用法</h2><h3 id="指令語法">指令語法</h3><p><code>nmap [掃描類型] [選項] &#123;目標&#125;</code></p><blockquote><p>目標可用單一 IP、主機名稱、網段（CIDR）、範圍...等形式</p></blockquote><h3 id="常用參數">常用參數</h3><table><colgroup><col style="width: 1%" /><col style="width: 7%" /><col style="width: 49%" /><col style="width: 41%" /></colgroup><thead><tr class="header"><th></th><th>分類名稱</th><th>常用參數與說明</th><th>指令範例</th></tr></thead><tbody><tr class="odd"><td>1</td><td>目標指定</td><td><code>-iL &lt;file&gt;</code>：從檔案匯入目標清單<br><code>-iR &lt;num&gt;</code>：隨機掃描目標<br><code>--exclude &lt;host&gt;</code>：排除特定主機</td><td><code>nmap -iL targets.txt --exclude 10.0.0.1</code></td></tr><tr class="even"><td>2</td><td>主機發現</td><td><code>-sn</code>：僅 ping不掃埠<br><code>-Pn</code>：略過存活檢測<br><code>-PS/PA/PU</code>：TCP/UDPPing 探測<br><code>-PE</code>：ICMP Echo</td><td><code>nmap -sn 192.168.1.0/24</code><br><code>nmap -Pn -PS80 scanme.nmap.org</code></td></tr><tr class="odd"><td>3</td><td>掃描技術</td><td><code>-sS</code>：SYN 掃描<br><code>-sT</code>：TCPConnect()<br><code>-sU</code>：UDP掃描<br><code>-sN/sF/sX</code>：隱匿掃描技法</td><td><code>nmap -sS -p22,80 192.168.1.1</code><br><code>nmap -sU -p53 target.com</code></td></tr><tr class="even"><td>4</td><td>埠口設定與順序</td><td><code>-p &lt;port&gt;</code>：自訂掃描埠<br><code>-F</code>：快速模式<br><code>--top-ports &lt;n&gt;</code>：最常見前n 個埠<br><code>--exclude-ports</code>：排除埠</td><td><code>nmap -p1-1000 target</code><br><code>nmap --top-ports 50 target</code></td></tr><tr class="odd"><td>5</td><td>服務與版本偵測</td><td><code>-sV</code>：偵測版本<br><code>--version-light</code>：快速<br><code>--version-all</code>：完整偵測</td><td><code>nmap -sV --version-light 192.168.1.1</code></td></tr><tr class="even"><td>6</td><td>NSE 腳本掃描</td><td><code>-sC</code>：預設腳本<br><code>--script=&lt;name&gt;</code>：自訂腳本<br><code>--script-args</code>：傳參數</td><td><code>nmap -sC target.com</code><br><code>nmap --script=http-enum target.com</code></td></tr><tr class="odd"><td>7</td><td>作業系統偵測</td><td><code>-O</code>：啟用 OS偵測<br><code>--osscan-limit</code>：限制至有效主機<br><code>--osscan-guess</code>：強力猜測</td><td><code>nmap -O 192.168.1.1</code><br><code>nmap --osscan-guess target.com</code></td></tr><tr class="even"><td>8</td><td>掃描時間與效能調整</td><td><code>-T&lt;0-5&gt;</code>：掃描速度（0最慢，5最快）<br><code>--min/max-rate</code>：封包速率調整<br><code>--host-timeout</code>：主機超時設定</td><td><code>nmap -T4 target.com</code><br><code>nmap --host-timeout 3m target.com</code></td></tr></tbody></table><h3 id="nmap-參數總整理表格依功能分類">Nmap參數總整理表格（依功能分類）</h3><table><colgroup><col style="width: 24%" /><col style="width: 35%" /><col style="width: 40%" /></colgroup><thead><tr class="header"><th>分類名稱</th><th>參數</th><th>說明</th></tr></thead><tbody><tr class="odd"><td>主機發現（Host Discovery）</td><td><code>-sL</code></td><td>僅列出掃描目標，不執行掃描</td></tr><tr class="even"><td></td><td><code>-sn</code></td><td>Ping 掃描，僅檢查是否在線</td></tr><tr class="odd"><td></td><td><code>-Pn</code></td><td>假設主機在線，跳過存活檢測</td></tr><tr class="even"><td></td><td><code>-PS/PA/PU/PY[portlist]</code></td><td>TCP SYN、ACK、UDP、SCTP 發現掃描</td></tr><tr class="odd"><td></td><td><code>-PE/PP/PM</code></td><td>使用 ICMP echo、timestamp、netmask 請求發現</td></tr><tr class="even"><td></td><td><code>-PO[protocol list]</code></td><td>IP 協議 Ping 掃描</td></tr><tr class="odd"><td></td><td><code>-n/-R</code></td><td>不解析 DNS / 一定解析 DNS</td></tr><tr class="even"><td></td><td><code>--dns-servers</code></td><td>指定 DNS 伺服器</td></tr><tr class="odd"><td></td><td><code>--system-dns</code></td><td>使用系統 DNS 解析器</td></tr><tr class="even"><td></td><td><code>--traceroute</code></td><td>顯示到主機的路徑</td></tr><tr class="odd"><td>掃描技術（Scan Techniques）</td><td><code>-sS</code></td><td>TCP SYN 掃描（默認）</td></tr><tr class="even"><td></td><td><code>-sT</code></td><td>TCP Connect 掃描</td></tr><tr class="odd"><td></td><td><code>-sA</code></td><td>TCP ACK 掃描</td></tr><tr class="even"><td></td><td><code>-sW</code></td><td>TCP Window 掃描</td></tr><tr class="odd"><td></td><td><code>-sM</code></td><td>TCP Maimon 掃描</td></tr><tr class="even"><td></td><td><code>-sU</code></td><td>UDP 掃描</td></tr><tr class="odd"><td></td><td><code>-sN/sF/sX</code></td><td>TCP Null、FIN、Xmas 掃描</td></tr><tr class="even"><td></td><td><code>--scanflags</code></td><td>自定義 TCP 掃描標誌</td></tr><tr class="odd"><td></td><td><code>-sI</code></td><td>Idle Zombie 掃描</td></tr><tr class="even"><td></td><td><code>-sY/sZ</code></td><td>SCTP INIT / COOKIE 掃描</td></tr><tr class="odd"><td></td><td><code>-sO</code></td><td>IP 協定掃描</td></tr><tr class="even"><td></td><td><code>-b</code></td><td>FTP Bounce 掃描</td></tr><tr class="odd"><td>埠口指定與掃描順序</td><td><code>-p</code></td><td>指定要掃描的埠範圍</td></tr><tr class="even"><td></td><td><code>--exclude-ports</code></td><td>排除指定埠口</td></tr><tr class="odd"><td></td><td><code>-F</code></td><td>快速掃描常用埠口</td></tr><tr class="even"><td></td><td><code>-r</code></td><td>按順序掃描，不隨機化</td></tr><tr class="odd"><td></td><td><code>--top-ports</code></td><td>掃描最常見前幾名埠口</td></tr><tr class="even"><td></td><td><code>--port-ratio</code></td><td>掃描使用率高於指定比例的埠口</td></tr><tr class="odd"><td>服務與版本偵測</td><td><code>-sV</code></td><td>探測開放埠的服務與版本資訊</td></tr><tr class="even"><td></td><td><code>--version-intensity</code></td><td>設定探測強度 (0-9)</td></tr><tr class="odd"><td></td><td><code>--version-light</code></td><td>輕量版本檢測（快速）</td></tr><tr class="even"><td></td><td><code>--version-all</code></td><td>所有版本檢測（完整）</td></tr><tr class="odd"><td></td><td><code>--version-trace</code></td><td>詳細列出版本掃描活動</td></tr><tr class="even"><td>腳本掃描（Script Scan）</td><td><code>-sC</code></td><td>執行預設腳本，等同 <code>--script=default</code></td></tr><tr class="odd"><td></td><td><code>--script</code></td><td>指定 Lua 腳本、目錄或分類</td></tr><tr class="even"><td></td><td><code>--script-args</code></td><td>傳遞參數給 NSE 腳本</td></tr><tr class="odd"><td></td><td><code>--script-args-file</code></td><td>從檔案傳遞腳本參數</td></tr><tr class="even"><td></td><td><code>--script-trace</code></td><td>顯示傳送與接收資料</td></tr><tr class="odd"><td></td><td><code>--script-updatedb</code></td><td>更新腳本資料庫</td></tr><tr class="even"><td></td><td><code>--script-help</code></td><td>顯示腳本說明</td></tr><tr class="odd"><td>操作系統偵測</td><td><code>-O</code></td><td>啟用 OS 偵測</td></tr><tr class="even"><td></td><td><code>--osscan-limit</code></td><td>僅對有潛力的目標進行 OS 偵測</td></tr><tr class="odd"><td></td><td><code>--osscan-guess</code></td><td>更積極猜測 OS</td></tr><tr class="even"><td>掃描速度與效能</td><td><code>-T&lt;0-5&gt;</code></td><td>掃描速度模板（0 最慢，5 最快）</td></tr><tr class="odd"><td></td><td><code>--min/max-hostgroup</code></td><td>設定並行主機群組大小</td></tr><tr class="even"><td></td><td><code>--min/max-parallelism</code></td><td>設定探針並行度</td></tr><tr class="odd"><td></td><td><code>--min/max/initial-rtt-timeout</code></td><td>設定往返時間 RTT</td></tr><tr class="even"><td></td><td><code>--max-retries</code></td><td>限制探針重傳次數</td></tr><tr class="odd"><td></td><td><code>--host-timeout</code></td><td>單一主機超時時間限制</td></tr><tr class="even"><td></td><td><code>--scan-delay/--max-scan-delay</code></td><td>控制探針間的延遲</td></tr><tr class="odd"><td></td><td><code>--min-rate/--max-rate</code></td><td>最小/最大封包傳送速率</td></tr><tr class="even"><td>防火牆/IDS 規避與偽裝</td><td><code>-f; --mtu</code></td><td>封包分片，可指定 MTU</td></tr><tr class="odd"><td></td><td><code>-D</code></td><td>使用誘餌主機隱藏來源</td></tr><tr class="even"><td></td><td><code>-S</code></td><td>偽造來源 IP 地址</td></tr><tr class="odd"><td></td><td><code>-e</code></td><td>指定介面裝置掃描</td></tr><tr class="even"><td></td><td><code>-g/--source-port</code></td><td>設定來源埠口</td></tr><tr class="odd"><td></td><td><code>--proxies</code></td><td>經由 HTTP/SOCKS4 代理連線</td></tr><tr class="even"><td></td><td><code>--data / --data-string</code></td><td>附加自訂資料（Hex / ASCII）</td></tr><tr class="odd"><td></td><td><code>--data-length</code></td><td>附加隨機資料長度</td></tr><tr class="even"><td></td><td><code>--ip-options</code></td><td>設定 IP 標頭選項欄位</td></tr><tr class="odd"><td></td><td><code>--ttl</code></td><td>IP 封包 TTL 設定值</td></tr><tr class="even"><td></td><td><code>--spoof-mac</code></td><td>偽裝 MAC 位址</td></tr><tr class="odd"><td></td><td><code>--badsum</code></td><td>傳送錯誤校驗和的封包</td></tr><tr class="even"><td>輸出（Output）</td><td><code>-oN/-oX/-oS/-oG</code></td><td>分別為普通、XML、Script kiddie、Grepable 輸出</td></tr><tr class="odd"><td></td><td><code>-oA</code></td><td>同時輸出全部主要格式</td></tr><tr class="even"><td></td><td><code>-v/-vv/-vvv</code></td><td>增加詳細輸出程度</td></tr><tr class="odd"><td></td><td><code>-d/-dd/-ddd</code></td><td>增加除錯輸出程度</td></tr><tr class="even"><td></td><td><code>--reason</code></td><td>顯示端口狀態原因</td></tr><tr class="odd"><td></td><td><code>--open</code></td><td>僅顯示開放的端口</td></tr><tr class="even"><td></td><td><code>--packet-trace</code></td><td>顯示所有傳輸封包內容</td></tr><tr class="odd"><td></td><td><code>--iflist</code></td><td>列出介面與路由資訊</td></tr><tr class="even"><td></td><td><code>--append-output</code></td><td>附加輸出而非覆蓋</td></tr><tr class="odd"><td></td><td><code>--resume</code></td><td>從掃描中斷處繼續</td></tr><tr class="even"><td></td><td><code>--noninteractive</code></td><td>關閉鍵盤互動功能</td></tr><tr class="odd"><td></td><td><code>--stylesheet</code></td><td>指定 XSL 樣式表</td></tr><tr class="even"><td></td><td><code>--webxml</code></td><td>使用官方 Web 樣式表</td></tr><tr class="odd"><td></td><td><code>--no-stylesheet</code></td><td>不使用樣式表</td></tr><tr class="even"><td>其他（Misc）</td><td><code>-6</code></td><td>使用 IPv6 掃描</td></tr><tr class="odd"><td></td><td><code>-A</code></td><td>啟用綜合模式（OS/版本/腳本/路由）</td></tr><tr class="even"><td></td><td><code>--datadir</code></td><td>自訂 Nmap 資料檔路徑</td></tr><tr class="odd"><td></td><td><code>--send-eth / --send-ip</code></td><td>使用 Ethernet/IP 封包傳送方式</td></tr><tr class="even"><td></td><td><code>--privileged / --unprivileged</code></td><td>假設具/不具備完整權限</td></tr><tr class="odd"><td></td><td><code>-V</code></td><td>顯示版本號</td></tr><tr class="even"><td></td><td><code>-h</code></td><td>顯示說明頁面</td></tr></tbody></table><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly9ubWFwLm9yZy9kb3dubG9hZC5odG1s">Nmap<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9ubWFwLm9yZy9ib29rL21hbi5odG1s">Nmap Doc<i class="fa fa-external-link-alt"></i></span></li></ol>]]></content>
       
       
       <categories>
-          
-          <category> Linux </category>
           
           <category> Penetration Test </category>
           
@@ -24,9 +22,46 @@
       
         <tags>
             
+            <tag> PT </tag>
+            
             <tag> linux </tag>
             
+            <tag> Network </tag>
+            
+            <tag> Parrot </tag>
+            
+            <tag> kali </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>開源自動化滲透測試框架和漏洞掃描儀 OWASP Nettacker</title>
+      <link href="/blog/2025/06/25/OWASP-Nettacker-Notes/"/>
+      <url>/blog/2025/06/25/OWASP-Nettacker-Notes/</url>
+      
+        <content type="html"><![CDATA[<h2 id="簡介">簡介</h2><p>OWASP Nettacker 是一個功能強大的開源自動化滲透測試框架，由 OWASP基金會開發，旨在幫助網絡安全專業人員和道德黑客高效地進行偵察、漏洞評估。它使用Python語言編寫，採用模塊化架構，支持多種協議和掃描方法，無需依賴外部工具。該工具支持自動化信息收集、漏洞掃描和憑證爆破...等功能，能夠識別網絡、Web應用程序、物聯網設備和 API 中的弱點。它可以生成 HTML、TXT、JSON 和 CSV格式的報告，並支持命令列、API、Web GUI 和 Maltego轉換等多種運行模式。</p><span id="more"></span><blockquote><p><em>免責聲明：</em><br />未經網路或設備所有者明確授權，任何人不得以任何形式干擾、入侵或破壞；本工具僅供教育研究與示範用途，不得用於任何非法或未經授權之活動。</p></blockquote><h2 id="安裝方法">安裝方法</h2><p>前置安裝配置</p><ul><li>python3-dev<br /></li><li>python3-pip<br /></li><li>libcurl4-openssl-dev<br /></li><li>libcurl4-gnutls-dev<br /></li><li>librtmp-dev<br /></li><li>libssl-dev<br /></li><li>libpq-dev (required if you wish to use PostgreSQL database)<br /></li><li>libffi-dev<br /></li><li>musl-dev<br /></li><li>make<br /></li><li>gcc<br /></li><li>git</li></ul><h3 id="透過pipx">透過PIPX</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install pipx</span><br><span class="line">pipx ensurepath</span><br><span class="line">pipx --version</span><br><span class="line">pipx install nettacker</span><br></pre></td></tr></table></figure><h3 id="透過-github">透過 Github</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install python3-poetry git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/OWASP/Nettacker --depth 1</span><br><span class="line"><span class="built_in">cd</span> Nettacker</span><br><span class="line">poetry install</span><br><span class="line">poetry run nettacker --<span class="built_in">help</span></span><br></pre></td></tr></table></figure><h3 id="透過-docker">透過 Docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull owasp/nettacker</span><br><span class="line">docker run -it owasp/nettacker /bin/bash</span><br></pre></td></tr></table></figure><h2 id="用法">用法</h2><h3 id="engine選項">Engine選項</h3><table><colgroup><col style="width: 20%" /><col style="width: 47%" /><col style="width: 31%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例</th></tr></thead><tbody><tr class="odd"><td><code>-L</code></td><td>設定語言（如 zh-cn）</td><td><code>nettacker -L zh-cn</code></td></tr><tr class="even"><td><code>-v</code></td><td>設置 verbose 模式級別 (0-5，默認 0)</td><td><code>nettacker -v 3</code></td></tr><tr class="odd"><td><code>--verbose-event</code></td><td>顯示每個執行緒事件狀態</td><td><code>nettacker --verbose-event</code></td></tr><tr class="even"><td><code>-V</code></td><td>顯示版本資訊</td><td><code>nettacker -V</code></td></tr><tr class="odd"><td><code>-o</code></td><td>輸出報告檔（可為 .html/.json/.csv/.txt）</td><td><code>nettacker -o result.html</code></td></tr><tr class="even"><td><code>--graph</code></td><td>輸出互動式圖形報告（需配合 HTML）</td><td><code>nettacker --graph d3_tree_v2_graph</code></td></tr><tr class="odd"><td><code>-h</code></td><td>顯示說明</td><td><code>nettacker -h</code></td></tr></tbody></table><h3 id="target">Target</h3><table><colgroup><col style="width: 7%" /><col style="width: 40%" /><col style="width: 51%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例</th></tr></thead><tbody><tr class="odd"><td><code>-i</code></td><td>指定目標列表（IP、域名等，用逗號分隔））</td><td><code>nettacker -i 192.168.1.1,example.com</code></td></tr><tr class="even"><td><code>-l</code></td><td>從檔案讀取目標清單</td><td><code>nettacker -l targets.txt</code></td></tr></tbody></table><h3 id="method選項">Method選項</h3><table><colgroup><col style="width: 29%" /><col style="width: 21%" /><col style="width: 48%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例</th></tr></thead><tbody><tr class="odd"><td><code>-m</code></td><td>指定模組（支援模糊搜尋）</td><td><code>nettacker -m ssh_brute,port_scan</code></td></tr><tr class="even"><td><code>--modules-extra-args</code></td><td>傳入模組專用參數</td><td><code>nettacker --modules-extra-args "api_key=123"</code></td></tr><tr class="odd"><td><code>--show-all-modules</code></td><td>顯示所有可用模組</td><td><code>nettacker --show-all-modules</code></td></tr><tr class="even"><td><code>--profile</code></td><td>使用預設模組組合</td><td><code>nettacker --profile apache</code></td></tr><tr class="odd"><td><code>--show-all-profiles</code></td><td>顯示所有模組組合資訊</td><td><code>nettacker --show-all-profiles</code></td></tr><tr class="even"><td><code>-x</code></td><td>排除模組</td><td><code>nettacker -x ftp_brute</code></td></tr><tr class="odd"><td><code>-u</code></td><td>指定帳號</td><td><code>nettacker -u admin,test</code></td></tr><tr class="even"><td><code>-U</code></td><td>從檔案載入帳號清單</td><td><code>nettacker -U users.txt</code></td></tr><tr class="odd"><td><code>-p</code></td><td>指定密碼</td><td><code>nettacker -p 123456,admin</code></td></tr><tr class="even"><td><code>-P</code></td><td>從檔案載入密碼清單</td><td><code>nettacker -P passwords.txt</code></td></tr><tr class="odd"><td><code>-g</code></td><td>指定端口（可用逗號分隔）</td><td><code>nettacker -g 21,22,80</code></td></tr><tr class="even"><td><code>--user-agent</code></td><td>指定或亂數 User-Agent</td><td><code>nettacker --user-agent random_user_agent</code></td></tr><tr class="odd"><td><code>-T</code></td><td>設定逾時時間（默認 3.0 秒）</td><td><code>nettacker -T 1.0</code></td></tr><tr class="even"><td><code>-w</code></td><td>請求間延遲（秒）</td><td><code>nettacker  -w 1</code></td></tr><tr class="odd"><td><code>-r</code></td><td>掃描整個 IP 範圍</td><td><code>nettacker  -i 192.168.1.0/24 -r</code></td></tr><tr class="even"><td><code>-s</code></td><td>掃描子網域</td><td><code>nettacker  -i example.com -s</code></td></tr><tr class="odd"><td><code>-d</code></td><td>強制掃描，不偵測服務類型</td><td><code>nettacker  -d</code></td></tr><tr class="even"><td><code>-t</code></td><td>每主機執行緒數（默認 250）</td><td><code>nettacker  -t 10</code></td></tr><tr class="odd"><td><code>-M</code></td><td>模組並行掃描數量（默認 20）</td><td><code>nettacker  -M 5</code></td></tr><tr class="even"><td><code>--set-hardware-usage</code></td><td>設定硬體使用量（low、normal、high、maximum，默認 maximum）</td><td><code>nettacker --set-hardware-usage high</code></td></tr><tr class="odd"><td><code>-R</code></td><td>使用 SOCKS 代理</td><td><code>nettacker -R socks5://127.0.0.1:9050</code></td></tr><tr class="even"><td><code>--retries</code></td><td>逾時重試次數（默認 3）</td><td><code>nettacker --retries 2</code></td></tr><tr class="odd"><td><code>--ping-before-scan</code></td><td>掃描前先 ping 主機</td><td><code>nettacker --ping-before-scan</code></td></tr></tbody></table><h3 id="scan-compare選項">Scan Compare選項</h3><table><colgroup><col style="width: 8%" /><col style="width: 39%" /><col style="width: 52%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例</th></tr></thead><tbody><tr class="odd"><td><code>-K</code></td><td>使用唯一 scan_id 比較當前掃描與舊掃描</td><td><code>nettacker -K 20240625-001</code></td></tr><tr class="even"><td><code>-J</code></td><td>指定比較報告文件路徑</td><td><code>nettacker -J compare_report.html</code></td></tr></tbody></table><h3 id="api-介面選項restful-api">API 介面選項（RESTful API）</h3><table><colgroup><col style="width: 30%" /><col style="width: 13%" /><col style="width: 56%" /></colgroup><thead><tr class="header"><th>參數</th><th>說明</th><th>範例</th></tr></thead><tbody><tr class="odd"><td><code>--start-api</code></td><td>啟動 API 服務</td><td><code>nettacker --start-api</code></td></tr><tr class="even"><td><code>--api-host</code></td><td>指定 API 監聽主機</td><td><code>nettacker --api-host 0.0.0.0</code></td></tr><tr class="odd"><td><code>--api-port</code></td><td>指定 API 埠號（默認 5000）</td><td><code>nettacker --api-port 5000</code></td></tr><tr class="even"><td><code>--api-debug-mode</code></td><td>啟用除錯模式</td><td><code>nettacker --api-debug-mode</code></td></tr><tr class="odd"><td><code>--api-access-key</code></td><td>設置 API 訪問密鑰（默認隨機 MD5 哈希）</td><td><code>nettacker --api-access-key mykey123</code></td></tr><tr class="even"><td><code>--api-client-whitelisted-ips</code></td><td>限定 API 可存取 IP</td><td><code>nettacker --api-client-whitelisted-ips 127.0.0.1,192.168.1.0/24</code></td></tr><tr class="odd"><td><code>--api-access-log</code></td><td>設定 API 訪問日誌檔案</td><td><code>nettacker --api-access-log api.log</code></td></tr><tr class="even"><td><code>--api-cert</code></td><td>指定 HTTPS 憑證</td><td><code>nettacker --api-cert cert.pem</code></td></tr><tr class="odd"><td><code>--api-cert-key</code></td><td>指定憑證私鑰</td><td><code>nettacker --api-cert-key cert.key</code></td></tr></tbody></table><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly9vd2FzcC5vcmcvd3d3LXByb2plY3QtbmV0dGFja2VyLw==">OWASPNettacker<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9uZXR0YWNrZXIucmVhZHRoZWRvY3MuaW8vZW4vbGF0ZXN0L0hvbWUv">OWASPNettacker Documentation<i class="fa fa-external-link-alt"></i></span></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Penetration Test </category>
+          
+          <category> Linux </category>
+          
+          <category> Security </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> PT </tag>
+            
+            <tag> linux </tag>
             
             <tag> GitHub </tag>
             
@@ -48,9 +83,9 @@
       
       <categories>
           
-          <category> Linux </category>
-          
           <category> Penetration Test </category>
+          
+          <category> Linux </category>
           
           <category> Security </category>
           
@@ -59,9 +94,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> PT </tag>
+            
+            <tag> linux </tag>
             
             <tag> GitHub </tag>
             
@@ -83,9 +118,9 @@
       
       <categories>
           
-          <category> Linux </category>
-          
           <category> Penetration Test </category>
+          
+          <category> Linux </category>
           
           <category> Security </category>
           
@@ -94,9 +129,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> PT </tag>
+            
+            <tag> linux </tag>
             
             <tag> GitHub </tag>
             
@@ -183,9 +218,9 @@
       
         <tags>
             
-            <tag> website </tag>
-            
             <tag> PT </tag>
+            
+            <tag> website </tag>
             
             <tag> SQL </tag>
             
@@ -243,9 +278,9 @@
             
             <tag> ubuntu </tag>
             
-            <tag> kali </tag>
-            
             <tag> Parrot </tag>
+            
+            <tag> kali </tag>
             
         </tags>
       
@@ -263,9 +298,9 @@
       
       <categories>
           
-          <category> Linux </category>
-          
           <category> Penetration Test </category>
+          
+          <category> Linux </category>
           
           <category> Security </category>
           
@@ -274,9 +309,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> PT </tag>
+            
+            <tag> linux </tag>
             
             <tag> Parrot </tag>
             
@@ -535,9 +570,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> PT </tag>
+            
+            <tag> linux </tag>
             
             <tag> GitHub </tag>
             
@@ -591,9 +626,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> PT </tag>
+            
+            <tag> linux </tag>
             
             <tag> GitHub </tag>
             
