@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title>NucleiFuzzer-notes</title>
+      <link href="/blog/2026/03/21/NucleiFuzzer-notes/"/>
+      <url>/blog/2026/03/21/NucleiFuzzer-notes/</url>
+      
+        <content type="html"><![CDATA[<h2 id="簡介">簡介</h2><p>NucleiFuzzer 是一套專為 Web應用程式安全測試自動化設計的整合型工具，透過串接多種 URL探勘與漏洞掃描工具，建立從「攻擊面蒐集」到「漏洞發現」的一條龍流程，大幅提升測試效率與覆蓋率。它整合 ParamSpider、Waybackurls、Katana、Gauplus、Hakrawler 進行大規模URL 與參數蒐集，找出潛在攻擊入口；再透過 Nuclei 搭配 fuzzing templates對這些端點進行漏洞掃描與模糊測試，有效挖掘各類 Web 漏洞。</p><span id="more"></span><h3 id="核心優勢">核心優勢</h3><ul><li><p>全方位端點收集：整合 ParamSpider, Waybackurls, Katana, Gauplus 及Hakrawler，徹底挖掘所有潛在的 URL 與參數。</p></li><li><p>精準弱點掃描：利用 Nuclei 配合專業 Fuzzing模板，針對目標進行深度弱點探測。</p></li><li><p>數據精煉技術：內建 uro 進行去重、httpx進行存活過濾，確保掃描結果乾淨且專注。</p></li><li><p>彈性與效能：支援自定義速率限制 (Rate Limiting)與批次處理，在效率與穩定性之間取得平衡。</p></li></ul><h2 id="安裝方法">安裝方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/0xKayala/NucleiFuzzer.git</span><br><span class="line">cd NucleiFuzzer</span><br><span class="line">sudo chmod +x install.sh</span><br><span class="line">./install.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="用法">用法</h2><h4 id="幫助選單">幫助選單</h4><p><code>nf -h</code></p><h3 id="section"></h3><h4 id="單一網域上運行">單一網域上運行</h4><p><code>nf -d example.com</code></p><h4 id="根據檔案內容在多個網域執行">根據檔案內容在多個網域執行</h4><p><code>nf -f file.txt</code></p><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLzB4S2F5YWxhL051Y2xlaUZ1enplcg==">https://github.com/0xKayala/NucleiFuzzer<i class="fa fa-external-link-alt"></i></span></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> Penetration Test </category>
+          
+          <category> Security </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> PT </tag>
+            
+            <tag> GitHub </tag>
+            
+            <tag> tools </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>記憶體分析工具Volatility</title>
       <link href="/blog/2026/01/06/Volatility-notes/"/>
       <url>/blog/2026/01/06/Volatility-notes/</url>
@@ -20,9 +55,9 @@
       
         <tags>
             
-            <tag> Digital Forensics </tag>
-            
             <tag> tools </tag>
+            
+            <tag> Digital Forensics </tag>
             
         </tags>
       

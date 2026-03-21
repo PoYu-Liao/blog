@@ -21,28 +21,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"stackoverflow-light","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/blog/js/config.js" defer></script>
 
-    <meta name="description" content="歡迎來我的部落格! 本人資安領域學習研究，深耕多年，目前專注由於藍隊知識技術中~~ 此部落格主要分享有關資安的小知識，以及一些我之前用過的一些技術知識分享。 簡介 關於這個網站，最初的起因是課堂分組時，一位學長提到可以自行架設並撰寫部落格。然而，當時我興致缺缺，因此遲遲沒有動手建置。 後來因應課程需求，需要將上課內容整理並上傳至 Google Blogger，作為老師線上批改與記錄筆記">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about 關於我">
-<meta property="og:url" content="https://poyu-liao.github.io/about/">
+    <meta name="description" content="簡介 NucleiFuzzer 是一套專為 Web 應用程式安全測試自動化設計的整合型工具，透過串接多種 URL 探勘與漏洞掃描工具，建立從「攻擊面蒐集」到「漏洞發現」的一條龍流程，大幅提升測試效率與覆蓋率。 它整合 ParamSpider、Waybackurls、Katana、Gauplus、Hakrawler 進行大規模 URL 與參數蒐集，找出潛在攻擊入口；再透過 Nuclei 搭">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NucleiFuzzer-notes">
+<meta property="og:url" content="https://poyu-liao.github.io/2026/03/21/NucleiFuzzer-notes/">
 <meta property="og:site_name" content="Robert&#39;s Blog">
-<meta property="og:description" content="歡迎來我的部落格! 本人資安領域學習研究，深耕多年，目前專注由於藍隊知識技術中~~ 此部落格主要分享有關資安的小知識，以及一些我之前用過的一些技術知識分享。 簡介 關於這個網站，最初的起因是課堂分組時，一位學長提到可以自行架設並撰寫部落格。然而，當時我興致缺缺，因此遲遲沒有動手建置。 後來因應課程需求，需要將上課內容整理並上傳至 Google Blogger，作為老師線上批改與記錄筆記">
+<meta property="og:description" content="簡介 NucleiFuzzer 是一套專為 Web 應用程式安全測試自動化設計的整合型工具，透過串接多種 URL 探勘與漏洞掃描工具，建立從「攻擊面蒐集」到「漏洞發現」的一條龍流程，大幅提升測試效率與覆蓋率。 它整合 ParamSpider、Waybackurls、Katana、Gauplus、Hakrawler 進行大規模 URL 與參數蒐集，找出潛在攻擊入口；再透過 Nuclei 搭">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2026-01-06T13:40:07.000Z">
-<meta property="article:modified_time" content="2026-01-06T14:06:41.209Z">
+<meta property="article:published_time" content="2026-03-21T13:53:47.000Z">
+<meta property="article:modified_time" content="2026-03-21T13:57:13.602Z">
 <meta property="article:author" content="Po Yu Liao">
-<meta property="article:tag" content="skysnowstarshine,Robert&#39;s Blog">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="PT">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="tools">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://poyu-liao.github.io/about/">
+<link rel="canonical" href="https://poyu-liao.github.io/2026/03/21/NucleiFuzzer-notes/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-TW","comments":"","permalink":"https://poyu-liao.github.io/about/","path":"about/index.html","title":"about 關於我"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/2026/03/21/NucleiFuzzer-notes/","path":"2026/03/21/NucleiFuzzer-notes/","title":"NucleiFuzzer-notes"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>about 關於我 | Robert's Blog
-</title>
+<title>NucleiFuzzer-notes | Robert's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WYW6952KH"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5WYW6952KH","only_pageview":false,"measure_protocol_api_secret":null}</script>
@@ -81,7 +83,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://poyu-liao.github.io/about/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://poyu-liao.github.io/2026/03/21/NucleiFuzzer-notes/"}</script>
   <script src="/blog/js/third-party/quicklink.js" defer></script>
 <link rel="stylesheet" type="text/css" href="/blog/css/injector/main.css" /><link rel="preload" as="style" href="/blog/css/injector/light.css" /><link rel="preload" as="style" href="/blog/css/injector/dark.css" />
   <noscript>
@@ -174,7 +176,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conference-events"><span class="nav-number">2.</span> <span class="nav-text">Conference Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#certificate"><span class="nav-number">3.</span> <span class="nav-text">Certificate</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">簡介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%84%AA%E5%8B%A2"><span class="nav-number">1.1.</span> <span class="nav-text">核心優勢</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">安裝方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%AB%E5%8A%A9%E9%81%B8%E5%96%AE"><span class="nav-number">3.0.1.</span> <span class="nav-text">幫助選單</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section"><span class="nav-number">3.1.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%96%AE%E4%B8%80%E7%B6%B2%E5%9F%9F%E4%B8%8A%E9%81%8B%E8%A1%8C"><span class="nav-number">3.1.1.</span> <span class="nav-text">單一網域上運行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%93%9A%E6%AA%94%E6%A1%88%E5%85%A7%E5%AE%B9%E5%9C%A8%E5%A4%9A%E5%80%8B%E7%B6%B2%E5%9F%9F%E5%9F%B7%E8%A1%8C"><span class="nav-number">3.1.2.</span> <span class="nav-text">根據檔案內容在多個網域執行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -239,81 +241,145 @@
 
     </div>
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
 
 
-    
-    
-    
-    <div class="post-block" lang="zh-TW"><header class="post-header">
+  
 
-<h1 class="post-title" itemprop="name headline">about 關於我
-</h1>
 
-<div class="post-meta-container">
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/2026/03/21/NucleiFuzzer-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/A.gif">
+      <meta itemprop="name" content="Po Yu Liao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Robert's Blog">
+      <meta itemprop="description" content="一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="NucleiFuzzer-notes | Robert's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NucleiFuzzer-notes
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2026-03-21 21:53:47 / 修改時間：21:57:13" itemprop="dateCreated datePublished" datetime="2026-03-21T21:53:47+08:00">2026-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Penetration-Test/" itemprop="url" rel="index"><span itemprop="name">Penetration Test</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Security/" itemprop="url" rel="index"><span itemprop="name">Security</span></a>
+        </span>
+    </span>
+
+  
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      
-      <div class="post-body">
-          <p>歡迎來我的部落格!<br />
-本人資安領域學習研究，深耕多年，目前專注由於藍隊知識技術中~~<br />
-此部落格主要分享有關資安的小知識，以及一些我之前用過的一些技術知識分享。</p>
-<h1 id="簡介">簡介</h1>
-<p>關於這個網站，最初的起因是課堂分組時，一位學長提到可以自行架設並撰寫部落格。然而，當時我興致缺缺，因此遲遲沒有動手建置。
-後來因應課程需求，需要將上課內容整理並上傳至 Google
-Blogger，作為老師線上批改與記錄筆記成績的工具。也正是在這個契機下，我開始重新思考部落格的用途，除了作為技術分享的平台外，也能同時當作個人學習筆記，方便日後隨時查閱與回顧。</p>
-<h1 id="conference-events">Conference Events</h1>
-<table>
-<thead>
-<tr class="header">
-<th>名稱</th>
-<th style="text-align: right;">時間</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Cybersec2022</td>
-<td style="text-align: right;">2022</td>
-</tr>
-<tr class="even">
-<td>Cybersec2023</td>
-<td style="text-align: right;">2023</td>
-</tr>
-<tr class="odd">
-<td>Postquantum Crypto Minischool</td>
-<td style="text-align: right;">2022</td>
-</tr>
-</tbody>
-</table>
-<h1 id="certificate">Certificate</h1>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="簡介">簡介</h2>
+<p>NucleiFuzzer 是一套專為 Web
+應用程式安全測試自動化設計的整合型工具，透過串接多種 URL
+探勘與漏洞掃描工具，建立從「攻擊面蒐集」到「漏洞發現」的一條龍流程，大幅提升測試效率與覆蓋率。
+它整合 ParamSpider、Waybackurls、Katana、Gauplus、Hakrawler 進行大規模
+URL 與參數蒐集，找出潛在攻擊入口；再透過 Nuclei 搭配 fuzzing templates
+對這些端點進行漏洞掃描與模糊測試，有效挖掘各類 Web 漏洞。</p>
+<span id="more"></span>
+<h3 id="核心優勢">核心優勢</h3>
 <ul>
-<li>Microsoft Technology Associate:Networking Fundamentals<br />
-</li>
-<li>Microsoft Technology Associate:Security Fundamentals<br />
-</li>
-<li>EC-Council Certified Ethical Hacker<br />
-</li>
-<li>EC-Council Certified Ethical Hacker Practical<br />
-</li>
-<li>EC-Council Certified Ethical Hacker Master<br />
-</li>
-<li>EC-Council Computer Hacking Forensic Investigator</li>
+<li><p>全方位端點收集：整合 ParamSpider, Waybackurls, Katana, Gauplus 及
+Hakrawler，徹底挖掘所有潛在的 URL 與參數。</p></li>
+<li><p>精準弱點掃描：利用 Nuclei 配合專業 Fuzzing
+模板，針對目標進行深度弱點探測。</p></li>
+<li><p>數據精煉技術：內建 uro 進行去重、httpx
+進行存活過濾，確保掃描結果乾淨且專注。</p></li>
+<li><p>彈性與效能：支援自定義速率限制 (Rate Limiting)
+與批次處理，在效率與穩定性之間取得平衡。</p></li>
 </ul>
+<h2 id="安裝方法">安裝方法</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/0xKayala/NucleiFuzzer.git</span><br><span class="line">cd NucleiFuzzer</span><br><span class="line">sudo chmod +x install.sh</span><br><span class="line">./install.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="用法">用法</h2>
+<h4 id="幫助選單">幫助選單</h4>
+<p><code>nf -h</code></p>
+<h3 id="section"></h3>
+<h4 id="單一網域上運行">單一網域上運行</h4>
+<p><code>nf -d example.com</code></p>
+<h4 id="根據檔案內容在多個網域執行">根據檔案內容在多個網域執行</h4>
+<p><code>nf -f file.txt</code></p>
+<h2 id="參考資料">參考資料</h2>
+<ol type="1">
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLzB4S2F5YWxhL051Y2xlaUZ1enplcg==">https://github.com/0xKayala/NucleiFuzzer<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
 
-      </div>
-      
-      
-      
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/linux/" rel="tag"># linux</a>
+              <a href="/blog/tags/PT/" rel="tag"># PT</a>
+              <a href="/blog/tags/GitHub/" rel="tag"># GitHub</a>
+              <a href="/blog/tags/tools/" rel="tag"># tools</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2026/01/06/Volatility-notes/" rel="prev" title="記憶體分析工具Volatility">
+                  <i class="fa fa-angle-left"></i> 記憶體分析工具Volatility
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
 
 
+
+
+
+
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -369,7 +435,7 @@ darkmode.showWidget();
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","body":null,"labels":"Blog-Gitalk","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"ecc65917996a8ae6fe9033f393b48bdf"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","body":null,"labels":"Blog-Gitalk","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"209f7efa8916148a610cde2a36d140f6"}</script>
 <script src="/blog/js/third-party/comments/gitalk.js" defer></script>
 <div class="moon-menu">
   <div class="moon-menu-items">
