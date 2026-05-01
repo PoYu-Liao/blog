@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/snowflake180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/snowflake32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/snowflake16x16.png">
+  <link rel="mask-icon" href="/blog/images/snowflake.svg" color="#222">
+  <meta name="google-site-verification" content="google76b4f15a94f05f2c.html">
+  <meta name="msvalidate.01" content="BingSiteAuth.xml">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"poyu-liao.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.27.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"stackoverflow-light","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"},"path":"/blog/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/blog/js/config.js" defer></script>
+
+    <meta name="description" content="簡介 現代安全防禦正全面轉向以 AI 與機器學習為核心的自動化體系：從能自我學習的 API 防護、自動撰寫補丁的開發助手，到具備自主邏輯，能進行多步攻擊模擬的滲透助手。這些工具不僅消除了人為監控的盲點，更將安全防線從事後補救推向前瞻性的預測與即時阻斷。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI弱掃工具">
+<meta property="og:url" content="https://poyu-liao.github.io/2026/05/01/AI-tool1/">
+<meta property="og:site_name" content="Robert&#39;s Blog">
+<meta property="og:description" content="簡介 現代安全防禦正全面轉向以 AI 與機器學習為核心的自動化體系：從能自我學習的 API 防護、自動撰寫補丁的開發助手，到具備自主邏輯，能進行多步攻擊模擬的滲透助手。這些工具不僅消除了人為監控的盲點，更將安全防線從事後補救推向前瞻性的預測與即時阻斷。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-05-01T15:08:59.000Z">
+<meta property="article:modified_time" content="2026-05-01T15:16:12.344Z">
+<meta property="article:author" content="Po Yu Liao">
+<meta property="article:tag" content="PT">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="tools">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://poyu-liao.github.io/2026/05/01/AI-tool1/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://poyu-liao.github.io/2026/05/01/AI-tool1/","path":"2026/05/01/AI-tool1/","title":"AI弱掃工具"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>AI弱掃工具 | Robert's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WYW6952KH"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-5WYW6952KH","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/blog/js/third-party/analytics/google-analytics.js" defer></script>
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/blog/js/utils.js" defer></script><script src="/blog/js/motion.js" defer></script><script src="/blog/js/sidebar.js" defer></script><script src="/blog/js/next-boot.js" defer></script><script src="/blog/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/blog/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","cdn":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/blog/js/third-party/math/mathjax.js" defer></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/3.0.1/quicklink.umd.js" integrity="sha256-44BednzIpUeQJcY8qtLyarFu0UCCTbgmWOvaoehiFQQ=" crossorigin="anonymous" defer></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://poyu-liao.github.io/2026/05/01/AI-tool1/"}</script>
+  <script src="/blog/js/third-party/quicklink.js" defer></script>
+<link rel="stylesheet" type="text/css" href="/blog/css/injector/main.css" /><link rel="preload" as="style" href="/blog/css/injector/light.css" /><link rel="preload" as="style" href="/blog/css/injector/dark.css" />
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Robert's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">skysnowstarshine</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜尋..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#api-%E8%88%87%E7%B6%B2%E9%A0%81%E6%87%89%E7%94%A8%E5%AE%89%E5%85%A8-web-api-security"><span class="nav-number">2.</span> <span class="nav-text">API 與網頁應用安全 (Web
+&amp; API Security)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#equixly"><span class="nav-number">2.1.</span> <span class="nav-text">Equixly</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%89%B2"><span class="nav-number">2.1.2.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#smartscanner"><span class="nav-number">2.2.</span> <span class="nav-text">SmartScanner</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-2"><span class="nav-number">2.2.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#beagle-security"><span class="nav-number">2.3.</span> <span class="nav-text">Beagle Security</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-3"><span class="nav-number">2.3.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hackules"><span class="nav-number">2.4.</span> <span class="nav-text">Hackules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-4"><span class="nav-number">2.4.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-3"><span class="nav-number">2.4.2.</span> <span class="nav-text">特色</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%AE%89%E5%85%A8%E8%88%87%E9%96%8B%E7%99%BC%E8%87%AA%E5%8B%95%E5%8C%96-devsecops"><span class="nav-number">3.</span> <span class="nav-text">程式碼安全與開發自動化
+(DevSecOps)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#codedefender"><span class="nav-number">3.1.</span> <span class="nav-text">CodeDefender</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-5"><span class="nav-number">3.1.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-4"><span class="nav-number">3.1.2.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#corgea"><span class="nav-number">3.2.</span> <span class="nav-text">Corgea</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-6"><span class="nav-number">3.2.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-5"><span class="nav-number">3.2.2.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#coderbuds"><span class="nav-number">3.3.</span> <span class="nav-text">Coderbuds</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-7"><span class="nav-number">3.3.1.</span> <span class="nav-text">簡介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-6"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">特色</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A4%8E%E6%9E%B6%E6%A7%8B%E8%88%87%E7%B3%BB%E7%B5%B1%E7%9B%A3%E6%8E%A7-infrastructure-monitoring"><span class="nav-number">4.</span> <span class="nav-text">基礎架構與系統監控
+(Infrastructure &amp; Monitoring)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fluxguard"><span class="nav-number">4.1.</span> <span class="nav-text">Fluxguard</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-8"><span class="nav-number">4.1.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-7"><span class="nav-number">4.1.2.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dryrun-security"><span class="nav-number">4.2.</span> <span class="nav-text">DryRun Security</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-9"><span class="nav-number">4.2.1.</span> <span class="nav-text">簡介</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BB%B2%E9%80%8F%E6%B8%AC%E8%A9%A6%E8%BC%94%E5%8A%A9%E8%88%87%E5%80%AB%E7%90%86%E9%A7%AD%E5%AE%A2-pentesting-exploitation"><span class="nav-number">5.</span> <span class="nav-text">滲透測試輔助與倫理駭客
+(Pentesting &amp; Exploitation)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pentest-copilot"><span class="nav-number">5.1.</span> <span class="nav-text">Pentest Copilot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-10"><span class="nav-number">5.1.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-8"><span class="nav-number">5.1.2.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nebula"><span class="nav-number">5.2.</span> <span class="nav-text">Nebula</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-11"><span class="nav-number">5.2.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-9"><span class="nav-number">5.2.2.</span> <span class="nav-text">特色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#claude-mythos"><span class="nav-number">5.3.</span> <span class="nav-text">Claude Mythos</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B-12"><span class="nav-number">5.3.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E8%89%B2-10"><span class="nav-number">5.3.2.</span> <span class="nav-text">特色</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Po Yu Liao"
+      src="/blog/images/A.gif">
+  <p class="site-author-name" itemprop="name">Po Yu Liao</p>
+  <div class="site-description" itemprop="description">一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BvWXUtTGlhbw==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PoYu-Liao"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOnJvYmVydC5jb25maWd1cmUxNDdAc2xtYWlscy5jb20=" title="E-Mail → mailto:robert.configure147@slmails.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vY2hhbm5lbC9VQzVFOExBOVZSRUp2QUNOcUVobG0zWlE=" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UC5E8LA9VREJvACNqEhlm3ZQ"><i class="fab fa-youtube fa-fw"></i>YouTube</span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          連結
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly93d3cudGlueXRzdW5hbWkuaW5mby8=" title="https:&#x2F;&#x2F;www.tinytsunami.info&#x2F;">羊羽手札</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://poyu-liao.github.io/2026/05/01/AI-tool1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/A.gif">
+      <meta itemprop="name" content="Po Yu Liao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Robert's Blog">
+      <meta itemprop="description" content="一位在lab吹冷氣就被封PBS之名的人!<br>現在變成社畜的從業資安人員">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="AI弱掃工具 | Robert's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AI弱掃工具
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2026-05-01 23:08:59 / 修改時間：23:16:12" itemprop="dateCreated datePublished" datetime="2026-05-01T23:08:59+08:00">2026-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Security/" itemprop="url" rel="index"><span itemprop="name">Security</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Penetration-Test/" itemprop="url" rel="index"><span itemprop="name">Penetration Test</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="簡介">簡介</h2>
+<p>現代安全防禦正全面轉向以 AI
+與機器學習為核心的自動化體系：從能自我學習的 API
+防護、自動撰寫補丁的開發助手，到具備自主邏輯，能進行多步攻擊模擬的滲透助手。這些工具不僅消除了人為監控的盲點，更將安全防線從事後補救推向前瞻性的預測與即時阻斷。</p>
+<span id="more"></span>
+<h2 id="api-與網頁應用安全-web-api-security">API 與網頁應用安全 (Web
+&amp; API Security)</h2>
+<h3 id="equixly">Equixly</h3>
+<h4 id="簡介-1">簡介</h4>
+<p>專為 API 安全 設計的 AI 工具。透過機器學習識別並消除安全漏洞，為 API
+提供強大的漏洞評估。</p>
+<h4 id="特色">特色</h4>
+<ul>
+<li>AI 驅動漏洞檢測： 確保不漏掉 API 內的任何潛在威脅。<br />
+</li>
+<li>自動化威脅分析： 加速識別與響應新興的安全風險。<br />
+</li>
+<li>實時安全監控： 持續監控並提供漏洞的即時更新與告警。<br />
+</li>
+<li>自適應學習： 模型會隨數據增加而不斷進化，提升檢測準確率。</li>
+</ul>
+<h3 id="smartscanner">SmartScanner</h3>
+<h4 id="簡介-2">簡介</h4>
+<p>旨在增強網站安全性的自動化掃描器，它使用先進的機器學習算法對網站進行持續監控，以發現潛在的漏洞與威脅。</p>
+<h4 id="特色-1">特色</h4>
+<ul>
+<li>監督式與非監督式學習：
+使用這兩種算法分析海量數據，使其能學習良性與惡意活動的模式並進行區分。<br />
+</li>
+<li>建立行為基準： 為網站建立正常行為模型，藉此識別異常偏差。<br />
+</li>
+<li>異常檢測： 實時標記並警示偏離基準的可疑行為。<br />
+</li>
+<li>實時分析與響應：
+提供實時分析，並自動採取措施緩解威脅，降低攻擊成功率。</li>
+</ul>
+<h3 id="beagle-security">Beagle Security</h3>
+<h4 id="簡介-3">簡介</h4>
+<p>結合自動化掃描與手動測試的網頁應用安全平台。</p>
+<h4 id="特色-2">特色</h4>
+<ul>
+<li>全面覆蓋： 檢測包含 OWASP Top 10 在內的廣泛風險。<br />
+</li>
+<li>優化建議： 提供詳細報告協助企業改善應用程序架構。</li>
+</ul>
+<h3 id="hackules">Hackules</h3>
+<h4 id="簡介-4">簡介</h4>
+<p>針對網頁與基礎架構的 AI 漏洞評估平台。</p>
+<h4 id="特色-3">特色</h4>
+<ul>
+<li>NLP 技術應用：
+利用自然語言處理與機器學習提供精確且具操作性的安全洞察。</li>
+</ul>
+<h2 id="程式碼安全與開發自動化-devsecops">程式碼安全與開發自動化
+(DevSecOps)</h2>
+<h3 id="codedefender">CodeDefender</h3>
+<h4 id="簡介-5">簡介</h4>
+<p>協助組織自動化檢測、排序並修復程式碼漏洞的工具。</p>
+<h4 id="特色-4">特色</h4>
+<ul>
+<li>工具整合： 與現有安全工具無縫整合，提供全面的漏洞管理方案。</li>
+</ul>
+<h3 id="corgea">Corgea</h3>
+<h4 id="簡介-6">簡介</h4>
+<p>自動化生成並部署安全修復程式碼的 AI 平台。</p>
+<h4 id="特色-5">特色</h4>
+<ul>
+<li>自動化補丁： 利用 ML
+模型編寫安全代碼補丁，大幅減少安全團隊的手動工作。</li>
+</ul>
+<h3 id="coderbuds">Coderbuds</h3>
+<h4 id="簡介-7">簡介</h4>
+<p>協助開發人員在代碼庫中處理漏洞的 AI 安全平台。</p>
+<h5 id="特色-6">特色</h5>
+<p>無縫整合：
+與主流開發工具深度結合，提供自動掃描、風險評估與量身定制的修復建議。</p>
+<h2 id="基礎架構與系統監控-infrastructure-monitoring">基礎架構與系統監控
+(Infrastructure &amp; Monitoring)</h2>
+<h3 id="fluxguard">Fluxguard</h3>
+<h4 id="簡介-8">簡介</h4>
+<p>跨越多樣化 IT 基礎架構（網路、系統、應用）的 AI 自動掃描工具。</p>
+<h4 id="特色-7">特色</h4>
+<ul>
+<li>行為分析：
+透過對網路流量和系統交互的行為建模，識別異常的潛在攻擊行為。</li>
+</ul>
+<h3 id="dryrun-security">DryRun Security</h3>
+<h4 id="簡介-9">簡介</h4>
+<p>結合 AI
+與自動化技術的評估平台，專注於識別並驗證網頁應用與基礎架構的弱點。</p>
+<h2
+id="滲透測試輔助與倫理駭客-pentesting-exploitation">滲透測試輔助與倫理駭客
+(Pentesting &amp; Exploitation)</h2>
+<h3 id="pentest-copilot">Pentest Copilot</h3>
+<h4 id="簡介-10">簡介</h4>
+<p>提升滲透測試效率的 AI 助手。</p>
+<h4 id="特色-8">特色</h4>
+<ul>
+<li>任務自動化： 自動執行從前期偵察到漏洞利用的重複性任務。<br />
+</li>
+<li>優先級排序： 提供修復洞察，協助團隊排列漏洞處理的優先順序。</li>
+</ul>
+<h3 id="nebula">Nebula</h3>
+<h4 id="簡介-11">簡介</h4>
+<p>引領倫理駭客範式轉移的工具，徹底改變漏洞的檢測與利用方式。</p>
+<h4 id="特色-9">特色</h4>
+<ul>
+<li>強化漏洞利用：
+透過處理大數據集與分析複雜模式，自動執行漏洞利用路徑。<br />
+</li>
+<li>自然語言操作： 利用 NLP
+讓使用者透過自然語言指令執行精確動作，降低技術門檻。<br />
+</li>
+<li>指令搜索引擎：
+內建引擎協助駭客快速搜尋特定服務或端口的相關指令。</li>
+</ul>
+<h3 id="claude-mythos">Claude Mythos</h3>
+<h4 id="簡介-12">簡介</h4>
+<p>Claude Mythos 是 Anthropic
+開發的一款專為邊界測試設計的「前哨模型」。它被視為 AI
+安全領域的重大突破，具備超乎想像的自主性，能夠在無需人類干預的情況下，針對複雜系統進行深度挖掘。它因其強大的攻擊潛力而受嚴格控管（Project
+Glasswing），目前僅開放給少數關鍵行業合作夥伴進行防禦性測試，被譽為「有史以來最具威脅也最強大的安全
+AI」。</p>
+<h4 id="特色-10">特色</h4>
+<ul>
+<li>零時差漏洞 (Zero-Day) 挖掘： 展現出驚人的發現能力，曾找出隱藏在
+OpenBSD 等高安全性系統中長達 27
+年、連人類與自動化工具都未曾察覺的漏洞。<br />
+</li>
+<li>高成功率的漏洞利用： 在複雜的測試環境中（如 Firefox 的 JS
+引擎），其漏洞利用成功率高達 72%，而傳統 AI 模型在相同任務下的成功率接近
+0%。<br />
+</li>
+<li>百萬級長文本上下文 (1M Context Window)：
+具備「過目不忘」的分析能力，能一次讀取並理解整套系統的源代碼，建立起全局的攻擊或防禦視角，串聯多個微小漏洞形成連鎖攻擊。<br />
+</li>
+<li>自主代理架構 (Agentic Scaffolding)：
+它不只是回答問題，而是能自主行動。它會提出假設、啟動調試器
+(Debugger)、嘗試執行代碼，並根據結果不斷自我糾正，直到成功突破防線。<br />
+</li>
+<li>自然語言指令轉化： 讓非頂尖專家也能透過自然語言描述意圖，由 AI
+自動轉化為精確的技術指令，極大地降低了高級滲透測試的門檻。</li>
+</ul>
+<h2 id="參考資料">參考資料</h2>
+<ol type="1">
+<li><span class="exturl" data-url="aHR0cHM6Ly9lcXVpeGx5LmNvbQ==">https://equixly.com<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cudGhlc21hcnRzY2FubmVyLmNvbQ==">https://www.thesmartscanner.com<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9iZWFnbGVzZWN1cml0eS5jb20=">https://beaglesecurity.com<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9oYWNrdWxlcy5jb20=">https://hackules.com<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jb2RlZGVmZW5kZXIucm8=">https://codedefender.ro<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jb3JnZWEuY29t">https://corgea.com<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jb2RlcmJ1ZHMuY29t">https://coderbuds.com<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9mbHV4Z3VhcmQuY29t">https://fluxguard.com<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZHJ5cnVuLnNlY3VyaXR5">https://www.dryrun.security<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jb3BpbG90LmJ1Z2Jhc2UuYWk=">https://copilot.bugbase.ai<i class="fa fa-external-link-alt"></i></span><br />
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW50aHJvcGljLmNvbS8=">https://www.anthropic.com/<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/PT/" rel="tag"># PT</a>
+              <a href="/blog/tags/AI/" rel="tag"># AI</a>
+              <a href="/blog/tags/tools/" rel="tag"># tools</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2026/03/21/NucleiFuzzer-notes/" rel="prev" title="NucleiFuzzer">
+                  <i class="fa fa-angle-left"></i> NucleiFuzzer
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-snowflake"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Po Yu Liao</span>
+  </div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PoYu-Liao","repo":"blog","client_id":"4a2b5cf826ad2ca46fa9","client_secret":"7368bd321e2ab86d6385d71078ae01d9143d6757","admin_user":"PoYu-Liao","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-TW","body":null,"labels":"Blog-Gitalk","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"1029ee7a7e025276dbb133fcff32e30c"}</script>
+<script src="/blog/js/third-party/comments/gitalk.js" defer></script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/blog/js/injector.js"></script>
+</body>
+</html>

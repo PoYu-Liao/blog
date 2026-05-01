@@ -4,7 +4,38 @@
   
     
     <entry>
-      <title>NucleiFuzzer-notes</title>
+      <title>AI弱掃工具</title>
+      <link href="/blog/2026/05/01/AI-tool1/"/>
+      <url>/blog/2026/05/01/AI-tool1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="簡介">簡介</h2><p>現代安全防禦正全面轉向以 AI與機器學習為核心的自動化體系：從能自我學習的 API防護、自動撰寫補丁的開發助手，到具備自主邏輯，能進行多步攻擊模擬的滲透助手。這些工具不僅消除了人為監控的盲點，更將安全防線從事後補救推向前瞻性的預測與即時阻斷。</p><span id="more"></span><h2 id="api-與網頁應用安全-web-api-security">API 與網頁應用安全 (Web&amp; API Security)</h2><h3 id="equixly">Equixly</h3><h4 id="簡介-1">簡介</h4><p>專為 API 安全 設計的 AI 工具。透過機器學習識別並消除安全漏洞，為 API提供強大的漏洞評估。</p><h4 id="特色">特色</h4><ul><li>AI 驅動漏洞檢測： 確保不漏掉 API 內的任何潛在威脅。<br /></li><li>自動化威脅分析： 加速識別與響應新興的安全風險。<br /></li><li>實時安全監控： 持續監控並提供漏洞的即時更新與告警。<br /></li><li>自適應學習： 模型會隨數據增加而不斷進化，提升檢測準確率。</li></ul><h3 id="smartscanner">SmartScanner</h3><h4 id="簡介-2">簡介</h4><p>旨在增強網站安全性的自動化掃描器，它使用先進的機器學習算法對網站進行持續監控，以發現潛在的漏洞與威脅。</p><h4 id="特色-1">特色</h4><ul><li>監督式與非監督式學習：使用這兩種算法分析海量數據，使其能學習良性與惡意活動的模式並進行區分。<br /></li><li>建立行為基準： 為網站建立正常行為模型，藉此識別異常偏差。<br /></li><li>異常檢測： 實時標記並警示偏離基準的可疑行為。<br /></li><li>實時分析與響應：提供實時分析，並自動採取措施緩解威脅，降低攻擊成功率。</li></ul><h3 id="beagle-security">Beagle Security</h3><h4 id="簡介-3">簡介</h4><p>結合自動化掃描與手動測試的網頁應用安全平台。</p><h4 id="特色-2">特色</h4><ul><li>全面覆蓋： 檢測包含 OWASP Top 10 在內的廣泛風險。<br /></li><li>優化建議： 提供詳細報告協助企業改善應用程序架構。</li></ul><h3 id="hackules">Hackules</h3><h4 id="簡介-4">簡介</h4><p>針對網頁與基礎架構的 AI 漏洞評估平台。</p><h4 id="特色-3">特色</h4><ul><li>NLP 技術應用：利用自然語言處理與機器學習提供精確且具操作性的安全洞察。</li></ul><h2 id="程式碼安全與開發自動化-devsecops">程式碼安全與開發自動化(DevSecOps)</h2><h3 id="codedefender">CodeDefender</h3><h4 id="簡介-5">簡介</h4><p>協助組織自動化檢測、排序並修復程式碼漏洞的工具。</p><h4 id="特色-4">特色</h4><ul><li>工具整合： 與現有安全工具無縫整合，提供全面的漏洞管理方案。</li></ul><h3 id="corgea">Corgea</h3><h4 id="簡介-6">簡介</h4><p>自動化生成並部署安全修復程式碼的 AI 平台。</p><h4 id="特色-5">特色</h4><ul><li>自動化補丁： 利用 ML模型編寫安全代碼補丁，大幅減少安全團隊的手動工作。</li></ul><h3 id="coderbuds">Coderbuds</h3><h4 id="簡介-7">簡介</h4><p>協助開發人員在代碼庫中處理漏洞的 AI 安全平台。</p><h5 id="特色-6">特色</h5><p>無縫整合：與主流開發工具深度結合，提供自動掃描、風險評估與量身定制的修復建議。</p><h2 id="基礎架構與系統監控-infrastructure-monitoring">基礎架構與系統監控(Infrastructure &amp; Monitoring)</h2><h3 id="fluxguard">Fluxguard</h3><h4 id="簡介-8">簡介</h4><p>跨越多樣化 IT 基礎架構（網路、系統、應用）的 AI 自動掃描工具。</p><h4 id="特色-7">特色</h4><ul><li>行為分析：透過對網路流量和系統交互的行為建模，識別異常的潛在攻擊行為。</li></ul><h3 id="dryrun-security">DryRun Security</h3><h4 id="簡介-9">簡介</h4><p>結合 AI與自動化技術的評估平台，專注於識別並驗證網頁應用與基礎架構的弱點。</p><h2id="滲透測試輔助與倫理駭客-pentesting-exploitation">滲透測試輔助與倫理駭客(Pentesting &amp; Exploitation)</h2><h3 id="pentest-copilot">Pentest Copilot</h3><h4 id="簡介-10">簡介</h4><p>提升滲透測試效率的 AI 助手。</p><h4 id="特色-8">特色</h4><ul><li>任務自動化： 自動執行從前期偵察到漏洞利用的重複性任務。<br /></li><li>優先級排序： 提供修復洞察，協助團隊排列漏洞處理的優先順序。</li></ul><h3 id="nebula">Nebula</h3><h4 id="簡介-11">簡介</h4><p>引領倫理駭客範式轉移的工具，徹底改變漏洞的檢測與利用方式。</p><h4 id="特色-9">特色</h4><ul><li>強化漏洞利用：透過處理大數據集與分析複雜模式，自動執行漏洞利用路徑。<br /></li><li>自然語言操作： 利用 NLP讓使用者透過自然語言指令執行精確動作，降低技術門檻。<br /></li><li>指令搜索引擎：內建引擎協助駭客快速搜尋特定服務或端口的相關指令。</li></ul><h3 id="claude-mythos">Claude Mythos</h3><h4 id="簡介-12">簡介</h4><p>Claude Mythos 是 Anthropic開發的一款專為邊界測試設計的「前哨模型」。它被視為 AI安全領域的重大突破，具備超乎想像的自主性，能夠在無需人類干預的情況下，針對複雜系統進行深度挖掘。它因其強大的攻擊潛力而受嚴格控管（ProjectGlasswing），目前僅開放給少數關鍵行業合作夥伴進行防禦性測試，被譽為「有史以來最具威脅也最強大的安全AI」。</p><h4 id="特色-10">特色</h4><ul><li>零時差漏洞 (Zero-Day) 挖掘： 展現出驚人的發現能力，曾找出隱藏在OpenBSD 等高安全性系統中長達 27年、連人類與自動化工具都未曾察覺的漏洞。<br /></li><li>高成功率的漏洞利用： 在複雜的測試環境中（如 Firefox 的 JS引擎），其漏洞利用成功率高達 72%，而傳統 AI 模型在相同任務下的成功率接近0%。<br /></li><li>百萬級長文本上下文 (1M Context Window)：具備「過目不忘」的分析能力，能一次讀取並理解整套系統的源代碼，建立起全局的攻擊或防禦視角，串聯多個微小漏洞形成連鎖攻擊。<br /></li><li>自主代理架構 (Agentic Scaffolding)：它不只是回答問題，而是能自主行動。它會提出假設、啟動調試器(Debugger)、嘗試執行代碼，並根據結果不斷自我糾正，直到成功突破防線。<br /></li><li>自然語言指令轉化： 讓非頂尖專家也能透過自然語言描述意圖，由 AI自動轉化為精確的技術指令，極大地降低了高級滲透測試的門檻。</li></ul><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly9lcXVpeGx5LmNvbQ==">https://equixly.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cudGhlc21hcnRzY2FubmVyLmNvbQ==">https://www.thesmartscanner.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9iZWFnbGVzZWN1cml0eS5jb20=">https://beaglesecurity.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9oYWNrdWxlcy5jb20=">https://hackules.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9jb2RlZGVmZW5kZXIucm8=">https://codedefender.ro<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9jb3JnZWEuY29t">https://corgea.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9jb2RlcmJ1ZHMuY29t">https://coderbuds.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9mbHV4Z3VhcmQuY29t">https://fluxguard.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZHJ5cnVuLnNlY3VyaXR5">https://www.dryrun.security<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9jb3BpbG90LmJ1Z2Jhc2UuYWk=">https://copilot.bugbase.ai<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW50aHJvcGljLmNvbS8=">https://www.anthropic.com/<i class="fa fa-external-link-alt"></i></span></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Security </category>
+          
+          <category> Penetration Test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PT </tag>
+            
+            <tag> AI </tag>
+            
+            <tag> tools </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>NucleiFuzzer</title>
       <link href="/blog/2026/03/21/NucleiFuzzer-notes/"/>
       <url>/blog/2026/03/21/NucleiFuzzer-notes/</url>
       
@@ -15,9 +46,9 @@
           
           <category> Linux </category>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -28,9 +59,9 @@
             
             <tag> PT </tag>
             
-            <tag> GitHub </tag>
-            
             <tag> tools </tag>
+            
+            <tag> GitHub </tag>
             
         </tags>
       
@@ -75,9 +106,9 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -112,9 +143,9 @@
           
           <category> Linux </category>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -147,9 +178,9 @@
           
           <category> Linux </category>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -182,9 +213,9 @@
           
           <category> Linux </category>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -242,9 +273,9 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -271,9 +302,9 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -362,9 +393,9 @@
           
           <category> Linux </category>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -623,9 +654,9 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -679,9 +710,9 @@
       
       <categories>
           
-          <category> Penetration Test </category>
-          
           <category> Security </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
