@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>AI 驅動的靜態應用程式安全測試 (SAST) 工具</title>
+      <link href="/blog/2026/05/02/AI-tool2/"/>
+      <url>/blog/2026/05/02/AI-tool2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="簡介">簡介</h2><p>AI 驅動的靜態應用程式安全測試（SAST, Static Application SecurityTesting）工具，是近年應用於軟體開發安全（DevSecOps）中的重要技術。此類工具透過人工智慧與機器學習模型，對應用程式原始碼進行靜態分析，在程式執行前即能識別潛在的安全漏洞與程式缺陷。相較於傳統SAST 工具，AI 驅動版本具備更高的智慧化能力。不僅能自動偵測常見漏洞（如SQLInjection、XSS、邏輯錯誤），還能提供即時修復建議，甚至自動生成修補程式碼，大幅降低開發人員修復漏洞的時間成本與人為判斷錯誤。此外，這類工具通常能整合至整合開發環境（IDE）與CI/CD 流程中，實現「Shift LeftSecurity」的安全策略，使安全檢測從開發早期即介入，達到即時回饋與持續安全監控的效果。</p><span id="more"></span><h3 id="codiga">Codiga</h3><h4 id="簡介-1">簡介</h4><p>強調與 IDE 深度整合的輕量級智慧平台。</p><h4 id="特色">特色</h4><p>提供即時回饋、可自定義規則、自動化修復建議。</p><h3 id="corgea">Corgea</h3><h4 id="簡介-2">簡介</h4><p>專注於修復精準度的創新工具</p><h4 id="特色-1">特色</h4><p>自動生成精確修補方案，將「發現漏洞」到「修復完成」的過程極簡化。</p><h3 id="checkmarx-sast">Checkmarx SAST</h3><h4 id="簡介-3">簡介</h4><p>歷史悠久的企業級安全龍頭，現引入 AI 優化。</p><h4 id="特色-2">特色</h4><p>側重於工作流的自動化，適合大型企業管理複雜的補救生命週期。</p><h3 id="snyk-code">Snyk Code</h3><h4 id="簡介-4">簡介</h4><p>基於著名的 DeepCode AI 引擎。</p><h4 id="特色-3">特色</h4><p>使用安全專家篩選的專屬數據進行訓練，準確度極高</p><h3 id="dryrun-security">DryRun Security</h3><h4 id="簡介-5">簡介</h4><p>運用最新的生成式 AI 技術。</p><h4 id="特色-4">特色</h4><p>強調「上下文分析」，不僅看代碼內容，更看代碼所處的邏輯環境，引導開發者從源頭寫出安全代碼。</p><h3 id="code-intelligence">Code Intelligence</h3><h4 id="簡介-6">簡介</h4><p>專為嵌入式軟體設計的 AI 安全平台。</p><h4 id="特色-5">特色</h4><p>核心技術為 AI 驅動的白箱模糊測試(Fuzzing)。這種技術能自動輸入大量異常數據來測試系統極限，發現隱藏極深的邏輯漏洞與崩潰錯誤，這在傳統SAST 中很難達成。</p><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY29kaWdhLmlv">https://www.codiga.io<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9jb3JnZWEuY29t">https://corgea.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9jaGVja21hcnguY29t">https://checkmarx.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9zbnlrLmlv">https://snyk.io<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY29kZXRocmVhdC5jb20=">https://www.codethreat.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZHJ5cnVuLnNlY3VyaXR5">https://www.dryrun.security<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY29kZS1pbnRlbGxpZ2VuY2UuY29t">https://www.code-intelligence.com<i class="fa fa-external-link-alt"></i></span></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Security </category>
+          
+          <category> Penetration Test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PT </tag>
+            
+            <tag> AI </tag>
+            
+            <tag> tools </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AI弱掃工具</title>
       <link href="/blog/2026/05/01/AI-tool1/"/>
       <url>/blog/2026/05/01/AI-tool1/</url>
@@ -46,9 +77,9 @@
           
           <category> Security </category>
           
-          <category> Penetration Test </category>
-          
           <category> Linux </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -143,9 +174,9 @@
           
           <category> Security </category>
           
-          <category> Penetration Test </category>
-          
           <category> Linux </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -178,9 +209,9 @@
           
           <category> Security </category>
           
-          <category> Penetration Test </category>
-          
           <category> Linux </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -213,9 +244,9 @@
           
           <category> Security </category>
           
-          <category> Penetration Test </category>
-          
           <category> Linux </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
@@ -393,9 +424,9 @@
           
           <category> Security </category>
           
-          <category> Penetration Test </category>
-          
           <category> Linux </category>
+          
+          <category> Penetration Test </category>
           
       </categories>
       
