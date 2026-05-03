@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>AI驅動的動態應用程式安全測試 (DAST) 工具</title>
+      <link href="/blog/2026/05/03/AI-tool3/"/>
+      <url>/blog/2026/05/03/AI-tool3/</url>
+      
+        <content type="html"><![CDATA[<h2 id="簡介">簡介</h2><p>AI驅動的動態應用程式安全測試（DAST）工具透過模擬真實攻擊並與執行中的應用程式互動，能即時發現潛在漏洞。結合機器學習與威脅情報，不僅提升漏洞偵測準確性，也大幅降低誤報率。現代DAST 工具逐漸與 DevSecOps 流程整合，實現持續安全測試與自動化防護，並結合AI 與滲透測試技術，使得能更有效地應對快速演變的資安威脅。</p><span id="more"></span><h3 id="zerothreat.ai">ZeroThreat.ai</h3><h4 id="簡介-1">簡介</h4><p>即時識別並緩解漏洞；與傳統的靜態分析工具不同，ZeroThreat.ai會主動與執行中的應用程式互動、模擬攻擊，並找出可能被惡意份子利用的安全性弱點。透過機器學習演算法，能適應不斷演變的威脅，並提供具備情境感知的全面安全性評估。</p><h4 id="特色">特色</h4><ul><li>智能爬蟲 (Intelligent Crawling)：採用 AI驅動的爬蟲技術，專為快速且精準地導覽複雜的 Web 應用程式與 API而設計。這種智能方法確保了對漏洞的徹底探索與檢測。<br /></li><li>威脅情報整合 (Threat IntelligenceIntegration)：整合威脅情報饋送，透過分析應用程式行為來偵測異常並識別新興威脅。藉由掌握最新的攻擊向量，主動識別並降低安全風險。<br /></li><li>極低誤報率 (Minimizing False Positives)：利用 AI能力顯著減少誤報，確保安全團隊能專注於真正的漏洞，並優先處理有效的修復工作。這種對準確性的追求，使其成為道德駭客與滲透測試的寶貴工具。<br /></li><li>強大的整合能力 (Integration Capabilities)：能輕鬆與現有的 CI/CD流水線整合，在整個軟體開發生命週期 (SDLC) 中實現自動化安全測試。<br /></li><li>強大的整合能力 (Integration Capabilities)：能輕鬆與現有的 CI/CD流水線整合，在整個軟體開發生命週期 (SDLC) 中實現自動化安全測試。</li></ul><h3 id="voltsec.io">VoltSec.io</h3><h4 id="簡介-2">簡介</h4><p>結合了 AI驅動的分析與認證道德駭客(EC-ecoucile)的知識與經驗。這種協作方法確保漏洞不僅被識別，還能根據潛在風險進行深入分析與排序。</p><h4 id="特色-1">特色</h4><p>採協作模式，不僅識別漏洞，還能由專業人員深入分析與排序風險優先級，提供具備實作價值的洞察，讓企業清晰掌握安全現狀。</p><h3 id="aptori">Aptori</h3><h4 id="簡介-3">簡介</h4><p>從偵察階段開始安全流程的工具，AI演算法會從多種來源收集並分析目標系統或網路的資訊，協助識別潛在的攻擊向量。</p><h4 id="特色-2">特色</h4><p>利用 AI從多個來源收集並分析目標系統或網路的資訊，精準找出惡意份子可能利用的潛在攻擊向量。</p><h3 id="pentest-copilot">Pentest Copilot</h3><h4 id="簡介-4">簡介</h4><p>利用 AI 自動化滲透測試流程，提供即時漏洞偵測與詳細報告。</p><h4 id="特色-3">特色</h4><p>提供自動化測試、即時漏洞偵測及詳細報告，大幅優化測試效率。</p><h3 id="appcheck">AppCheck</h3><h4 id="簡介-5">簡介</h4><p>專為大規模自動化滲透測試設計的漏洞掃描工具。</p><h4 id="特色-4">特色</h4><p>利用先進 AI演算法提供全面且高效的漏洞檢測，適合需要大規模掃描的企業環境。</p><h3 id="hackules">Hackules</h3><h4 id="簡介-6">簡介</h4><p>專注於增強 Web 應用程式安全性。</p><h4 id="特色-5">特色</h4><p>自動化漏洞偵測並對關鍵問題進行優先級排序，簡化安全專業人員的工作流程。</p><h3 id="beagle-security">Beagle Security</h3><h4 id="簡介-7">簡介</h4><p>專注於 Web 應用程式自動化漏洞評估的平台。</p><h4 id="特色-6">特色</h4><p>與 CI/CD整合提供持續測試、詳細報告與修復建議，確保開發週期的安全性。</p><h3 id="veracode">Veracode</h3><h4 id="簡介-8">簡介</h4><p>業界領先的應用程式安全平台，結合靜態、動態與軟體成分分析(SCA)，主動識別軟體漏洞並提供修復指引。</p><h4 id="特色-7">特色</h4><p>結合靜態 (SAST)、動態 (DAST) 及軟體成分分析(SCA)。透過在開發早期整合自動化測試，強化組織整體的安全防禦態勢。</p><h3 id="vigilocity">Vigilocity</h3><h4 id="簡介-9">簡介</h4><p>優先考慮即時安全監控與事件響應，利用先進威脅情報快速偵測並回應安全事件。</p><h4 id="特色-8">特色</h4><p>利用先進威脅情報快速應對安全事件。提供全面的威脅可視化與自動化回應能力，增強網路韌性。</p><h3 id="devops.security">DevOps.Security</h3><h4 id="簡介-10">簡介</h4><p>將安全實踐無縫整合至 DevOps生命週期，提供自動化掃描、金鑰管理與存取控制。</p><h4 id="特色-9">特色</h4><p>提供自動化漏洞掃描、機敏資訊管理及存取控制，促進開發、安全與運維團隊間的協作。</p><h2 id="參考資料">參考資料</h2><ol type="1"><li><span class="exturl" data-url="aHR0cHM6Ly96ZXJvdGhyZWF0LmFp">https://zerothreat.ai<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cudm9sdHNlYy1pby5jb20=">https://www.voltsec-io.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9hcHBjaGVjay1uZy5jbw==">https://appcheck-ng.co<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9hcHRvcmkuZGV2">https://aptori.dev<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly9jb3BpbG90LmJ1Z2Jhc2UuYWk=">https://copilot.bugbase.ai<i class="fa fa-external-link-alt"></i></span><br /></li><li><a href="www.hackules.com">www.hackules.com</a><br /></li><li><a href="www.beaglesecurity.com">www.beaglesecurity.com</a><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cudmVyYWNvZGUuY29t">https://www.veracode.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cudmlnaWxvY2l0eS5jb20=">https://www.vigilocity.com<i class="fa fa-external-link-alt"></i></span><br /></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZGV2b3BzLnNlY3VyaXR5">https://www.devops.security<i class="fa fa-external-link-alt"></i></span></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Security </category>
+          
+          <category> Penetration Test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PT </tag>
+            
+            <tag> AI </tag>
+            
+            <tag> tools </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AI 驅動的靜態應用程式安全測試 (SAST) 工具</title>
       <link href="/blog/2026/05/02/AI-tool2/"/>
       <url>/blog/2026/05/02/AI-tool2/</url>
